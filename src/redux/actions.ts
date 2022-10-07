@@ -7,9 +7,16 @@ export const loadSubscriptions = (subscriptions: SubscriptionType[]) => {
   }
 }
 
-export const addSubscription = (subscription: SubscriptionType) => {
+export const addSubscription = (subscription: SubscriptionType[]) => {
   return {
     type: "ADD_SUB",
+    payload: subscription
+  }
+}
+
+export const deleteSubscription = (subscription: SubscriptionType[]) => {
+  return {
+    type: 'DELETE_SUB',
     payload: subscription
   }
 }
