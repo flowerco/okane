@@ -9,13 +9,13 @@ const subsSlice = createSlice({
   initialState,
   reducers:{
     subsLoad(state, action: PayloadAction<SubscriptionType[]>) {
-      state.concat(action.payload) // can be mutable due to under the hood of configure slice
+      state = state.concat(action.payload) // can be mutable due to under the hood of configure slice
     },
-    subsAdd(state, action: PayloadAction<SubscriptionType[]>) {
-      state.concat(action.payload)
+    subsAdd(state, action: PayloadAction<SubscriptionType>) {
+      state.push(action.payload)
     },
-    subsDelete(state, action: PayloadAction<SubscriptionType[]>) {
-      state.filter((sub) => sub.name !== action.payload[0].name)
+    subsDelete(state, action: PayloadAction<SubscriptionType>) {
+      state = state.filter((sub) => sub.name !== action.payload.name)
     }
   }
 

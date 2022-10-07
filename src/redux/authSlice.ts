@@ -11,19 +11,19 @@ const authSlice = createSlice({
   name: 'authentication',
   initialState,
   reducers:{
-    login (state, action: PayloadAction<string>) {
+    login:  (state, action: PayloadAction<string>) => {
       // add JWT authenticaiton here otherwise return empty state
       state.isAuthenticated = true;
       state.userID = action.payload
     },
-    logout (state, action: PayloadAction<string>) {
+    logout:  (state, action: PayloadAction<string>) => {
       state.isAuthenticated = false
       state.userID = ''
     },
-    register (state) {
+    register: (state, action: PayloadAction<string>) => {
       state.isAuthenticated = true;
-      state.userID = nanoid()
-    }
+      state.userID = action.payload
+    },
   }
 })
 
