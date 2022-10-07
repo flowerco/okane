@@ -1,8 +1,10 @@
+import { SummaryScreen } from "./SummaryScreen"
+
 export const MainScreen = () => {
 
   return ( 
     <div>
-      Hi, I'm the main screen.
+      <SummaryScreen />
     </div>
   )
 }

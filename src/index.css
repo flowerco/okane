@@ -15,3 +15,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.radial-gradient {
+  background: radial-gradient(
+    circle 700px at 50% -20%,
+    #50C7D8,
+    #1F2028 60%
+    )
+}
+
+.blurtest {
+  backdrop-filter: blur(10px);
+  clip-path: circle(40%);
+}
+
+.ellipse1 {
+
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 358px;
+  height: 367px;
+  left: 20px;
+  top: -183px;
+
+  background: #50C7D8;
+  border: 1px solid #000000;
+  filter: blur(250px);
+}
