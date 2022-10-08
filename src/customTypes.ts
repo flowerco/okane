@@ -8,3 +8,7 @@ export type groupStyle = {
   color: string
   image?: string
 }
+
+export interface Istatus {
+  status: 'idle' | 'loading' | 'succeeded' | 'failed'
+}

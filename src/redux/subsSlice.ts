@@ -1,21 +1,32 @@
 import { createSlice, PayloadAction } from  '@reduxjs/toolkit'
-import { SubscriptionType } from '../customTypes';
+import { SubscriptionType, Istatus } from '../values/customTypes';
 import {RootState} from './store'
 
-const initialState =  [{name:'test',price:69, style: {color:'red'}}] as SubscriptionType[]
+
+
+const initialState =  {
+  data:[{name:'test',price:69, style: {color:'red'}}] as SubscriptionType[],
+  status: 'idle',
+  error: null
+}
+
+// never reassign the state (state = state.concat(action.payload)) - can reassign property
+// either directly modify the state or return a new one. NOT BOTH
 
 const subsSlice = createSlice({
   name: 'subscriptions', // actions will have format 'subscriptions/action'
   initialState,
   reducers:{
     subsLoad(state, action: PayloadAction<SubscriptionType[]>) {
-      state = state.concat(action.payload) // can be mutable due to under the hood of configure slice
+      state.data = action.payload
+
     },
     subsAdd(state, action: PayloadAction<SubscriptionType>) {
-      state.push(action.payload)
+      state.data.push(action.payload)
     },
     subsDelete(state, action: PayloadAction<SubscriptionType>) {
-      state = state.filter((sub) => sub.name !== action.payload.name)
+      state.data = state.data.filter((sub) => sub.name !== action.payload.name)
+      // return {...state, data:filteredSubs}
     }
   }
 
