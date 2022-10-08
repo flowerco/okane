@@ -6,7 +6,7 @@ import { RootState } from './store';
 const initialState: SubscriptionState = {
   data: [],
   status: 'idle',
-  error: undefined,
+  error: null,
 };
 
 export const fetchSubs = createAsyncThunk(

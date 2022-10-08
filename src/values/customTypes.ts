@@ -10,7 +10,7 @@ export type SubscriptionType = {
 export type SubscriptionState = {
   data: SubscriptionType[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
-  error: string | undefined;
+  error: string | undefined | null;
 };
 
 export type groupStyle = {
