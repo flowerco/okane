@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from  '@reduxjs/toolkit'
-import { SubscriptionType, Istatus } from '../values/customTypes';
+import { SubscriptionType } from '../values/customTypes';
 import {RootState} from './store'
 
 

@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { Navbar } from './components/navbars/Navbar';
+import { LoginScreen } from './components/screens/LoginScreen';
+import { MainScreen } from './components/screens/MainScreen';
+import './index.css';
 
 function App() {
+
+  const [isAuthenticated, setAuthenticated] = useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App  h-screen w-screen radial-gradient">
+        <Navbar isAuthenticated={isAuthenticated} callback={setAuthenticated} />
+        { isAuthenticated 
+         ? <MainScreen />
+         : <LoginScreen /> }
+      </div>
+    </BrowserRouter>
   );
 }
 
