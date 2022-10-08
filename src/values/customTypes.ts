@@ -1,10 +1,12 @@
 import { Style } from "util";
 
-export type SubscriptionType = {name: string,
-price: number,
-style?: groupStyle}
+export type SubscriptionType = {
+  name: string,
+  monthlyPrice: number,
+  style?: groupStyle}
 
 export type groupStyle = {
-  color: string
+  textColor: string,
+  bgColor: string,
   image?: string
 }

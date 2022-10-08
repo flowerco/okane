@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from  '@reduxjs/toolkit'
 import { SubscriptionType } from '../values/customTypes';
 import {RootState} from './store'
 
-const initialState =  [{name:'test',price:69, style: {color:'red'}}] as SubscriptionType[]
+const initialState =  [{name:'test', monthlyPrice:69, style: {textColor:'red', bgColor: 'black'}}] as SubscriptionType[]
 
 const subsSlice = createSlice({
   name: 'subscriptions', // actions will have format 'subscriptions/action'

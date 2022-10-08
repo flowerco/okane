@@ -3,7 +3,7 @@ import { SummaryScreen } from "./SummaryScreen"
 export const MainScreen = () => {
 
   return ( 
-    <div>
+    <div className="h-max w-full">
       <SummaryScreen />
     </div>
   )

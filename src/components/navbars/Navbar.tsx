@@ -1,4 +1,3 @@
-import { ReactComponent as Logo } from "../../assets/g21.svg";
 import icon from '../../assets/g21.png';
 import magnifier from '../../assets/search.png';
 import { Divide as Hamburger } from 'hamburger-react';

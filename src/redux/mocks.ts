@@ -1,20 +1,17 @@
 export const summaryScreenMock = [
   {
-    name: "netflix",
-    longName: "Netflix",
-    monthlyPrice: 9.99,
+    name: "Streaming",
+    monthlyPrice: 32.47,
     style: { bgColor: "#141414", textColor: "#E50914" },
   },
   {
-    name: "prime",
-    longName: "Amazon Prime",
-    monthlyPrice: 7.49,
+    name: "Gym",
+    monthlyPrice: 24.99,
     style: { bgColor: "#101D27", textColor: "#00A8E1" },
   },
   {
-    name: "spotify",
-    longName: "Spotify",
-    monthlyPrice: 14.99,
+    name: "Phone",
+    monthlyPrice: 30.99,
     style: { bgColor: "#000000", textColor: "#1AB26B" },
   },
 ];
