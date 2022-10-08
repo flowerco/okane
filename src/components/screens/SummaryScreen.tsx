@@ -18,8 +18,8 @@ export const SummaryScreen = () => {
       </div>
       <div className='flex flex-col w-full px-12 mt-4'>
         { summaryScreenMock.map((sub, index) => {
-            return (            
-              <div 
+            return (
+              <div
                 key={index}
                 className='flex justify-between items-center px-6 mb-6 rounded-3xl h-24 border-2 border-white'
                 style={{ color: colors[index % colors.length] }}

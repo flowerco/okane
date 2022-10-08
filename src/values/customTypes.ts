@@ -1,12 +1,23 @@
-import { Style } from "util";
+import { Style } from 'util';
 
 export type SubscriptionType = {
-  name: string,
-  monthlyPrice: number,
-  style?: groupStyle}
+  id: string;
+  name: string;
+  monthlyPrice: number;
+  style?: groupStyle;
+};
+
+export type SubscriptionState = {
+  data: SubscriptionType[];
+  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  error: string | undefined;
+};
 
 export type groupStyle = {
-  textColor: string,
-  bgColor: string,
-  image?: string
+  bgColor: string;
+  textColor: string;
+};
+
+export interface Istatus {
+  status: 'idle' | 'loading' | 'succeeded' | 'failed';
 }
