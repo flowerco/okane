@@ -13,12 +13,12 @@ export const SummaryScreen = () => {
           data={
             summaryScreenMock.map((sub, index) => {
               return (
-                { title: sub.longName, 
+                { title: sub.longName,
                 value: sub.monthlyPrice,
                 color: colors[index % colors.length] }
               )
             })
-          } 
+          }
           animate={true}
           lineWidth={25}
         />

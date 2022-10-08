@@ -1,12 +1,20 @@
 import { Style } from "util";
 
-export type SubscriptionType = {name: string,
-price: number,
+export type SubscriptionType = {
+id: string,
+name: string,
+monthlyPrice: number,
 style?: groupStyle}
 
+export type SubscriptionState = {
+  data: SubscriptionType[],
+  status: 'idle' | 'loading' | 'succeeded' | 'failed',
+  error: string | undefined
+}
+
 export type groupStyle = {
-  color: string
-  image?: string
+  bgColor: string
+  textColor: string
 }
 
 export interface Istatus {
