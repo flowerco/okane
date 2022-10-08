@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from  '@reduxjs/toolkit'
-import { SubscriptionType } from '../customTypes';
+import { SubscriptionType } from '../values/customTypes';
 import {RootState} from './store'
 
 const initialState =  [{name:'test',price:69, style: {color:'red'}}] as SubscriptionType[]
