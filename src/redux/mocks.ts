@@ -1,4 +1,4 @@
-export const subscriptionMock = [
+export const summaryScreenMock = [
   {
     id: '1',
     name: 'Netflix',
@@ -26,13 +26,13 @@ export const subscriptionMock = [
   {
     id: '6',
     name: 'Graze',
-    monthlyPrice: 14.99,
+    monthlyPrice: 80.99,
     style: { bgColor: '#91B81B', textColor: '#5D402F' },
   },
   {
     id: '7',
     name: 'Hello Fresh',
-    monthlyPrice: 14.99,
+    monthlyPrice: 22.0,
     style: { bgColor: '#96DC12', textColor: '#232323' },
   },
 ];
