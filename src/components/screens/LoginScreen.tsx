@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"
 import { verifyUser } from "../../api/LoginService";
 import { login } from "../../redux/authSlice";
 import { useAppDispatch } from "../../redux/hooks"
-import jwt_decode from 'jwt-decode';
 
 export const LoginScreen = () => {
 
@@ -25,10 +23,7 @@ export const LoginScreen = () => {
     const data = new FormData(event.currentTarget);
     const verificationResult = await verifyUser(data.get('email'), data.get('password'));
     if (verificationResult instanceof Error) return alert('Problem with log in');
-     console.log('Verification result: ', verificationResult);
-    // const decoded: { expiresAt: number, id_hash: string, iat: number } = 
-    //   jwt_decode(verificationResult);
-    console.log('ID received from login: ', verificationResult)
+    console.log('ID received after login verification: ', verificationResult)
     dispatch(login(verificationResult));
   }
 

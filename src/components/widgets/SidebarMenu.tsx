@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { useAppSelector } from "../../redux/hooks"
 
 export const SidebarMenu = () => {
@@ -7,7 +6,7 @@ export const SidebarMenu = () => {
 
   return (
     <>
-      <div className={`h-[100vh] w-[50vw] absolute bg-blue-700 mt-8 ${screenState.sidebarOpen ? 'inline' : 'hidden'}`}>
+      <div className={`h-[100vh] w-[50vw] absolute bg-blue-700 mt-8 ${screenState.sidebarOpen ? 'inline' : 'inline'}`}>
         <ul>
           <li>Home</li>
           <li>About</li>
