@@ -11,10 +11,6 @@ export const MinPieChart = ({
 }) => {
   const [selected, setSelected] = useState<number | undefined>(undefined);
 
-  useEffect(() => {
-    console.log("Selected chart element number: ", selected);
-  }, [selected]);
-
   return (
     <PieChart
       style={{

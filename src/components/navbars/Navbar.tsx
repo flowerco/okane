@@ -1,15 +1,13 @@
 import icon from '../../assets/g21.png';
 import magnifier from '../../assets/search.png';
 import { Divide as Hamburger } from 'hamburger-react';
-import { useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { toggleSidebar } from '../../redux/screenSlice';
 
 export const Navbar = () => {
 
   const authState = useAppSelector(state => state.authentication);
-
-  const toggleDrawer = (drawerFlag: boolean) => {
-
-  }
+  const dispatch = useAppDispatch();
 
   // Return a column so that we can have an empty area above the nav for the notch.
   return (
@@ -27,7 +25,7 @@ export const Navbar = () => {
                   <img src={magnifier} className="w-5 h-5 object-cover"/>
                 </button>
               </form>
-              <Hamburger distance="md" color="white" hideOutline={true}/>
+              <Hamburger distance="md" color="white" hideOutline={true} onToggle={() => dispatch(toggleSidebar())}/>
             </>
             )
           }
