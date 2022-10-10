@@ -11,11 +11,13 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App  h-screen w-screen radial-gradient">
+      <div className="App  h-screen w-screen radial-gradient fixed">
         <Navbar isAuthenticated={isAuthenticated} callback={setAuthenticated} />
-        { isAuthenticated 
-         ? <MainScreen />
-         : <LoginScreen /> }
+        <div>
+          { isAuthenticated 
+          ? <MainScreen />
+          : <LoginScreen /> }
+         </div>
       </div>
     </BrowserRouter>
   );
