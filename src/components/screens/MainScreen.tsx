@@ -3,6 +3,7 @@ import { selectSubs } from "../../redux/subsSlice"
 import { SummaryScreen } from "./SummaryScreen"
 import { fetchSubs } from "../../redux/subsSlice"
 import { useEffect } from "react"
+import MoonLoader from "react-spinners/MoonLoader"
 
 export const MainScreen = () => {
   const dispatch = useAppDispatch()
@@ -18,16 +19,15 @@ export const MainScreen = () => {
   }, [status, dispatch])
 
 
-
   let content;
 
-  if (status === 'loading') {
-    return <h1>hello</h1>
-  }
 
-  return (
-    <div className="h-[calc(100vh_-_4rem_-_5.3mm)] w-full overflow-y-auto">
-        <SummaryScreen />
-    </div>
-  )
+  return <div className="flex cont"><MoonLoader className="" color="#36d7b7" /></div>
+
+
+  // return (
+  //   <div className="h-[calc(100vh_-_4rem_-_5.3mm)] w-full overflow-y-auto">
+  //       <SummaryScreen />
+  //   </div>
+  // )
 }

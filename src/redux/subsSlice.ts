@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { client } from '../api/client';
+import { getSubscriptions } from '../api-Service';
 import { SubscriptionType, SubscriptionState } from '../values/customTypes';
 import { RootState } from './store';
 
@@ -12,8 +12,8 @@ const initialState: SubscriptionState = {
 export const fetchSubs = createAsyncThunk(
   'subscriptions/fetchSubs',
   async () => {
-    const response = await client.get('/fakeAPI/subscriptions');
-    return response.data;
+    const response = await getSubscriptions();
+    return response;
   }
 );
 

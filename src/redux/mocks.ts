@@ -50,4 +50,24 @@ export const usersMock = [
     id: 'faf45e15-e93d-4aba-ae32-9680362d02d1',
     name: 'Gregor',
   },
+  {
+    name: "Internet",
+    monthlyPrice: 20,
+    style: { bgColor: "#000000", textColor: "#1AB26B" },
+  },
+  {
+    name: "Electricity",
+    monthlyPrice: 88.99,
+    style: { bgColor: "#000000", textColor: "#1AB26B" },
+  },
+  {
+    name: "Water",
+    monthlyPrice: 52.07,
+    style: { bgColor: "#000000", textColor: "#1AB26B" },
+  },
+  {
+    name: "Council Tax",
+    monthlyPrice: 135.90,
+    style: { bgColor: "#000000", textColor: "#1AB26B" },
+  }
 ];
