@@ -1,15 +1,22 @@
 import { summaryScreenMock } from '../../redux/mocks';
 import { PieChartColorList1 } from '../../values/customColors';
 import { MinPieChart } from '../widgets/MinPieChart';
+import { useAppSelector } from '../../redux/hooks';
+import { selectSubs } from '../../redux/subsSlice';
 
 export const SummaryScreen = () => {
 
+  const subscriptionsState = useAppSelector(selectSubs)
+  const subscriptions = subscriptionsState.data
+
   const colors = PieChartColorList1;
+  console.log('subs ',subscriptions)
+  console.log('mocks', summaryScreenMock)
 
   return (
     <div className="flex flex-col h-full w-full items-center">
        <div className='flex items-center justify-center w-4/5 aspect-square my-6'>
-        <MinPieChart data={summaryScreenMock} colors={colors} />
+        <MinPieChart data={subscriptions} colors={colors} />
         <div className='text-green-400 text-5xl z-0 h-full relative top-0 left-0 align-center flex justify-center items-center'>
           { `£${summaryScreenMock.reduce((accumulator,sub) => {
             return accumulator + sub.monthlyPrice;
