@@ -22,3 +22,8 @@ export type groupStyle = {
 export interface Istatus {
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
 }
+
+export type emailPassword = {
+  email: string;
+  password: string;
+};
