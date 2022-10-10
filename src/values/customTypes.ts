@@ -1,3 +1,4 @@
+import { SerializedError } from '@reduxjs/toolkit';
 import { Style } from 'util';
 
 export type SubscriptionType = {
@@ -10,7 +11,7 @@ export type SubscriptionType = {
 export type SubscriptionState = {
   data: SubscriptionType[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
-  error: string | undefined | null;
+  error: string | null | undefined;
 };
 
 export type groupStyle = {

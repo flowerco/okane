@@ -1,7 +1,7 @@
 import { summaryScreenMock } from '../../redux/mocks';
 import { PieChartColorList1 } from '../../values/customColors';
 import { MinPieChart } from '../widgets/MinPieChart';
-import { useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { selectSubs } from '../../redux/subsSlice';
 import { useEffect } from "react"
 import { fetchSubs } from '../../redux/subsSlice';
@@ -10,43 +10,41 @@ import {Error} from '../widgets/Error'
 
 
 export const SummaryScreen = () => {
-
+  const dispatch = useAppDispatch();
   const subscriptionsState = useAppSelector(selectSubs)
   const subscriptions = subscriptionsState.data
   const error = subscriptionsState.error
   const status = subscriptionsState.status
   const colors = PieChartColorList1;
-  console.log('subs ',subscriptions)
-  console.log('mocks', summaryScreenMock)
+
 
 
   useEffect(() => {
-
-  },[])
-
-
-
+    if (status === 'idle') {
+      dispatch(fetchSubs())
+    }
+  },[dispatch, status])
 
   if (status === 'loading') {
     return (<Loading/>)
   }
 
   if (status === 'failed') {
-    return <Error/>
+    return <Error error={error}/>
   }
 
   return (
     <div className="grid grid-cols-1 h-full w-full justify-items-center">
       <div className='w-4/5 aspect-square relative'>
-        <MinPieChart data={summaryScreenMock} colors={colors} />
+        <MinPieChart data={subscriptions} colors={colors} />
         <div className='text-green-400 text-5xl z-0 h-full w-full absolute top-0 left-0 align-center flex justify-center items-center'>
-          { `£${summaryScreenMock.reduce((accumulator,sub) => {
+          { `£${subscriptions.reduce((accumulator,sub) => {
             return accumulator + sub.monthlyPrice;
           },0).toFixed(0)}` }
         </div>
       </div>
       <div className='flex flex-col w-full px-12 mt-4 pb-6'>
-        { summaryScreenMock.map((sub, index) => {
+        { subscriptions.map((sub, index) => {
             return (
               <div
                 key={index}

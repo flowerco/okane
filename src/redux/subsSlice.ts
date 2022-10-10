@@ -52,6 +52,6 @@ const subsSlice = createSlice({
 
 export const selectSubs = (state: RootState) => state.subscriptions;
 
-export const { subsLoad, subsAdd, subsDelete } = subsSlice.actions;
+export const { subsAdd, subsDelete } = subsSlice.actions;
 
 export default subsSlice.reducer;
