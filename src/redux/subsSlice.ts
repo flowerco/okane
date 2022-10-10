@@ -23,9 +23,6 @@ const subsSlice = createSlice({
   name: 'subscriptions', // actions will have format 'subscriptions/action'
   initialState,
   reducers: {
-    subsLoad(state, action: PayloadAction<SubscriptionType[]>) {
-      state.data = action.payload;
-    },
     subsAdd(state, action: PayloadAction<SubscriptionType>) {
       state.data.push(action.payload);
     },

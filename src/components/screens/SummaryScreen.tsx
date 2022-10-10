@@ -3,15 +3,37 @@ import { PieChartColorList1 } from '../../values/customColors';
 import { MinPieChart } from '../widgets/MinPieChart';
 import { useAppSelector } from '../../redux/hooks';
 import { selectSubs } from '../../redux/subsSlice';
+import { useEffect } from "react"
+import { fetchSubs } from '../../redux/subsSlice';
+import { Loading } from '../widgets/Loading';
+import {Error} from '../widgets/Error'
+
 
 export const SummaryScreen = () => {
 
   const subscriptionsState = useAppSelector(selectSubs)
   const subscriptions = subscriptionsState.data
-
+  const error = subscriptionsState.error
+  const status = subscriptionsState.status
   const colors = PieChartColorList1;
   console.log('subs ',subscriptions)
   console.log('mocks', summaryScreenMock)
+
+
+  useEffect(() => {
+
+  },[])
+
+
+
+
+  if (status === 'loading') {
+    return (<Loading/>)
+  }
+
+  if (status === 'failed') {
+    return <Error/>
+  }
 
   return (
     <div className="grid grid-cols-1 h-full w-full justify-items-center">
@@ -23,7 +45,7 @@ export const SummaryScreen = () => {
           },0).toFixed(0)}` }
         </div>
       </div>
-      <div className='flex flex-col w-full px-12 mt-4'>
+      <div className='flex flex-col w-full px-12 mt-4 pb-6'>
         { summaryScreenMock.map((sub, index) => {
             return (
               <div
