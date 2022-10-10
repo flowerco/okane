@@ -22,7 +22,8 @@ export const MinPieChart = ({
           '"Nunito Sans", -apple-system, Helvetica, Arial, sans-serif',
         fontSize: "8px",
         zIndex: "10",
-        position: "absolute",
+        position: "relative",
+        width: "100%"
       }}
       data={data.map((sub, index) => {
         return {
@@ -31,8 +32,8 @@ export const MinPieChart = ({
           color: colors[index % colors.length],
         };
       })}
-      lineWidth={40}
-      radius={42}
+      lineWidth={39}
+      radius={44}
       segmentsStyle={{ transition: "stroke .3s", cursor: "pointer" }}
       segmentsShift={(index) => (index === selected ? 6 : 1)}
       animate

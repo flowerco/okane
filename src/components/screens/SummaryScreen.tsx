@@ -7,13 +7,13 @@ export const SummaryScreen = () => {
   const colors = PieChartColorList1;
 
   return (
-    <div className="flex flex-col h-full w-full items-center">
-       <div className='flex items-center justify-center w-4/5 aspect-square my-6'>
+    <div className="grid grid-cols-1 h-full w-full justify-items-center">
+      <div className='w-4/5 aspect-square relative'>
         <MinPieChart data={summaryScreenMock} colors={colors} />
-        <div className='text-green-400 text-5xl z-0 h-full relative top-0 left-0 align-center flex justify-center items-center'>
+        <div className='text-green-400 text-5xl z-0 h-full w-full absolute top-0 left-0 align-center flex justify-center items-center'>
           { `£${summaryScreenMock.reduce((accumulator,sub) => {
             return accumulator + sub.monthlyPrice;
-          },0).toFixed(2)}` }
+          },0).toFixed(0)}` }
         </div>
       </div>
       <div className='flex flex-col w-full px-12 mt-4'>
@@ -25,7 +25,7 @@ export const SummaryScreen = () => {
                 style={{ color: colors[index % colors.length] }}
               >
                 <p className='text-3xl'>{sub.name}</p>
-                <p className='text-2xl'>£{sub.monthlyPrice}</p>
+                <p className='text-2xl'>£{sub.monthlyPrice.toFixed(2)}</p>
               </div>
             )
           })
