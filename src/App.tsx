@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Navbar } from './components/navbars/Navbar';
 import { LoginScreen } from './components/screens/LoginScreen';
@@ -7,17 +6,11 @@ import './index.css';
 
 function App() {
 
-  const [isAuthenticated, setAuthenticated] = useState(true);
-
   return (
     <BrowserRouter>
       <div className="App  h-screen w-screen radial-gradient fixed">
-        <Navbar isAuthenticated={isAuthenticated} callback={setAuthenticated} />
-        <div>
-          { isAuthenticated 
-          ? <MainScreen />
-          : <LoginScreen /> }
-         </div>
+        <Navbar />
+        <MainScreen />
       </div>
     </BrowserRouter>
   );

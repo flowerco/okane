@@ -16,7 +16,7 @@ export const SummaryScreen = () => {
           },0).toFixed(0)}` }
         </div>
       </div>
-      <div className='flex flex-col w-full px-12 mt-4'>
+      <div className='flex flex-col w-full px-12 mt-4 pb-6'>
         { summaryScreenMock.map((sub, index) => {
             return (
               <div

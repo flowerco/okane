@@ -1,12 +1,11 @@
 import icon from '../../assets/g21.png';
 import magnifier from '../../assets/search.png';
 import { Divide as Hamburger } from 'hamburger-react';
+import { useAppSelector } from '../../redux/hooks';
 
-export const Navbar = (
-  { isAuthenticated, callback }
-  : { isAuthenticated: boolean,
-    callback: React.Dispatch<React.SetStateAction<boolean>>}
-) => {
+export const Navbar = () => {
+
+  const authState = useAppSelector(state => state.authentication);
 
   const toggleDrawer = (drawerFlag: boolean) => {
 
@@ -16,13 +15,13 @@ export const Navbar = (
   return (
     <nav className="flex flex-col items-center justify-center px-6 sticky top-0 left-0">
       <div id='notch' className='h-[5.3mm] w-full'></div>
-      <div className='flex items-center justify-evenly h-20'>
-        <div className="h-16 w-16 pt-2">
+      <div className='flex items-center justify-between h-20 w-full'>
+        <div className="h-20 w-20 pt-2">
           <img src={icon} className="object-cover"></img>
         </div>
-          { isAuthenticated && (
+          { authState.isAuthenticated && (
             <>
-              <form className="flex items-center justify-center">
+              <form className="flex items-center justify-center w-4/5 -ml-3">
                 <input type="text" className="py-3 px-9 rounded-full w-4/5 bg-[#D9D9D9]"></input>
                 <button type="submit" className="border-none bg-transparent outline-none -ml-8">
                   <img src={magnifier} className="w-5 h-5 object-cover"/>
