@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getSubscriptions } from '../api-Service';
+import { getSubscriptions } from '../api/SubscriptionService';
 import {
   SubscriptionType,
   SubscriptionState,
