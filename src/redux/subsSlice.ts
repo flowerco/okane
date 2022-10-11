@@ -1,6 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getSubscriptions } from '../api-Service';
-import { SubscriptionType, SubscriptionState } from '../values/customTypes';
+import {
+  SubscriptionType,
+  SubscriptionState,
+  SubscriptionResponse,
+} from '../values/customTypes';
 import { RootState } from './store';
 
 const initialState: SubscriptionState = {
@@ -38,13 +42,14 @@ const subsSlice = createSlice({
       })
       .addCase(
         fetchSubs.fulfilled,
-        (state, action: PayloadAction<SubscriptionType[]>) => {
+        (state, action: PayloadAction<SubscriptionResponse>) => {
           state.status = 'succeeded';
-          state.data = action.payload;
+          state.data = action.payload.subs;
         }
       )
       .addCase(fetchSubs.rejected, (state, action) => {
         state.status = 'failed';
+        console.log(action.error);
         state.error = action.error.message;
       });
   },

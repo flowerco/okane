@@ -2,10 +2,14 @@ import { SerializedError } from '@reduxjs/toolkit';
 import { Style } from 'util';
 
 export type SubscriptionType = {
-  id: string;
+  subscription_id: number;
   name: string;
   monthlyPrice: number;
-  style?: groupStyle;
+};
+
+export type SubscriptionResponse = {
+  month: string;
+  subs: SubscriptionType[];
 };
 
 export type SubscriptionState = {
