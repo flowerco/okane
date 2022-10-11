@@ -1,4 +1,5 @@
 // import "./styles.css";
+import { objectTraps } from "immer/dist/internal";
 import React from "react";
 import {
   AreaChart,
@@ -10,10 +11,25 @@ import {
 } from "recharts";
 import { analysisScreenMock } from "../../redux/mocks";
 import { subsAdd } from "../../redux/subsSlice";
+import { StreamingType } from "../../values/customTypes";
 
 const data = analysisScreenMock;
+// const subData = data.map((sub, index)=> {
+//   let newSub = {...sub}
+//   delete newSub[0];
+//   return newSub
+// })
+let streamArr = [];
+for (let sub in data) {
+}
 
-export default function MonthlyGraph() {
+export const MonthlyGraph = ({
+  data,
+  colors,
+}: {
+  data: StreamingType[];
+  colors: string[];
+}) => {
   return (
     <AreaChart
       width={350}
@@ -30,6 +46,21 @@ export default function MonthlyGraph() {
       <XAxis dataKey="month" fontSize={"small"} />
       <YAxis fontSize={"small"} />
       <Tooltip />
+      {/* {data.map((sub, index) => {
+        if (index !== 0) {
+          console.log(sub);
+          return (
+            <Area
+              key={index}
+              type="monotone"
+              dataKey={Object.keys(sub)[index]}
+              stackId="1"
+              stroke={colors[index % colors.length]}
+              fill={colors[index % colors.length]}
+            />
+          );
+        }
+      })} */}
       <Area
         type="monotone"
         dataKey="netflix"
@@ -60,4 +91,4 @@ export default function MonthlyGraph() {
       />
     </AreaChart>
   );
-}
+};

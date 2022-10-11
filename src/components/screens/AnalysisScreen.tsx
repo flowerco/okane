@@ -1,6 +1,6 @@
-import { summaryScreenMock } from "../../redux/mocks";
+import { summaryScreenMock, analysisScreenMock } from "../../redux/mocks";
 import { PieChartColorList1 } from "../../values/customColors";
-import MonthlyGraph from "../widgets/MonthlyGraph";
+import { MonthlyGraph } from "../widgets/MonthlyGraph";
 
 export const AnalysisScreen = () => {
   const colors = PieChartColorList1;
@@ -13,7 +13,7 @@ export const AnalysisScreen = () => {
             {"Streaming"}
           </div>
           <div className="text-green-400 text-5xl z-0 h-full w-full absolute top-0 left-0 align-center flex justify-center items-center">
-            <MonthlyGraph />
+            <MonthlyGraph data={analysisScreenMock} colors={colors} />
           </div>
         </div>
         <div className="flex flex-col w-full px-12 mt-4">

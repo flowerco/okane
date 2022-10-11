@@ -77,20 +77,20 @@ export const analysisScreenMock = [
     netflix: 9.99,
     amazonPrime: 7.49,
     spotify: 14.99,
-    disneyPlus: 0,
+    disneyPlus: 10,
   },
   {
     month: "Feb",
     netflix: 9.99,
     amazonPrime: 7.49,
     spotify: 14.99,
-    disneyPlus: 7.99,
+    disneyPlus: 0,
   },
   {
     month: "March",
     netflix: 0,
     amazonPrime: 7.49,
     spotify: 14.99,
-    disneyPlus: 7.99,
+    disneyPlus: 10,
   },
 ];
