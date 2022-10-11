@@ -1,34 +1,43 @@
-import { createSlice, nanoid, PayloadAction } from  '@reduxjs/toolkit'
-import { create } from 'domain'
-import {RootState} from './store'
+import {
+  createAsyncThunk,
+  createSlice,
+  nanoid,
+  PayloadAction,
+} from '@reduxjs/toolkit';
+import { RootState } from './store';
+import { checkUser } from '../api-Service';
+import { emailPassword } from '../values/customTypes';
 
-const initialState =  {
+const initialState = {
   isAuthenticated: false,
-  userID: ''
-}
+  userID: '',
+};
+
+export const loginUser = createAsyncThunk(
+  'authentication/checkUser',
+  async (payload: emailPassword) => {
+    const response = await checkUser(payload);
+    return response;
+  }
+);
 
 const authSlice = createSlice({
   name: 'authentication',
   initialState,
-  reducers:{
-    login:  (state, action: PayloadAction<string>) => {
-      // add JWT authenticaiton here otherwise return empty state
+  reducers: {
+    login: (state, action: PayloadAction<string>) => {
       state.isAuthenticated = true;
-      state.userID = action.payload
+      state.userID = action.payload;
     },
-    logout:  (state, action: PayloadAction<string>) => {
-      state.isAuthenticated = false
-      state.userID = ''
+    logout: (state) => {
+      state.isAuthenticated = false;
+      state.userID = '';
     },
-    register: (state, action: PayloadAction<string>) => {
-      state.isAuthenticated = true;
-      state.userID = action.payload
-    },
-  }
-})
+  },
+});
 
-export const selectAuth = (state: RootState) => state.authentication
+export const selectAuth = (state: RootState) => state.authentication;
 
-export const {login, logout, register} = authSlice.actions;
+export const { login, logout } = authSlice.actions;
 
-export default authSlice.reducer
+export default authSlice.reducer;

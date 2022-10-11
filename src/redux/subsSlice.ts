@@ -1,6 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { client } from '../api/client';
-import { SubscriptionType, SubscriptionState } from '../values/customTypes';
+import { getSubscriptions } from '../api/SubscriptionService';
+import {
+  SubscriptionType,
+  SubscriptionState,
+  SubscriptionResponse,
+} from '../values/customTypes';
 import { RootState } from './store';
 
 const initialState: SubscriptionState = {
@@ -12,8 +16,8 @@ const initialState: SubscriptionState = {
 export const fetchSubs = createAsyncThunk(
   'subscriptions/fetchSubs',
   async () => {
-    const response = await client.get('/fakeAPI/subscriptions');
-    return response.data;
+    const response = await getSubscriptions();
+    return response;
   }
 );
 
@@ -23,9 +27,6 @@ const subsSlice = createSlice({
   name: 'subscriptions', // actions will have format 'subscriptions/action'
   initialState,
   reducers: {
-    subsLoad(state, action: PayloadAction<SubscriptionType[]>) {
-      state.data = action.payload;
-    },
     subsAdd(state, action: PayloadAction<SubscriptionType>) {
       state.data.push(action.payload);
     },
@@ -41,13 +42,14 @@ const subsSlice = createSlice({
       })
       .addCase(
         fetchSubs.fulfilled,
-        (state, action: PayloadAction<SubscriptionType[]>) => {
+        (state, action: PayloadAction<SubscriptionResponse>) => {
           state.status = 'succeeded';
-          state.data = action.payload;
+          state.data = action.payload.subs;
         }
       )
       .addCase(fetchSubs.rejected, (state, action) => {
         state.status = 'failed';
+        console.log(action.error);
         state.error = action.error.message;
       });
   },
@@ -55,6 +57,6 @@ const subsSlice = createSlice({
 
 export const selectSubs = (state: RootState) => state.subscriptions;
 
-export const { subsLoad, subsAdd, subsDelete } = subsSlice.actions;
+export const { subsAdd, subsDelete } = subsSlice.actions;
 
 export default subsSlice.reducer;

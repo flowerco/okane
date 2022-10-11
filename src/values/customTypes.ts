@@ -1,16 +1,21 @@
+import { SerializedError } from "@reduxjs/toolkit";
 import { Style } from "util";
 
 export type SubscriptionType = {
-  id: string;
+  subscription_id: number;
   name: string;
   monthlyPrice: number;
-  style?: groupStyle;
+};
+
+export type SubscriptionResponse = {
+  month: string;
+  subs: SubscriptionType[];
 };
 
 export type SubscriptionState = {
   data: SubscriptionType[];
   status: "idle" | "loading" | "succeeded" | "failed";
-  error: string | undefined | null;
+  error: string | null | undefined;
 };
 
 export type groupStyle = {
@@ -29,3 +34,8 @@ export type StreamingType = {
 export interface Istatus {
   status: "idle" | "loading" | "succeeded" | "failed";
 }
+
+export type emailPassword = {
+  email: string;
+  password: string;
+};
