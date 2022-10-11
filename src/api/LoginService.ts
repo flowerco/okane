@@ -5,7 +5,7 @@ export const verifyUser = async (
 	password: FormDataEntryValue | null
 ) => {
 	try {
-		const response = await fetch('http://localhost:3001/login', {
+		const response = await fetch(`http://localhost:${process.env.REACT_APP_PORT}/login`, {
 			method: 'POST',
 			headers: { 'Content-type': 'application/json' },
 			credentials: "include",
@@ -26,7 +26,7 @@ export const verifyUser = async (
 export const validateJwtCookie = async () => {
 	let output = 'LOGOUT';
 	try {
-		const response = await fetch('http://localhost:3001/validate', {credentials: "include"});
+		const response = await fetch(`http://localhost:${process.env.REACT_APP_PORT}/validate`, {credentials: "include"});
 		if (response.status === 200) {
 			const data = await response.json();
 			output = data.userId;
@@ -39,8 +39,9 @@ export const validateJwtCookie = async () => {
 
 
 export const removeJwtCookie = async() => {
+  console.log('Port: ', process.env.REACT_APP_PORT)
 	try {
-		await fetch('http://localhost:3001/remove', {credentials: "include"});
+		await fetch(`http://localhost:${process.env.REACT_APP_PORT}/remove`, {credentials: "include"});
 	} catch (err) {
 		console.log('Error removing Jwt cookie: ', err);
 	}

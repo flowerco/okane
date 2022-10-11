@@ -11,7 +11,6 @@ const screenSlice = createSlice({
   initialState,
   reducers:{
     toggleSidebar:  (state) => {
-      console.log('Setting sidebarOpen to: ', !state.sidebarOpen);
       state.sidebarOpen = !state.sidebarOpen;
     },
   }

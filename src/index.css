@@ -60,3 +60,12 @@ code {
   border: 1px solid #000000;
   filter: blur(250px);
 }
+
+.menu-transition {
+  transition: transform .5s ease;
+  transform: translateX(-100vw);
+  overflow: hidden;
+}
+.menu-transition.open {
+  transform: translateX(0vw);
+}

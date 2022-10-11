@@ -29,8 +29,10 @@ function App() {
     <BrowserRouter>
       <div className="App  h-screen w-screen radial-gradient fixed">
         <Navbar />
-        <MainScreen />
-        <SidebarMenu />
+        <div>
+          <MainScreen />
+          {/* <SidebarMenu /> */}
+        </div>
       </div>
     </BrowserRouter>
   );

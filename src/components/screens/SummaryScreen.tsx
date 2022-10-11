@@ -7,6 +7,8 @@ import { useEffect } from "react"
 import { fetchSubs } from '../../redux/subsSlice';
 import { Loading } from '../widgets/Loading';
 import {Error} from '../widgets/Error'
+import { ItemList } from '../widgets/ItemList';
+import { SubscriptionType } from '../../values/customTypes';
 
 
 export const SummaryScreen = () => {
@@ -16,8 +18,6 @@ export const SummaryScreen = () => {
   const error = subscriptionsState.error
   const status = subscriptionsState.status
   const colors = PieChartColorList1;
-
-
 
   useEffect(() => {
     if (status === 'idle') {
@@ -44,19 +44,7 @@ export const SummaryScreen = () => {
         </div>
       </div>
       <div className='flex flex-col w-full px-12 mt-4 pb-6'>
-        { subscriptions.map((sub, index) => {
-            return (
-              <div
-                key={index}
-                className='flex justify-between items-center px-6 mb-6 rounded-3xl h-24 border-2 border-white'
-                style={{ color: colors[index % colors.length] }}
-              >
-                <p className='text-3xl'>{sub.name}</p>
-                <p className='text-2xl'>£{sub.monthlyPrice.toFixed(2)}</p>
-              </div>
-            )
-          })
-        }
+        <ItemList data={subscriptions} colors={colors} />
       </div>
     </div>
   );

@@ -26,23 +26,18 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action: PayloadAction<string>) => {
-      // add JWT authenticaiton here otherwise return empty state
       state.isAuthenticated = true;
       state.userID = action.payload;
     },
-    logout: (state, action: PayloadAction<string>) => {
+    logout: (state) => {
       state.isAuthenticated = false;
       state.userID = '';
-    },
-    register: (state, action: PayloadAction<string>) => {
-      state.isAuthenticated = true;
-      state.userID = action.payload;
     },
   },
 });
 
 export const selectAuth = (state: RootState) => state.authentication;
 
-export const { login, logout, register } = authSlice.actions;
+export const { login, logout } = authSlice.actions;
 
 export default authSlice.reducer;

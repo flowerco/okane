@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { verifyUser } from "../../api/LoginService";
+import { createUser } from "../../api/RegisterService";
 import { login } from "../../redux/authSlice";
 import { useAppDispatch } from "../../redux/hooks"
 
@@ -7,7 +8,16 @@ export const LoginScreen = () => {
 
   const initialState = { email: '', password: '' };
   const [formState , setFormState] = useState(initialState);
+  const [registerFlag, setRegisterFlag] = useState(false);
   const dispatch = useAppDispatch();
+
+  const toggleRegisterFlag = () => {
+    setRegisterFlag(!registerFlag);
+  }
+
+  const handleClick = (event: React.MouseEvent<HTMLInputElement>) => {
+    toggleRegisterFlag();
+  }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
@@ -21,16 +31,26 @@ export const LoginScreen = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const verificationResult = await verifyUser(data.get('email'), data.get('password'));
-    if (verificationResult instanceof Error) return alert('Problem with log in');
-    console.log('ID received after login verification: ', verificationResult)
-    dispatch(login(verificationResult));
+    // Check for the registerFlag or login process:
+    if (registerFlag) {
+      createUser(data.get('email'), data.get('password')).then(res => {
+        console.log('Returned data: ', res);
+        dispatch(login(res.userId));
+      });
+    } else {
+      const verificationResult = await verifyUser(data.get('email'), data.get('password'));
+      if (verificationResult instanceof Error) return alert('Problem with log in');
+      console.log('ID received after login verification: ', verificationResult)
+      dispatch(login(verificationResult));
+    }
   }
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center -mt-16">
-      <div className="flex flex-col justify-center items-center border-2 border-white rounded-lg w-4/5 space-y-8 py-10">
-        <h1 className="text-3xl text-white font-bold">Log In</h1>
+    <div className="w-full h-full flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center border-2 border-white rounded-lg w-4/5 space-y-8 py-10 -mt-16">
+        <h1 className="text-3xl text-white font-bold text-center">
+          { registerFlag ? 'Register New Account' : 'Log In' }
+        </h1>
         <form onSubmit={handleSubmit} action="" className="flex flex-col space-y-8 justify-center items-center">
           <input type="text" name="email" value={formState.email} 
             onChange={handleChange}
@@ -43,15 +63,15 @@ export const LoginScreen = () => {
             type="submit"
             className="bg-blue-500 rounded-md text-2xl text-white px-6 py-2 font-semibold"
           >
-            Sign In
+            { registerFlag ? 'Sign Up' : 'Sign In' }
           </button>
         </form>
       </div>
       <div className="text-white text-xl pt-4 text-center">
-        Don't have an account?<br />
-        <a href="/register">
-          Sign up here!
-        </a> 
+      { registerFlag ? 'Already' : 'Don\'t' } have an account?<br />
+        <span onClick={handleClick} className="underline">
+          Sign { registerFlag ? 'in' : 'up' } here!
+        </span> 
       </div>
     </div>
   )

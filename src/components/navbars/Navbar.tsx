@@ -20,12 +20,14 @@ export const Navbar = () => {
           { authState.isAuthenticated && (
             <>
               <form className="flex items-center justify-center w-4/5 -ml-3">
-                <input type="text" className="py-3 px-9 rounded-full w-4/5 bg-[#D9D9D9]"></input>
+                <input type="text" className="py-3 px-9 rounded-full w-4/5 bg-[#D9D9D9] max-w-md "></input>
                 <button type="submit" className="border-none bg-transparent outline-none -ml-8">
                   <img src={magnifier} className="w-5 h-5 object-cover"/>
                 </button>
               </form>
-              <Hamburger distance="md" color="white" hideOutline={true} onToggle={() => dispatch(toggleSidebar())}/>
+              <div className='flex h-14 aspect-square items-center justify-center'>
+                <Hamburger distance="md" color="white" hideOutline={true} onToggle={() => dispatch(toggleSidebar())}/>
+              </div>
             </>
             )
           }
