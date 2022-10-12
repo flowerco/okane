@@ -3,16 +3,19 @@ import '../../index.css';
 import { logout } from "../../redux/authSlice";
 import { removeJwtCookie } from "../../api/LoginService";
 import { toggleSidebar } from "../../redux/screenSlice";
+import { useNavigate } from "react-router-dom";
 
 export const SidebarMenu = () => {
 
   const screenState = useAppSelector(state => state.screen);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
 
   const handleLogout = () => {
     removeJwtCookie();
     dispatch(logout());
     dispatch(toggleSidebar())
+    navigate(0)
   }
 
   return (
