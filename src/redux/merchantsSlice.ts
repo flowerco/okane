@@ -43,6 +43,6 @@ const merchantsSlice = createSlice({
   },
 });
 
-export const selectSubs = (state: RootState) => state.merchantsForSub;
+export const selectMerchants = (state: RootState) => state.merchantsForSub;
 
 export default merchantsSlice.reducer;

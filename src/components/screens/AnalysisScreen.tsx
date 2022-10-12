@@ -22,6 +22,11 @@ export const AnalysisScreen = () => {
     } as MerchantType)
   });
 
+  // TODO: handleClick function. Clicking on the merchant should lead to the payment history calendar.
+  const handleClick = () => {
+
+  }
+
   return (
     <div className="h-[calc(100vh_-_4rem_-_5.3mm)] w-full overflow-y-auto">
       <div className="grid grid-cols-1 h-full w-full justify-items-center">
@@ -34,7 +39,7 @@ export const AnalysisScreen = () => {
           </div>
         </div>
         <div className="flex flex-col w-full px-12 mt-4 pb-6">
-          <ItemList data={latestMonth as MerchantType[]} colors={colors} />
+          <ItemList data={latestMonth as MerchantType[]} colors={colors} callback={handleClick} />
         </div>
       </div>
     </div>

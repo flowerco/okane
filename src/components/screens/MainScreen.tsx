@@ -4,7 +4,6 @@ import { AnalysisScreen } from "./AnalysisScreen";
 import { LoginScreen } from "./LoginScreen";
 import { SummaryScreen } from "./SummaryScreen"
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AnalysisScreen } from "./AnalysisScreen";
 
 export const MainScreen = () => {
 
