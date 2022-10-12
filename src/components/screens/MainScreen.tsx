@@ -1,5 +1,6 @@
 import { useAppSelector } from "../../redux/hooks";
 import { SidebarMenu } from "../widgets/SidebarMenu";
+import { AnalysisScreen } from "./AnalysisScreen";
 import { LoginScreen } from "./LoginScreen";
 import { SummaryScreen } from "./SummaryScreen"
 
@@ -14,7 +15,7 @@ export const MainScreen = () => {
         ? 
         <>
           <div className="h-full relative">
-            <SummaryScreen />
+            <AnalysisScreen />
           </div>
           <div className="absolute z-20 h-full top-0 left-0">
             <SidebarMenu />
