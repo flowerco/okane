@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { validateJwtCookie } from "./api/LoginService";
 import { Navbar } from "./components/navbars/Navbar";
 import { LoginScreen } from "./components/screens/LoginScreen";
@@ -33,6 +33,7 @@ function App() {
           {/* <SidebarMenu /> */}
         </div>
       </div>
+
     </BrowserRouter>
   );
 }
