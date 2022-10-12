@@ -7,6 +7,11 @@ export type SubscriptionType = {
   monthlyPrice: number;
 };
 
+export type MerchantType = {
+  name: string;
+  monthlyPrice: number;
+};
+
 export type SubscriptionResponse = {
   month: string;
   subs: SubscriptionType[];
@@ -24,7 +29,7 @@ export type MerchantsForSubType = {
 };
 
 export type MerchantsForSubState = {
-  data: MerchantsForSubType[];
+  data: any;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
 };
@@ -34,13 +39,9 @@ export type groupStyle = {
   textColor: string;
 };
 
-export type StreamingType = {
-  month: string;
-  netflix: number;
-  amazonPrime: number;
-  spotify: number;
-  disneyPlus: number;
-};
+export interface StreamingType {
+  [key: string]: string | number;
+}
 
 export interface Istatus {
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
