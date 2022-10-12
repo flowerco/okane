@@ -2,6 +2,8 @@ import { useAppSelector } from "../../redux/hooks";
 import { SidebarMenu } from "../widgets/SidebarMenu";
 import { LoginScreen } from "./LoginScreen";
 import { SummaryScreen } from "./SummaryScreen"
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { AnalysisScreen } from "./AnalysisScreen";
 
 export const MainScreen = () => {
 
@@ -14,7 +16,11 @@ export const MainScreen = () => {
         ?
         <>
           <div className="h-full relative">
-            <SummaryScreen />
+          <Routes>
+          <Route path='/' element={<SummaryScreen />}></Route>
+          <Route path="/analysis" element={<AnalysisScreen/>}></Route>
+
+            </Routes>
           </div>
           <div className="absolute z-20 h-full top-0 left-0">
             <SidebarMenu />
