@@ -11,10 +11,11 @@ import { emailPassword } from '../values/customTypes';
 const initialState = {
   isAuthenticated: false,
   userID: '',
+  status: '',
 };
 
 export const loginUser = createAsyncThunk(
-  'authentication/checkUser',
+  'authentication/loginUser',
   async (payload: emailPassword) => {
     const response = await checkUser(payload);
     return response;
@@ -33,6 +34,21 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.userID = '';
     },
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(loginUser.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(loginUser.fulfilled, (state, action: PayloadAction<string>) => {
+        state.status = 'succeeded';
+        state.userID = action.payload;
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.status = 'failed';
+        console.log(action.error);
+        // state.error = action.error.message || undefined;
+      });
   },
 });
 

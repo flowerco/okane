@@ -2,7 +2,7 @@ import { SerializedError } from '@reduxjs/toolkit';
 import { Style } from 'util';
 
 export type SubscriptionType = {
-  subscription_id: number;
+  subscription_id: string;
   name: string;
   monthlyPrice: number;
 };

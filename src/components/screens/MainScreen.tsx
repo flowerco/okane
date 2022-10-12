@@ -11,7 +11,7 @@ export const MainScreen = () => {
     <div className="h-[calc(100vh_-_4rem_-_5.3mm)] w-full overflow-y-auto">
       <div className="h-full relative">
         { authState.isAuthenticated
-        ? 
+        ?
         <>
           <SummaryScreen />
           <div className="absolute h-full top-0 left-0">
