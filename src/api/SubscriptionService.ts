@@ -14,7 +14,7 @@ export const getSubscriptions = async () => {
 
 export const getMerchantsForSubscription = async (subscription_id: string) => {
   const response = await fetch(
-    `http:localhost:3001/getMerchantsBySubscriptions/${subscription_id}`
+    `http:localhost:3001/merchants/${subscription_id}`
   );
   let output = response.json();
   return output;
