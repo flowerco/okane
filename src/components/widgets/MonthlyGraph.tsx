@@ -13,16 +13,6 @@ import { analysisScreenMock } from "../../redux/mocks";
 import { subsAdd } from "../../redux/subsSlice";
 import { StreamingType } from "../../values/customTypes";
 
-const data = analysisScreenMock;
-// const subData = data.map((sub, index)=> {
-//   let newSub = {...sub}
-//   delete newSub[0];
-//   return newSub
-// })
-let streamArr = [];
-for (let sub in data) {
-}
-
 export const MonthlyGraph = ({
   data,
   colors,
@@ -30,6 +20,17 @@ export const MonthlyGraph = ({
   data: StreamingType[];
   colors: string[];
 }) => {
+
+  let streamArr: string[] = [];
+  for (let month of data) {
+    for (let sub in month){
+      if (sub !== 'monthEndDate' && !streamArr.includes(sub)) {
+        streamArr.push(sub)
+      }
+    }
+  }
+  console.log('Full list of merchants: ', streamArr);
+
   return (
     <AreaChart
       width={350}
@@ -46,22 +47,22 @@ export const MonthlyGraph = ({
       <XAxis dataKey="month" fontSize={"small"} />
       <YAxis fontSize={"small"} />
       <Tooltip />
-      {/* {data.map((sub, index) => {
+      {streamArr.map((sub, index) => {
         if (index !== 0) {
           console.log(sub);
           return (
             <Area
               key={index}
               type="monotone"
-              dataKey={Object.keys(sub)[index]}
+              dataKey={sub}
               stackId="1"
               stroke={colors[index % colors.length]}
               fill={colors[index % colors.length]}
             />
           );
         }
-      })} */}
-      <Area
+      })}
+      {/* <Area
         type="monotone"
         dataKey="netflix"
         stackId="1"
@@ -85,10 +86,11 @@ export const MonthlyGraph = ({
       <Area
         type="monotone"
         dataKey="disneyPlus"
+        connectNulls
         stackId="1"
         stroke="#ffc658"
         fill="#ffc658"
-      />
+      /> */}
     </AreaChart>
   );
 };

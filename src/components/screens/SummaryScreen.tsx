@@ -8,12 +8,16 @@ import { fetchSubs } from '../../redux/subsSlice';
 import { Loading } from '../widgets/Loading';
 import {Error} from '../widgets/Error'
 import { ItemList } from '../widgets/ItemList';
+import { fetchMerchants } from '../../redux/merchantsSlice';
+import { useNavigate } from "react-router-dom";
 import { SubscriptionType } from '../../values/customTypes';
 
 
 export const SummaryScreen = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const subscriptionsState = useAppSelector(selectSubs)
+
   const subscriptions = subscriptionsState.data
   const error = subscriptionsState.error
   const status = subscriptionsState.status
@@ -25,12 +29,17 @@ export const SummaryScreen = () => {
     }
   },[dispatch, status])
 
+  // TODO: Loading/failed logic to be added to redux.
   if (status === 'loading') {
     return (<Loading/>)
   }
-
   if (status === 'failed') {
     return <Error error={error}/>
+  }
+
+  const handleClick = async (item: SubscriptionType) => {
+    await dispatch(fetchMerchants(item.subscription_id))
+    navigate(`analysis/${item.name}`)
   }
 
   const formatDate = new Date(subscriptionsState.month).toLocaleDateString('en-GB', {
@@ -52,7 +61,7 @@ export const SummaryScreen = () => {
         </div>
       </div>
       <div className='flex flex-col w-full px-12 mt-4 pb-6'>
-        <ItemList data={subscriptions} colors={colors} />
+        <ItemList data={subscriptions} colors={colors} callback={handleClick} />
       </div>
     </div>
   );

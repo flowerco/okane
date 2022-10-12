@@ -29,11 +29,13 @@ const merchantsSlice = createSlice({
       .addCase(fetchMerchants.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(fetchMerchants.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        console.log(action.payload);
-        state.data = action.payload;
-      })
+      .addCase(
+        fetchMerchants.fulfilled,
+        (state, action: PayloadAction<MerchantsForSubType[]>) => {
+          state.status = 'succeeded';
+          state.data = action.payload;
+        }
+      )
       .addCase(fetchMerchants.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;

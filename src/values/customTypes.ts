@@ -29,7 +29,7 @@ export type MerchantsForSubType = {
 };
 
 export type MerchantsForSubState = {
-  data: any;
+  data: MerchantsForSubType[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
 };

@@ -13,9 +13,13 @@ export const getSubscriptions = async () => {
 };
 
 export const getMerchantsForSubscription = async (subscription_id: string) => {
-  const response = await fetch(
-    `http:localhost:3001/merchants/${subscription_id}`
-  );
-  let output = response.json();
-  return output;
+  try {
+    const response = await fetch(
+      `${rootUrl}:${process.env.REACT_APP_PORT}/merchants/${subscription_id}`,
+      { credentials: 'include' }
+    );
+    return await response.json();
+  } catch (e) {
+    console.log(e, 'error in getting');
+  }
 };
