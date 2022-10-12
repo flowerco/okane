@@ -9,6 +9,7 @@ import { RootState } from './store';
 
 const initialState: SubscriptionState = {
   data: [],
+  month: '',
   status: 'idle',
   error: null,
 };
@@ -45,6 +46,7 @@ const subsSlice = createSlice({
         (state, action: PayloadAction<SubscriptionResponse>) => {
           state.status = 'succeeded';
           state.data = action.payload.subs;
+          state.month = action.payload.month;
         }
       )
       .addCase(fetchSubs.rejected, (state, action) => {

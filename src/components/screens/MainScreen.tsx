@@ -8,13 +8,15 @@ export const MainScreen = () => {
   const authState = useAppSelector(state => state.authentication);
 
   return (
-    <div className="h-[calc(100vh_-_4rem_-_5.3mm)] w-full overflow-y-auto">
-      <div className="h-full relative">
+    <div className="h-[calc(100vh_-_4rem_-_5.3mm)] w-full">
+      <div className="h-full relative  overflow-auto">
         { authState.isAuthenticated
         ?
         <>
-          <SummaryScreen />
-          <div className="absolute h-full top-0 left-0">
+          <div className="h-full relative">
+            <SummaryScreen />
+          </div>
+          <div className="absolute z-20 h-full top-0 left-0">
             <SidebarMenu />
           </div>
         </>
