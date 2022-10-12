@@ -1,11 +1,16 @@
-import { SerializedError } from "@reduxjs/toolkit";
-import { Style } from "util";
+import { SerializedError } from '@reduxjs/toolkit';
+import { Style } from 'util';
 
 export type SubscriptionType = {
-  subscription_id: number;
+  subscription_id: string;
   name: string;
   monthlyPrice: number;
 };
+
+export type MerchantType = {
+  name: string;
+  monthlyPrice: number;
+}
 
 export type SubscriptionResponse = {
   month: string;
@@ -15,7 +20,17 @@ export type SubscriptionResponse = {
 export type SubscriptionState = {
   data: SubscriptionType[];
   month: string;
-  status: "idle" | "loading" | "succeeded" | "failed";
+  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  error: string | null | undefined;
+};
+
+export type MerchantsForSubType = {
+  [key: string]: string | number;
+};
+
+export type MerchantsForSubState = {
+  data: MerchantsForSubType[];
+  status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
 };
 
@@ -24,16 +39,12 @@ export type groupStyle = {
   textColor: string;
 };
 
-export type StreamingType = {
-  month: string;
-  netflix: number;
-  amazonPrime: number;
-  spotify: number;
-  disneyPlus: number;
+export interface StreamingType {
+  [key: string]: string | number;
 };
 
 export interface Istatus {
-  status: "idle" | "loading" | "succeeded" | "failed";
+  status: 'idle' | 'loading' | 'succeeded' | 'failed';
 }
 
 export type emailPassword = {
