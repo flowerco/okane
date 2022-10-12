@@ -14,6 +14,7 @@ export type SubscriptionResponse = {
 
 export type SubscriptionState = {
   data: SubscriptionType[];
+  month: string;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null | undefined;
 };
