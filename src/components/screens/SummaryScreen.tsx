@@ -8,7 +8,6 @@ import { fetchSubs } from '../../redux/subsSlice';
 import { Loading } from '../widgets/Loading';
 import {Error} from '../widgets/Error'
 import { ItemList } from '../widgets/ItemList';
-import { SubscriptionType } from '../../values/customTypes';
 
 
 export const SummaryScreen = () => {
