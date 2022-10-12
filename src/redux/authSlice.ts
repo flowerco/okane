@@ -5,7 +5,7 @@ import {
   PayloadAction,
 } from '@reduxjs/toolkit';
 import { RootState } from './store';
-import { checkUser } from '../api-Service';
+import { verifyUser } from '../api/LoginService';
 import { emailPassword } from '../values/customTypes';
 
 const initialState = {
@@ -17,8 +17,8 @@ const initialState = {
 export const loginUser = createAsyncThunk(
   'authentication/loginUser',
   async (payload: emailPassword) => {
-    const response = await checkUser(payload);
-    return response;
+    const response = await verifyUser(payload.email, payload.password);
+    return response as string;
   }
 );
 

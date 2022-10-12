@@ -2,13 +2,20 @@ const rootUrl = 'http://localhost';
 
 export const getSubscriptions = async () => {
   let output: any = '';
-  return await fetch(
-    `${rootUrl}:${process.env.REACT_APP_PORT}/subscriptions`, { credentials:"include" }
-  ).then((res) => {
+  return await fetch(`${rootUrl}:${process.env.REACT_APP_PORT}/subscriptions`, {
+    credentials: 'include',
+  }).then((res) => {
     const data = res.json();
-    output=data;
+    output = data;
     return data;
-  })
-  .finally(() => console.log('Final subs output: ', output));
+  });
   // .catch((err) => console.log('error @getSubscriptions', err));
+};
+
+export const getMerchantsForSubscription = async (subscription_id: string) => {
+  const response = await fetch(
+    `http:localhost:3001/getMerchantsBySubscriptions/${subscription_id}`
+  );
+  let output = response.json();
+  return output;
 };

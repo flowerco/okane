@@ -19,9 +19,27 @@ export type SubscriptionState = {
   error: string | null | undefined;
 };
 
+export type MerchantsForSubType = {
+  [key: string]: string | number;
+};
+
+export type MerchantsForSubState = {
+  data: MerchantsForSubType[];
+  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  error: string | null | undefined;
+};
+
 export type groupStyle = {
   bgColor: string;
   textColor: string;
+};
+
+export type StreamingType = {
+  month: string;
+  netflix: number;
+  amazonPrime: number;
+  spotify: number;
+  disneyPlus: number;
 };
 
 export interface Istatus {

@@ -17,8 +17,8 @@ export const MainScreen = () => {
         <>
           <div className="h-full relative">
           <Routes>
-          <Route path='/' element={<SummaryScreen />}></Route>
-          <Route path="/analysis" element={<AnalysisScreen/>}></Route>
+          <Route path='/' element={<SummaryScreen/>}></Route>
+          <Route path="/analysis/:id" element={<AnalysisScreen/>}></Route>
 
             </Routes>
           </div>
