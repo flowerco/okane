@@ -51,3 +51,33 @@ export type emailPassword = {
   email: string;
   password: string;
 };
+
+export type CategoryTotals = {
+  category_total: number;
+  category_name: string;
+  category_code: string;
+  category_id: number;
+};
+
+export type CategoryTransactions = {
+  price: number;
+  category_name: string;
+  date: string;
+  category_code: string;
+  merchant_name: string;
+  category_id: number;
+  merchant_code: string;
+  merchant_id: number;
+};
+
+export type CategoryResponse = {
+  category_totals: CategoryTotals[];
+  transactions: CategoryTransactions[];
+};
+
+export type CategoryState = {
+  totals: CategoryTotals[];
+  transactions: CategoryTransactions[];
+  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  error: string | null | undefined;
+};
