@@ -4,6 +4,7 @@ import { AnalysisScreen } from "./AnalysisScreen";
 import { LoginScreen } from "./LoginScreen";
 import { SummaryScreen } from "./SummaryScreen"
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { SamsLushScreen } from "./SamsLushScreen";
 
 export const MainScreen = () => {
 
@@ -19,6 +20,7 @@ export const MainScreen = () => {
             <Routes>
               <Route path='/' element={<SummaryScreen/>}></Route>
               <Route path="/analysis/:id" element={<AnalysisScreen/>}></Route>
+              <Route path="/lushScreen" element={<SamsLushScreen/>}></Route>
             </Routes>
           </div>
           <div className="absolute z-20 h-full top-0 left-0">
