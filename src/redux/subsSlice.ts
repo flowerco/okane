@@ -54,6 +54,7 @@ const subsSlice = createSlice({
         console.log(action.error);
         state.error = action.error.message;
       });
+      
   },
 });
 

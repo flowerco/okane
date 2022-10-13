@@ -12,7 +12,20 @@ export const getSubscriptions = async () => {
   // .catch((err) => console.log('error @getSubscriptions', err));
 };
 
+export const getSubName = async (id: string) => {
+  try {
+    const sub = await fetch(`${rootUrl}:${process.env.REACT_APP_PORT}/subscriptions/${id}`, {
+      credentials: 'include',
+    })
+    const data = await sub.json();
+    return data.name;
+  } catch (err) {
+    console.log('Error getting subscription name in front-end: ', err);
+  }
+}
+
 export const getMerchantsForSubscription = async (subscription_id: string) => {
+  console.log('Pulling merchants for subscription no: ', subscription_id);
   try {
     const response = await fetch(
       `${rootUrl}:${process.env.REACT_APP_PORT}/merchants/${subscription_id}`,

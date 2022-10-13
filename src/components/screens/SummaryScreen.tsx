@@ -1,4 +1,3 @@
-import { summaryScreenMock } from '../../redux/mocks';
 import { PieChartColorList1 } from '../../values/customColors';
 import { MinPieChart } from '../widgets/MinPieChart';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -8,7 +7,6 @@ import { fetchSubs } from '../../redux/subsSlice';
 import { Loading } from '../widgets/Loading';
 import {Error} from '../widgets/Error'
 import { ItemList } from '../widgets/ItemList';
-import { fetchMerchants } from '../../redux/merchantsSlice';
 import { useNavigate } from "react-router-dom";
 import { SubscriptionType } from '../../values/customTypes';
 
@@ -16,30 +14,28 @@ import { SubscriptionType } from '../../values/customTypes';
 export const SummaryScreen = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const subscriptionsState = useAppSelector(selectSubs)
-
-  const subscriptions = subscriptionsState.data
-  const error = subscriptionsState.error
-  const status = subscriptionsState.status
+  
   const colors = PieChartColorList1;
-
+  const subscriptionsState = useAppSelector(selectSubs)
+  const subscriptions = subscriptionsState.data
+  const status = subscriptionsState.status
+  const error = subscriptionsState.error
+  
   useEffect(() => {
     if (status === 'idle') {
       dispatch(fetchSubs())
     }
   },[dispatch, status])
 
-  // TODO: Loading/failed logic to be added to redux.
   if (status === 'loading') {
-    return (<Loading/>)
+    return <Loading />;
   }
   if (status === 'failed') {
     return <Error error={error}/>
   }
-
+  
   const handleClick = async (item: SubscriptionType) => {
-    await dispatch(fetchMerchants(item.subscription_id))
-    navigate(`analysis/${item.name}`)
+    navigate(`analysis/${item.subscription_id}`)
   }
 
   const formatDate = new Date(subscriptionsState.month).toLocaleDateString('en-GB', {

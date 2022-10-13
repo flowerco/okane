@@ -6,7 +6,6 @@ export const ItemList = ({ data, colors, callback }
       callback: (((item: SubscriptionType) => void) | ((item: MerchantType) => void))
     }
   ) => {
-
   return (
     <>
     { data.map((item, index) => {
@@ -18,7 +17,7 @@ export const ItemList = ({ data, colors, callback }
             style={{ color: colors[index % colors.length] }}
           >
             <p className='text-3xl'>{item.name}</p>
-            <p className='text-2xl'>£{item.monthlyPrice.toFixed(2)}</p>
+            <p className='text-2xl'>£{Number(item.monthlyPrice).toFixed(2)}</p>
           </div>
         )
       })

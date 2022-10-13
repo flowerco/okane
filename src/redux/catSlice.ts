@@ -1,3 +1,5 @@
+export {}
+/*
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getCategories } from "../api-Service";
 import {
@@ -59,3 +61,4 @@ export const selectCats = (state: RootState) => state.categories;
 export const { catsAdd, catsDelete } = catsSlice.actions;
 
 export default catsSlice.reducer;
+*/
