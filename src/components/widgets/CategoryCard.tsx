@@ -7,15 +7,28 @@ interface CardProps {
 
 const onDragOver = (e: DragEvent<HTMLDivElement>, category_id: string) => {
   e.preventDefault();
-  console.log('Dragging Over ', category_id);
-  // console.log(e.dataTransfer.getData('transactionID'));
+  console.log('currently on', category_id);
 };
 
-const onDrop = (e: DragEvent<HTMLDivElement>) => {
-  console.log('Dropped');
-  let transactionID = e.dataTransfer.getData('merchant_id');
-  console.log('transactionID ', transactionID);
+const onDrop = async (e: DragEvent<HTMLDivElement>, category_id: string) => {
+  console.log('Dropped on:', category_id);
+  let merchant_id_event = e.dataTransfer.getData('merchant_id');
+  let newCategory_id = Number(category_id);
+  const merchant_id = Number(merchant_id_event);
+  console.log('merchant_id ', merchant_id);
+  console.log('newCategoryID:', newCategory_id);
   // dispatch redux action that changes category of the transaction
+  const data = { merchant_id, newCategory_id };
+  console.log(JSON.stringify(data));
+  const result = await fetch(
+    `http://localhost:${process.env.REACT_APP_PORT}/category`,
+    {
+      method: 'PUT',
+      credentials: 'include',
+      body: JSON.stringify(data),
+    }
+  ).then((res) => res.json());
+  console.log('result from call is', result);
 };
 
 function CategoryCard({
@@ -30,7 +43,7 @@ function CategoryCard({
   return (
     <div
       onDragOver={(e) => onDragOver(e, String(category.category_id))}
-      onDrop={(e) => onDrop(e)}
+      onDrop={(e) => onDrop(e, String(category.category_id))}
       className={`flex-1 p-1 py-6 mx-2 mb-4 bg-white rounded-lg border shadow-md text-center cursor-pointer  sm:max-w-none
      hover:scale-100
       ${category.category_name === clicked && 'bg-teal-400'}`}
