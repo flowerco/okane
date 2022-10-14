@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 export const Navbar = () => {
 
   const authState = useAppSelector(state => state.authentication);
+  const screenState = useAppSelector(state=> state.screen);
   const dispatch = useAppDispatch();
 
   // Return a column so that we can have an empty area above the nav for the notch.
@@ -29,7 +30,9 @@ export const Navbar = () => {
                 </button>
               </form>
               <div className='flex h-14 aspect-square items-center justify-center'>
-                <Hamburger distance="md" color="white" hideOutline={true} onToggle={() => dispatch(toggleSidebar())}/>
+                <Hamburger distance="md" color="white" hideOutline={true} toggled={screenState.sidebarOpen} onToggle={(toggle) => {
+                  dispatch(toggleSidebar());
+                }}/>
               </div>
             </>
             )

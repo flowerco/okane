@@ -39,11 +39,6 @@ export const SidebarMenu = () => {
       >
         <ul className="h-full flex flex-col justify-between items-center text-3xl space-y-6 pt-6 pb-10">
           <div className="flex flex-col justify-center items-center space-y-6">
-            <li className="border-2 border-white rounded-lg py-3 px-8 cursor-pointer">
-              <Link to='/lushScreen' onClick={() => dispatch(toggleSidebar())} >
-                Contributors
-              </Link>
-            </li>
             <li
               className="border-2 border-white rounded-lg py-3 px-8"
               onClick={handleCalendar}
@@ -55,6 +50,11 @@ export const SidebarMenu = () => {
               onClick={handleCategories}
             >
               Categories
+            </li>
+            <li className="border-2 border-white rounded-lg py-3 px-8 cursor-pointer">
+              <Link to='/lushScreen' onClick={() => dispatch(toggleSidebar())} >
+                Contributors
+              </Link>
             </li>
             <li className="border-2 border-white rounded-lg py-3 px-8">
               Settings
