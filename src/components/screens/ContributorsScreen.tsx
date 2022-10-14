@@ -30,7 +30,7 @@ function Box(props: any) {
 
 function Model(props: any) {
   const group = useRef<Mesh>(null!);
-  const { nodes, materials, animations } = useGLTF("/me_model.glb") as any;
+  const { nodes, materials, animations } = useGLTF("/models/sam_model.glb") as any;
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
@@ -118,7 +118,7 @@ function Model(props: any) {
   );
 }
 
-useGLTF.preload('/me_model.glb')
+useGLTF.preload('/models/sam_model.glb')
 
 export const ContributorsScreen = () => {
   return (
