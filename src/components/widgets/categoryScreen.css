@@ -3,5 +3,5 @@
 }
 
 .adjustFontTitle {
-  font-size: min(max(24px, 2vw), 24px);
+  font-size: min(max(24px, 2vw), 4vw);
 }
