@@ -71,15 +71,12 @@ export const CalendarScreen = () =>{
     }
   ]
 
-  const [date, setDate] = useState(new Date());
-
-  // console.log('Day: ', date.getDay())
-  // console.log('DateString: ', date.toDateString())
+  const dateMon = moment(new Date()).subtract(1, 'month').format('MMM YYYY');
 
   return (
     <div className='w-full h-full flex flex-col justify-center items-center'>
 
-      <h1 className='text-center text-xl font-semibold text-yellow-800 mb-4'>{date.toDateString()}</h1>
+      <h1 className='text-center text-2xl font-semibold text-white mb-4'>{dateMon}</h1>
 
        <div className="w-3/4 h-3/4">
           <Calendar
@@ -87,7 +84,7 @@ export const CalendarScreen = () =>{
             views={'month'}
             events={data}
             startAccessor="start"
-            // defaultDate={moment().toDate()}
+            defaultDate={moment().toDate()}
             localizer={localizer}
             eventPropGetter={(data) => {
                const backgroundColor = (data.subscription === 'STR') ? 'blue' : (data.subscription === 'GYM') ? 'green' : 'red';
