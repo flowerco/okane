@@ -3,6 +3,7 @@ import magnifier from '../../assets/search.png';
 import { Divide as Hamburger } from 'hamburger-react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { toggleSidebar } from '../../redux/screenSlice';
+import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
 
@@ -15,7 +16,9 @@ export const Navbar = () => {
       <div id='notch' className='h-[5.3mm] w-full'></div>
       <div className='flex items-center justify-between h-20 w-full'>
         <div className="h-20 w-20 pt-2">
-          <img src={icon} className="object-cover"></img>
+          <Link to="/" >
+            <img src={icon} className="object-cover"></img>
+          </Link>
         </div>
           { authState.isAuthenticated && (
             <>

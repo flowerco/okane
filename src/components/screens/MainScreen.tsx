@@ -21,10 +21,6 @@ export const MainScreen = () => {
                   path="/analysis/:id"
                   element={<AnalysisScreen />}
                 ></Route>
-                <Route
-                  path="/categories"
-                  element={<CategoriesScreen />}
-                ></Route>
               </Routes>
             </div>
             <div className="absolute z-20 h-full top-0 left-0">

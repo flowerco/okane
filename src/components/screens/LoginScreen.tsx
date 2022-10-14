@@ -69,7 +69,7 @@ export const LoginScreen = () => {
       </div>
       <div className="text-white text-xl pt-4 text-center">
       { registerFlag ? 'Already' : 'Don\'t' } have an account?<br />
-        <span onClick={handleClick} className="underline">
+        <span onClick={handleClick} className="underline cursor-pointer">
           Sign { registerFlag ? 'in' : 'up' } here!
         </span> 
       </div>
