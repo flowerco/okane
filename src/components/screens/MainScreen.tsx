@@ -3,6 +3,7 @@ import { SidebarMenu } from '../widgets/SidebarMenu';
 import { AnalysisScreen } from './AnalysisScreen';
 import { LoginScreen } from './LoginScreen';
 import { SummaryScreen } from './SummaryScreen';
+import { CalendarScreen } from './CalendarScreen';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CategoriesScreen from './CategoriesScreen';
 
@@ -21,6 +22,7 @@ export const MainScreen = () => {
                   path="/analysis/:id"
                   element={<AnalysisScreen />}
                 ></Route>
+                <Route path="/calendar" element={<CalendarScreen />}></Route>
                 <Route
                   path="/categories"
                   element={<CategoriesScreen />}

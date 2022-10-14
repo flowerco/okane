@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 export const SidebarMenu = () => {
   const screenState = useAppSelector((state) => state.screen);
   const dispatch = useAppDispatch();
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -17,7 +18,13 @@ export const SidebarMenu = () => {
     navigate(0);
   };
 
+  const handleRedirect = () => {
+    dispatch(toggleSidebar());
+    navigate('/calendar');
+  };
+
   const handleCategories = () => {
+    dispatch(toggleSidebar());
     navigate('/categories');
   };
 
@@ -30,7 +37,10 @@ export const SidebarMenu = () => {
       >
         <ul className="h-full flex flex-col justify-between items-center text-3xl space-y-6 pt-6 pb-10">
           <div className="flex flex-col justify-center items-center space-y-6">
-            <li className="border-2 border-white rounded-lg py-3 px-8">
+            <li
+              className="border-2 border-white rounded-lg py-3 px-8"
+              onClick={handleRedirect}
+            >
               Calendar
             </li>
             <li
