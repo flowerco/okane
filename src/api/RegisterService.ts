@@ -1,6 +1,7 @@
 export const createUser = async (
   email: FormDataEntryValue | null,
-  password: FormDataEntryValue | null
+  password: FormDataEntryValue | null,
+  name: FormDataEntryValue | null
 ) => {
   try {
     const response = await fetch(
@@ -8,7 +9,7 @@ export const createUser = async (
       {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
-        body: JSON.stringify({ email, password, name: 'Jimothy' }),
+        body: JSON.stringify({ email, password, name }),
       }
     );
     const data = await response.json();

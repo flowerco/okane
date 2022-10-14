@@ -6,6 +6,7 @@ import { RootState } from './store';
 const initialState: CategoryState = {
   totals: [],
   transactions: [],
+  clicked: '',
   status: 'idle',
   error: null,
 };
@@ -22,6 +23,9 @@ const catsSlice = createSlice({
   name: 'categories',
   initialState,
   reducers: {
+    changeClicked(state, action: PayloadAction<string>) {
+      state.clicked = action.payload;
+    },
     // catChange -- when drag and drop
   },
   extraReducers(builder) {
@@ -35,6 +39,7 @@ const catsSlice = createSlice({
           state.status = 'succeeded';
           state.totals = action.payload.category_totals;
           state.transactions = action.payload.transactions;
+          state.clicked = action.payload.category_totals[0].category_name;
         }
       )
       .addCase(fetchCategories.rejected, (state, action) => {
@@ -46,6 +51,6 @@ const catsSlice = createSlice({
 
 export const selectCats = (state: RootState) => state.categories;
 
-// export const { subsAdd, subsDelete } = subsSlice.actions;
+export const { changeClicked } = catsSlice.actions;
 
 export default catsSlice.reducer;

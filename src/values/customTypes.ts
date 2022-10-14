@@ -78,6 +78,7 @@ export type CategoryResponse = {
 export type CategoryState = {
   totals: CategoryTotals[];
   transactions: CategoryTransactions[];
+  clicked: string;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
 };

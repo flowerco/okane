@@ -1,5 +1,5 @@
 import { CategoryTotals } from '../../values/customTypes';
-
+import './categoryScreen.css';
 interface CardProps {
   category: CategoryTotals;
 }
@@ -15,14 +15,13 @@ function CategoryCard({
 }) {
   return (
     <div
-      className={`flex-1 p-1 py-6 mx-2 mb-4 bg-white rounded-lg border  shadow-md text-center overflow-scroll min-w-[30%] sm:min-w-[30%] max-w-[400px] cursor-pointer
-      sm:hover:scale-105 hover:scale-110
+      className={`flex-1 p-1 py-6 mx-2 mb-4 bg-white rounded-lg border shadow-md text-center cursor-pointer min-w-fit  sm:max-w-none
+     hover:scale-100
       ${category.category_name === clicked && 'bg-teal-400'}`}
       onClick={() => {
         clickFunction(category.category_name);
-      }}
-    >
-      <h5 className=" text-xl font-bold tracking-tight text-gray-900">
+      }}>
+      <h5 className="adjustFont text-xl font-bold tracking-tight text-gray-900">
         {category.category_name}
       </h5>
       <p className="font-normal text-gray-700"> £{category.category_total}</p>
