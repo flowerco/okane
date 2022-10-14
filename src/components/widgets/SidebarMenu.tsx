@@ -3,7 +3,7 @@ import '../../index.css';
 import { logout } from '../../redux/authSlice';
 import { removeJwtCookie } from '../../api/LoginService';
 import { toggleSidebar } from '../../redux/screenSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const SidebarMenu = () => {
   const screenState = useAppSelector((state) => state.screen);
@@ -48,6 +48,11 @@ export const SidebarMenu = () => {
               onClick={handleCategories}
             >
               Categories
+            </li>
+            <li className="border-2 border-white rounded-lg py-3 px-8 cursor-pointer">
+              <Link to='/contributors' onClick={() => dispatch(toggleSidebar())} >
+                Contributors
+              </Link>
             </li>
             <li className="border-2 border-white rounded-lg py-3 px-8">
               Settings

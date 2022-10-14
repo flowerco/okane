@@ -6,6 +6,7 @@ import { SummaryScreen } from './SummaryScreen';
 import { CalendarScreen } from './CalendarScreen';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CategoriesScreen from './CategoriesScreen';
+import { ContributorsScreen } from './ContributorsScreen';
 
 export const MainScreen = () => {
   const authState = useAppSelector((state) => state.authentication);
@@ -26,6 +27,10 @@ export const MainScreen = () => {
                 <Route
                   path="/categories"
                   element={<CategoriesScreen />}
+                ></Route>
+                <Route
+                  path="/contributors"
+                  element={<ContributorsScreen />}
                 ></Route>
               </Routes>
             </div>
