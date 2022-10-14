@@ -2,7 +2,7 @@ import { Suspense, useRef, useState } from "react";
 import { useFrame, Canvas, ThreeEvent } from '@react-three/fiber';
 import { Mesh } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { useGLTF, Stars } from '@react-three/drei';
+import { useGLTF, OrbitControls, Stars } from '@react-three/drei';
 // import { Model } from '../three/Computer'; 
 import { GLTF } from 'three-stdlib'
 import * as THREE from 'three'
@@ -76,7 +76,7 @@ type GLTFResult = GLTF & {
 }
 
 export function Model(props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('/computer.glb') as unknown as GLTFResult
+  const { nodes, materials } = useGLTF('/computer-transformed.glb') as unknown as GLTFResult
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]} scale={0}>
@@ -95,7 +95,7 @@ export function Model(props: JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('/computer.glb')
+useGLTF.preload('/computer-transformed.glb')
 
 export const SamsLushScreen = () => {
   return (
@@ -103,13 +103,15 @@ export const SamsLushScreen = () => {
       <Canvas>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
-        {/* <Box position={[0, 0, 0]} /> */}
-        <Suspense fallback={null} >
-          <Model position={[0,0,0]} />
-        </Suspense>
+        <Box position={[-3, 0, 0]} />
+        <Box position={[3, 0, 0]} />
+        {/* <Suspense fallback={null} >
+          <Model position={[0,0,0]} scale={100}/>
+        </Suspense> */}
+        <OrbitControls />
         <Stars 
           radius={100} // Radius of the inner sphere (default=100)
-          depth={50} // Depth of area where stars should fit (default=50)
+          depth={10} // Depth of area where stars should fit (default=50)
           count={5000} // Amount of stars (default=5000)
           factor={4} // Size factor (default=4)
           saturation={0} // Saturation 0-1 (default=0)
