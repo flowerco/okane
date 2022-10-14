@@ -18,7 +18,7 @@ export const SidebarMenu = () => {
     navigate(0);
   };
 
-  const handleRedirect = () => {
+  const handleCalendar = () => {
     dispatch(toggleSidebar());
     navigate('/calendar');
   };
@@ -39,7 +39,7 @@ export const SidebarMenu = () => {
           <div className="flex flex-col justify-center items-center space-y-6">
             <li
               className="border-2 border-white rounded-lg py-3 px-8"
-              onClick={handleRedirect}
+              onClick={handleCalendar}
             >
               Calendar
             </li>
