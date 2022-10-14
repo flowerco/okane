@@ -10,10 +10,11 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function ComputerModel(props) {
+  const group = useRef();
   const { nodes, materials } = useGLTF("/computer.glb");
   return (
-    <group {...props} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]} scale={1}>
+    <group ref={group} {...props} dispose={null}>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={0}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <group rotation={[-Math.PI / 2, 0, 0]}>
             <mesh
