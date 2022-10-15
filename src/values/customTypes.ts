@@ -82,3 +82,8 @@ export type CategoryState = {
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
 };
+
+export type updateCategoryType = {
+  merchant_id: number;
+  newCategory_id: number;
+};

@@ -1,6 +1,7 @@
 import { CategoryTotals } from '../../values/customTypes';
 import './categoryScreen.css';
 import { DragEvent } from 'react';
+import { updateCategory } from '../../api/CategoryService';
 interface CardProps {
   category: CategoryTotals;
 }
@@ -20,14 +21,8 @@ const onDrop = async (e: DragEvent<HTMLDivElement>, category_id: string) => {
   // dispatch redux action that changes category of the transaction
   const data = { merchant_id, newCategory_id };
   console.log(JSON.stringify(data));
-  const result = await fetch(
-    `http://localhost:${process.env.REACT_APP_PORT}/category`,
-    {
-      method: 'PUT',
-      credentials: 'include',
-      body: JSON.stringify(data),
-    }
-  ).then((res) => res.json());
+  console.log('data', data);
+  const result = await updateCategory(data);
   console.log('result from call is', result);
 };
 

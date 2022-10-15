@@ -9,6 +9,7 @@ import { CategoryTotals } from '../../values/customTypes';
 import CategoryCard from '../widgets/CategoryCard';
 import moment from 'moment';
 import { DragEvent } from 'react';
+import { motion } from 'framer-motion';
 
 function CategoriesScreen() {
   const dispatch = useAppDispatch();
