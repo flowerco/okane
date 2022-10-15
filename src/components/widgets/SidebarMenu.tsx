@@ -28,6 +28,26 @@ export const SidebarMenu = () => {
     navigate('/categories');
   };
 
+  const handleContributors = () => {
+    dispatch(toggleSidebar());
+    navigate('/contributors');
+  };
+
+  const handleSettings = () => {
+    dispatch(toggleSidebar());
+  };
+
+  const BoxButton = ({ text, callback }: { text:string, callback:()=>void }) => {
+    return (
+      <li 
+        className="border-2 border-white rounded-lg py-3 px-8 cursor-pointer" 
+        onClick={callback}
+      >
+        {text}
+      </li>
+    )
+  }
+
   return (
     <>
       <div
@@ -37,26 +57,10 @@ export const SidebarMenu = () => {
       >
         <ul className="h-full flex flex-col justify-between items-center text-3xl space-y-6 pt-6 pb-10">
           <div className="flex flex-col justify-center items-center space-y-6">
-            <li
-              className="border-2 border-white rounded-lg py-3 px-8"
-              onClick={handleCalendar}
-            >
-              Calendar
-            </li>
-            <li
-              className="border-2 border-white rounded-lg py-3 px-8"
-              onClick={handleCategories}
-            >
-              Categories
-            </li>
-            <li className="border-2 border-white rounded-lg py-3 px-8 cursor-pointer">
-              <Link to='/contributors' onClick={() => dispatch(toggleSidebar())} >
-                Contributors
-              </Link>
-            </li>
-            <li className="border-2 border-white rounded-lg py-3 px-8">
-              Settings
-            </li>
+            <BoxButton text={'Calendar'} callback={handleCalendar} />
+            <BoxButton text={'Categories'} callback={handleCategories} />
+            <BoxButton text={'Contributors'} callback={handleContributors} />
+            <BoxButton text={'Settings'} callback={handleSettings} />
           </div>
           <li
             className="border-2 border-black text-black font-semibold bg-[#6161cc] rounded-lg py-3 px-8"

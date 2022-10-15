@@ -2,6 +2,7 @@ import { Suspense, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
 import { SamModel } from "../threejs/SamModel";
+import { BenModel } from "../threejs/BenModel";
 
 export const ContributorsScreen = () => {
   return (
@@ -11,8 +12,13 @@ export const ContributorsScreen = () => {
         <pointLight position={[10, 10, 10]} />
         <Suspense fallback={null}>
           <SamModel
-            position={[0, -2.5, 0]}
+            position={[-0.8, -2.8, -0.3]}
             scale={2.5}
+            rotation={[0.2, 0.3, 0]}
+          />
+          <BenModel
+            position={[0.8, -2.5, 1.8]}
+            scale={2.0}
             rotation={[0.2, 0.3, 0]}
           />
         </Suspense>
