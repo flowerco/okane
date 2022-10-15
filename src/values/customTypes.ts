@@ -79,6 +79,7 @@ export type CategoryState = {
   totals: CategoryTotals[];
   transactions: CategoryTransactions[];
   clicked: string;
+  hovered: string;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
 };

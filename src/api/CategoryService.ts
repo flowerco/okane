@@ -19,7 +19,11 @@ export const updateCategory = async (data: updateCategoryType) => {
       body: JSON.stringify(data),
     }
   );
-  const resultjson = await result.json();
-  console.log('result from PUT', resultjson);
-  return resultjson;
+  const response = await result.json();
+
+  if (response.error) {
+    console.log('ERROR: ', response.error);
+  } else {
+    return response;
+  }
 };
