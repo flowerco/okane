@@ -7,13 +7,23 @@ import { CalendarScreen } from './CalendarScreen';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CategoriesScreen from './CategoriesScreen';
 import { ContributorsScreen } from './ContributorsScreen';
+import { Loading } from '../widgets/Loading';
 
-export const MainScreen = () => {
+export const MainScreen = ({ appLoading } : { appLoading: boolean }) => {
+
   const authState = useAppSelector((state) => state.authentication);
+
+  if (appLoading){
+    return (
+      <div className="h-[calc(100vh_-_4rem_-_5.3mm)] w-full flex justify-center items-center">
+        <Loading />
+      </div>
+    )
+  }
 
   return (
     <div className="h-[calc(100vh_-_4rem_-_5.3mm)] w-full">
-      <div className="h-full relative  overflow-auto">
+      <div className="h-full relative overflow-auto">
         {authState.isAuthenticated ? (
           <>
             <div className="h-full relative">

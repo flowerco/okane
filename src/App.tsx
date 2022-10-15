@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { validateJwtCookie } from "./api/LoginService";
 import { Navbar } from "./components/navbars/Navbar";
@@ -13,10 +13,14 @@ function App() {
   const authState = useAppSelector((state) => state.authentication);
   const dispatch = useAppDispatch();
 
+  // App-level loading indicator to be used before any other states are fetched
+  const [appLoading, setAppLoading] = useState(true);
+
   useEffect(() => {
     // On first booting up the app, check if we are already logged in.
     // TODO: Can this also use Alex's loading logic?
     validateJwtCookie().then((res) => {
+      setAppLoading(false);
       console.log("Validating cookie... result: ", res);
       if (res && res !== "LOGOUT") {
         dispatch(login(res as string));
@@ -29,11 +33,9 @@ function App() {
       <div className="App  h-screen w-screen radial-gradient fixed">
         <Navbar />
         <div>
-          <MainScreen />
-          {/* <SidebarMenu /> */}
+          <MainScreen appLoading={appLoading}/>
         </div>
       </div>
-
     </BrowserRouter>
   );
 }
