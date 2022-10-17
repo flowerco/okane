@@ -28,6 +28,11 @@ export const SidebarMenu = () => {
     navigate('/categories');
   };
 
+  const handleAdvice = () => {
+    dispatch(toggleSidebar());
+    navigate('/advice');
+  };
+  
   const handleContributors = () => {
     dispatch(toggleSidebar());
     navigate('/contributors');
@@ -59,6 +64,7 @@ export const SidebarMenu = () => {
           <div className="flex flex-col justify-center items-center space-y-6">
             <BoxButton text={'Calendar'} callback={handleCalendar} />
             <BoxButton text={'Categories'} callback={handleCategories} />
+            <BoxButton text={'Advice'} callback={handleAdvice} />
             <BoxButton text={'Contributors'} callback={handleContributors} />
             <BoxButton text={'Settings'} callback={handleSettings} />
           </div>

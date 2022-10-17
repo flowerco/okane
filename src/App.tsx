@@ -16,9 +16,11 @@ function App() {
   // App-level loading indicator to be used before any other states are fetched
   const [appLoading, setAppLoading] = useState(true);
 
+  // App-level online indicator
+  const [online, setOnline] = useState(true);
+
   useEffect(() => {
     // On first booting up the app, check if we are already logged in.
-    // TODO: Can this also use Alex's loading logic?
     validateJwtCookie().then((res) => {
       setAppLoading(false);
       console.log('Validating cookie... result: ', res);
@@ -28,12 +30,23 @@ function App() {
     });
   }, []);
 
+
+  // Add listeners for change in online status
+  useEffect(() => {
+    window.addEventListener("online", () => {
+      setOnline(true);
+    });
+    window.addEventListener("offline", () => {
+      setOnline(false);
+    });
+  }, []);
+
   return (
     <BrowserRouter>
       <div className="App  h-screen w-screen radial-gradient fixed">
         <Navbar />
         <div>
-          <MainScreen appLoading={appLoading} />
+          <MainScreen appLoading={appLoading} online={online} />
         </div>
       </div>
     </BrowserRouter>

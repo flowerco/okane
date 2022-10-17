@@ -38,8 +38,8 @@ export const LoginScreen = () => {
         data.get('password'),
         data.get('name')
       ).then((res) => {
-        console.log('Returned data: ', res);
-        dispatch(login(res.userId));
+        console.log('Returned data: ', res);   
+        dispatch(login(res.id_hash));
       });
     } else {
       const verificationResult = await verifyUser(
@@ -55,7 +55,7 @@ export const LoginScreen = () => {
 
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
-      <div className="flex flex-col justify-center items-center border-2 border-white rounded-lg w-4/5 space-y-8 py-10 -mt-16">
+      <div className="flex flex-col justify-center items-center border-2 border-white rounded-lg w-4/5 max-w-4xl space-y-8 py-10 -mt-16">
         <h1 className="text-3xl text-white font-bold text-center">
           {registerFlag ? 'Register New Account' : 'Log In'}
         </h1>
