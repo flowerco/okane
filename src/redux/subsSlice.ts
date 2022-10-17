@@ -51,9 +51,9 @@ const subsSlice = createSlice({
       )
       .addCase(fetchSubs.rejected, (state, action) => {
         state.status = 'failed';
-        console.log(action.error);
         state.error = action.error.message;
       });
+      
   },
 });
 
