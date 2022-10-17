@@ -5,7 +5,7 @@ import { Mesh } from 'three';
 export function BenModel(props: any) {
 	const group = useRef<Mesh>(null!);
 	const { nodes, materials, animations } = useGLTF(
-		'/models/ben_test.glb'
+		'/models/ben_model.glb'
 	) as any;
 	const { actions } = useAnimations(animations, group);
 	useEffect(() => {
@@ -95,4 +95,4 @@ export function BenModel(props: any) {
 	);
 }
 
-useGLTF.preload('/models/ben_test.glb');
+useGLTF.preload('/models/ben_model.glb');
