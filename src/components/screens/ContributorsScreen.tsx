@@ -8,6 +8,8 @@ import { BenModel } from "../threejs/BenModel";
 import { SimonModel } from "../threejs/SimonModel";
 import { AlexModel } from "../threejs/AlexModel";
 import { StaticReadUsage } from "three";
+import { BiRightArrow, BiLeftArrow } from 'react-icons/bi'
+
 export const ContributorsScreen = () => {
   const team = [
     { name: "Sam", text: "Break dancing, obvs" },
@@ -39,8 +41,8 @@ export const ContributorsScreen = () => {
 
   return (
     <div className="h-[calc(100vh_-_4rem_-_5.3mm)] w-full z-50 overflow-hidden">
-      <button onClick={handleClick} className="bg-white">
-        HELLO
+      <button onClick={handleClick} className="text-white absolute top-1/2 right-[20%] h-10 aspect-square text-6xl z-50">
+        <BiRightArrow />
       </button>
       <Canvas camera={{ position: [0.1, 0, 0], rotation: [0, 0, 0], fov: 60 }}>
         <MyControls />
