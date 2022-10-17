@@ -5,3 +5,7 @@
 .adjustFontTitle {
   font-size: min(max(24px, 2vw), 4vw);
 }
+
+.clicked {
+  background-color: rgb(204 251 241);
+}

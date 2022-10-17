@@ -1,5 +1,5 @@
-import { SerializedError } from '@reduxjs/toolkit';
-import { Style } from 'util';
+import { SerializedError } from "@reduxjs/toolkit";
+import { Style } from "util";
 
 export type SubscriptionType = {
   subscription_id: string;
@@ -20,7 +20,7 @@ export type SubscriptionResponse = {
 export type SubscriptionState = {
   data: SubscriptionType[];
   month: string;
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null | undefined;
 };
 
@@ -30,7 +30,7 @@ export type MerchantsForSubType = {
 
 export type MerchantsForSubState = {
   data: MerchantsForSubType[];
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null | undefined;
 };
 
@@ -44,7 +44,7 @@ export interface StreamingType {
 }
 
 export interface Istatus {
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  status: "idle" | "loading" | "succeeded" | "failed";
 }
 
 export type emailPassword = {
@@ -79,6 +79,52 @@ export type CategoryState = {
   totals: CategoryTotals[];
   transactions: CategoryTransactions[];
   clicked: string;
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  hovered: string;
+  status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null | undefined;
+};
+
+export type updateCategoryType = {
+  merchant_id: number;
+  newCategory_id: number;
+};
+
+type ThumbnailType = {
+  url: string;
+  width: number;
+  height: number;
+}
+
+export type YoutubeItem = {
+  kind: string;
+  etag: string;
+  id: string;
+  snippet: {
+    publishedAt: string;
+    channelId: string;
+    title: string;
+    description: string;
+    thumbnails: {
+      default: ThumbnailType;
+      medium: ThumbnailType;
+      high: ThumbnailType;
+      standard: ThumbnailType;
+      maxres: ThumbnailType;
+    };
+    channelTitle: string;
+    playlistId: string;
+    position: number;
+    resourceId: {
+      kind: string;
+      videoId: string;
+    };
+    videoOwnerChannelTitle: string;
+    videoOwnerChannelId: string;
+  };
+}
+
+export type YoutubeRequest = {
+  kind: string;
+  etag: string;
+  items: YoutubeItem[];
 };
