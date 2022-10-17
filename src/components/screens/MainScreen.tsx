@@ -8,17 +8,17 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CategoriesScreen from './CategoriesScreen';
 import { ContributorsScreen } from './ContributorsScreen';
 import { Loading } from '../widgets/Loading';
+import OpenBankingScreen from './OpenBankingScreen';
 
-export const MainScreen = ({ appLoading } : { appLoading: boolean }) => {
-
+export const MainScreen = ({ appLoading }: { appLoading: boolean }) => {
   const authState = useAppSelector((state) => state.authentication);
 
-  if (appLoading){
+  if (appLoading) {
     return (
       <div className="h-[calc(100vh_-_4rem_-_5.3mm)] w-full flex justify-center items-center">
         <Loading />
       </div>
-    )
+    );
   }
 
   return (
@@ -28,20 +28,13 @@ export const MainScreen = ({ appLoading } : { appLoading: boolean }) => {
           <>
             <div className="h-full relative">
               <Routes>
+                <Route path="/connect" element={<OpenBankingScreen />}></Route>
+                <Route path="/callback" element={<OpenBankingScreen />}></Route>
                 <Route path="/" element={<SummaryScreen />}></Route>
-                <Route
-                  path="/analysis/:id"
-                  element={<AnalysisScreen />}
-                ></Route>
+                <Route path="/analysis/:id" element={<AnalysisScreen />}></Route>
                 <Route path="/calendar" element={<CalendarScreen />}></Route>
-                <Route
-                  path="/categories"
-                  element={<CategoriesScreen />}
-                ></Route>
-                <Route
-                  path="/contributors"
-                  element={<ContributorsScreen />}
-                ></Route>
+                <Route path="/categories" element={<CategoriesScreen />}></Route>
+                <Route path="/contributors" element={<ContributorsScreen />}></Route>
               </Routes>
             </div>
             <div className="absolute z-20 h-full top-0 left-0">
@@ -49,7 +42,9 @@ export const MainScreen = ({ appLoading } : { appLoading: boolean }) => {
             </div>
           </>
         ) : (
-          <LoginScreen />
+          <>
+            <LoginScreen />
+          </>
         )}
       </div>
     </div>
