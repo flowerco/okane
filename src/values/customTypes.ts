@@ -12,11 +12,6 @@ export type MerchantType = {
   monthlyPrice: number;
 };
 
-export type MerchantType = {
-  name: string;
-  monthlyPrice: number;
-};
-
 export type SubscriptionResponse = {
   month: string;
   subs: SubscriptionType[];
@@ -93,3 +88,4 @@ export type updateCategoryType = {
   merchant_id: number;
   newCategory_id: number;
 };
+

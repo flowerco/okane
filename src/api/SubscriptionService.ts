@@ -39,11 +39,3 @@ export const getMerchantsForSubscription = async (subscription_id: string) => {
     console.log(e, "error in getting");
   }
 };
-
-export const getMerchantsForSubscription = async (subscription_id: string) => {
-  const response = await fetch(
-    `http:localhost:3001/getMerchantsBySubscriptions/${subscription_id}`
-  );
-  let output = response.json();
-  return output;
-};
