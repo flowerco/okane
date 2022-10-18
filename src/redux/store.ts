@@ -1,10 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 
-import subscriptionReducer from './subsSlice';
-import authenticationReducer from './authSlice';
-import merchantsForSubReducer from './merchantsSlice';
-import screenReducer from './screenSlice';
-import categoriesReducer from './catSlice';
+import subscriptionReducer from "./subsSlice";
+import authenticationReducer from "./authSlice";
+import merchantsForSubReducer from "./merchantsSlice";
+import screenReducer from "./screenSlice";
+import categoriesReducer from "./catSlice";
 
 export const store = configureStore({
   reducer: {

@@ -93,7 +93,7 @@ type ThumbnailType = {
   url: string;
   width: number;
   height: number;
-}
+};
 
 export type YoutubeItem = {
   kind: string;
@@ -121,7 +121,7 @@ export type YoutubeItem = {
     videoOwnerChannelTitle: string;
     videoOwnerChannelId: string;
   };
-}
+};
 
 export type YoutubeRequest = {
   kind: string;

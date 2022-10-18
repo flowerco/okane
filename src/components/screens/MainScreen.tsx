@@ -1,15 +1,15 @@
-import { useAppSelector } from '../../redux/hooks';
-import { SidebarMenu } from '../widgets/SidebarMenu';
-import { AnalysisScreen } from './AnalysisScreen';
-import { LoginScreen } from './LoginScreen';
-import { SummaryScreen } from './SummaryScreen';
-import { CalendarScreen } from './CalendarScreen';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import CategoriesScreen from './CategoriesScreen';
-import { ContributorsScreen } from './ContributorsScreen';
-import { YoutubeScreen } from './YoutubeScreen';
-import { Loading } from '../widgets/Loading';
-import OpenBankingScreen from './OpenBankingScreen';
+import { useAppSelector } from "../../redux/hooks";
+import { SidebarMenu } from "../widgets/SidebarMenu";
+import { AnalysisScreen } from "./AnalysisScreen";
+import { LoginScreen } from "./LoginScreen";
+import { SummaryScreen } from "./SummaryScreen";
+import { CalendarScreen } from "./CalendarScreen";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CategoriesScreen from "./CategoriesScreen";
+import { ContributorsScreen } from "./ContributorsScreen";
+import { YoutubeScreen } from "./YoutubeScreen";
+import { Loading } from "../widgets/Loading";
+import OpenBankingScreen from "./OpenBankingScreen";
 
 export const MainScreen = ({
   appLoading,
@@ -40,15 +40,18 @@ export const MainScreen = ({
                 <Route path="/" element={<SummaryScreen />}></Route>
                 <Route
                   path="/analysis/:id"
-                  element={<AnalysisScreen />}></Route>
+                  element={<AnalysisScreen />}
+                ></Route>
                 <Route path="/calendar" element={<CalendarScreen />}></Route>
                 <Route
                   path="/categories"
-                  element={<CategoriesScreen />}></Route>
+                  element={<CategoriesScreen />}
+                ></Route>
                 <Route path="/advice" element={<YoutubeScreen />}></Route>
                 <Route
                   path="/contributors"
-                  element={<ContributorsScreen />}></Route>
+                  element={<ContributorsScreen />}
+                ></Route>
               </Routes>
             </div>
             <div className="absolute z-20 h-full top-0 left-0">
