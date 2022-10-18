@@ -128,3 +128,18 @@ export type YoutubeRequest = {
   etag: string;
   items: YoutubeItem[];
 };
+
+export type SubscriptionTransactions = {
+  month_end_date: string,
+  date: string,
+  subscription_code: string,
+  subscription_name: string,
+  merchant_name: string,
+  price: number
+};
+
+export type CalendarState = {
+  transactions: SubscriptionTransactions[];
+  status: "idle" | "loading" | "succeeded" | "failed";
+  error: string | null | undefined;
+};
