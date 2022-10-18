@@ -16,19 +16,33 @@ export const ContributorsScreen = () => {
 		{ name: 'Sam', text: 'Break dancing, obvs' },
 		{ name: 'Alex', text: 'Standing stright and floating' },
 	];
-	let status = 'RUNNING';
 
-	const handleClick = () => {
+	let status = 'STARTUP';
+
+	const handleClick = (camera:any) => {
 		status = 'RUNNING';
 	};
 
+  const getPosition = (personCount:number) => {
+
+     const position = [5*Math.cos(72*personCount), 1.5, 5*Math.sin(72*personCount)]
+     console.log(`Position for person ${personCount}: `, position);
+     return position;
+  }
+
 	function MyControls() {
-		const distToRotate = 1.55;
+ 
+    const distToRotate = 72 * Math.PI / 180;
 		let iterCount = 0;
 		const targetIterations = distToRotate / 0.01;
-
+    
 		useFrame((state) => {
-			if (status === 'RUNNING') {
+      if (status === 'STARTUP') {
+        state.camera.rotation.x = state.camera.rotation.z = 0;
+        state.camera.rotation.y = -1.55;
+      }
+      if (status === 'RUNNING') {
+        // console.log('Current camera rotation: ', state.camera.rotation);
 				state.camera.rotation.y -= 0.01;
 				iterCount++;
 			}
@@ -47,39 +61,39 @@ export const ContributorsScreen = () => {
 			>
 				<BiRightArrow />
 			</button>
-			<Canvas camera={{ position: [0.1, 0, 0], rotation: [0, 0, 0], fov: 60 }}>
+			<Canvas camera={{ position: [0.1, 0, 0], fov: 55 }}>
 				<MyControls />
 				<ambientLight />
 				<pointLight position={[10, 10, 10]} />
 				<Suspense fallback={null}>
 					<BenModel
-						position={[-4, -1.7, 1]}
+						position={[5,0,0]}
 						scale={2.0}
 						rotation={[0, 1.6, 0]}
 					/>
 					<SamModel
-						position={[5, -1.5, 0]}
+						position={[1.26,0,4.8]}
 						scale={2.0}
 						rotation={[0, -1.6, 0]}
 					/>
 					<SimonModel
-						position={[2, -1.7, 4.5]}
+						position={[-4.3,0,2.5]}
 						scale={2.0}
 						rotation={[0, 3.2, 0]}
 					/>
 					<AlexModel
-						position={[-3, -1.7, -4]}
+						position={[-4.3,0,-2.5]}
 						scale={2.0}
 						rotation={[0, 0, 0]}
 					/>
 					<GregorModel
-						position={[0, -1.7, -4.5]}
+						position={[1.26, 0, -4.8]}
 						scale={2.0}
 						rotation={[0, 0, 0]}
 					/>
 					<gridHelper />
 				</Suspense>
-				<OrbitControls target={[0, 0, 0]} />
+				{/* <OrbitControls target={[0, 0, 0]} />  */}
 				<Stars
 					radius={50} // Radius of the inner sphere (default=100)
 					depth={50} // Depth of area where stars should fit (default=50)

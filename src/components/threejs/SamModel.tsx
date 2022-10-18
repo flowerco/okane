@@ -9,11 +9,11 @@ export function SamModel(props: any) {
 	) as any;
 	const { actions } = useAnimations(animations, group);
 
-	// useEffect(() => {
-	// 	const animAction = actions['Armature|mixamo.com|Layer0'];
-	// 	console.log(animAction);
-	// 	animAction!.play();
-	// });
+	useEffect(() => {
+		const animAction = actions['Armature|mixamo.com|Layer0'];
+		console.log(animAction);
+		animAction!.play();
+	});
 
 	return (
 		<group ref={group} {...props} dispose={null}>
