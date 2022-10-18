@@ -19,32 +19,32 @@ export const ContributorsScreen = () => {
 
 	let status = 'STARTUP';
 
-	const handleClick = (camera:any) => {
-		status = 'RUNNING';
+	const rightClick = (camera: any) => {
+		status = 'RUNNINGRIGHT';
 	};
 
-  const getPosition = (personCount:number) => {
-
-     const position = [5*Math.cos(72*personCount), 1.5, 5*Math.sin(72*personCount)]
-     console.log(`Position for person ${personCount}: `, position);
-     return position;
-  }
-
+	const leftClick = (camera: any) => {
+		status = 'RUNNINGLEFT';
+	};
 	function MyControls() {
- 
-    const distToRotate = 72 * Math.PI / 180;
+		const distToRotate = (72 * Math.PI) / 180;
 		let iterCount = 0;
 		const targetIterations = distToRotate / 0.01;
-    
+
 		useFrame((state) => {
-      if (status === 'STARTUP') {
-        state.camera.rotation.x = state.camera.rotation.z = 0;
-        state.camera.rotation.y = -1.55;
-      }
-      if (status === 'RUNNING') {
-        // console.log('Current camera rotation: ', state.camera.rotation);
+			if (status === 'STARTUP') {
+				state.camera.rotation.x = state.camera.rotation.z = 0;
+				state.camera.rotation.y = -1.55;
+			}
+			if (status === 'RUNNINGRIGHT') {
+				// console.log('Current camera rotation: ', state.camera.rotation);
 				state.camera.rotation.y -= 0.01;
 				iterCount++;
+			}
+			if (status === 'RUNNINGLEFT') {
+				// console.log('Current camera rotation: ', state.camera.rotation);
+				state.camera.rotation.y -= 0.01;
+				iterCount--;
 			}
 			if (iterCount > targetIterations) {
 				status = 'STOP';
@@ -56,10 +56,16 @@ export const ContributorsScreen = () => {
 	return (
 		<div className='h-[calc(100vh_-_4rem_-_5.3mm)] w-full z-50 overflow-hidden'>
 			<button
-				onClick={handleClick}
+				onClick={rightClick}
 				className='text-white absolute top-1/2 right-[20%] h-10 aspect-square text-6xl z-50'
 			>
 				<BiRightArrow />
+			</button>
+			<button
+				onClick={leftClick}
+				className='text-white absolute top-1/2 left-[20%] h-10 aspect-square text-6xl z-50'
+			>
+				<BiLeftArrow />
 			</button>
 			<Canvas camera={{ position: [0.1, 0, 0], fov: 55 }}>
 				<MyControls />
@@ -67,27 +73,27 @@ export const ContributorsScreen = () => {
 				<pointLight position={[10, 10, 10]} />
 				<Suspense fallback={null}>
 					<BenModel
-						position={[5,0,0]}
-						scale={2.0}
-						rotation={[0, 1.6, 0]}
-					/>
-					<SamModel
-						position={[1.26,0,4.8]}
+						position={[5, -1.2, 0]}
 						scale={2.0}
 						rotation={[0, -1.6, 0]}
 					/>
-					<SimonModel
-						position={[-4.3,0,2.5]}
+					<SamModel
+						position={[1.26, -1.3, 4.8]}
 						scale={2.0}
-						rotation={[0, 3.2, 0]}
+						rotation={[0, 3, 0]}
+					/>
+					<SimonModel
+						position={[-4.3, -1.7, 2.5]}
+						scale={2.0}
+						rotation={[0, 2.3, 0]}
 					/>
 					<AlexModel
-						position={[-4.3,0,-2.5]}
+						position={[-4.3, -1.7, -2.5]}
 						scale={2.0}
-						rotation={[0, 0, 0]}
+						rotation={[0, 0.92, 0]}
 					/>
 					<GregorModel
-						position={[1.26, 0, -4.8]}
+						position={[1.26, -1.2, -4.8]}
 						scale={2.0}
 						rotation={[0, 0, 0]}
 					/>
