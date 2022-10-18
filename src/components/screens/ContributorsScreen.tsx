@@ -52,24 +52,34 @@ export const ContributorsScreen = () => {
 				<ambientLight />
 				<pointLight position={[10, 10, 10]} />
 				<Suspense fallback={null}>
-					<SamModel
-						position={[-4, -1.7, 0]}
+					<BenModel
+						position={[-4, -1.7, 1]}
 						scale={2.0}
 						rotation={[0, 1.6, 0]}
 					/>
-					<GregorModel
+					<SamModel
 						position={[5, -1.5, 0]}
 						scale={2.0}
 						rotation={[0, -1.6, 0]}
 					/>
 					<SimonModel
-						position={[0, -1.7, 4.5]}
+						position={[2, -1.7, 4.5]}
 						scale={2.0}
 						rotation={[0, 3.2, 0]}
 					/>
+					<AlexModel
+						position={[-3, -1.7, -4]}
+						scale={2.0}
+						rotation={[0, 0, 0]}
+					/>
+					<GregorModel
+						position={[0, -1.7, -4.5]}
+						scale={2.0}
+						rotation={[0, 0, 0]}
+					/>
 					<gridHelper />
 				</Suspense>
-				{/* <OrbitControls target={[0, 0, 0]} /> */}
+				<OrbitControls target={[0, 0, 0]} />
 				<Stars
 					radius={50} // Radius of the inner sphere (default=100)
 					depth={50} // Depth of area where stars should fit (default=50)
