@@ -28,6 +28,7 @@
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.6",
+    "react-typewriter-effect": "^1.1.0",
     "recharts": "^2.1.14",
     "three": "^0.145.0",
     "typescript": "^4.8.4",

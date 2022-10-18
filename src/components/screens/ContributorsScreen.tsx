@@ -10,8 +10,8 @@ import { AlexModel } from '../threejs/AlexModel';
 import { GregorModel } from '../threejs/GregorModel';
 import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import Typewriter from 'typewriter-effect';
-import { withRouter } from 'react-router-dom';
-//import 'typerwriter.css';
+import './typewriter.css';
+//import './typerwriter.css';
 export const ContributorsScreen = () => {
 	const team = [
 		{ name: 'Ben', text: '' },
@@ -33,9 +33,10 @@ export const ContributorsScreen = () => {
 		}
 	};
 	const leftClick = (camera: any) => {
-		if (status === 'STOP' || status === 'STARTUP')
+		if (status === 'STOP' || status === 'STARTUP') {
 			setH1(h1 === 0 ? team.length - 1 : h1 - 1);
-		setStatus('RUNNINGLEFT');
+			setStatus('RUNNINGLEFT');
+		}
 	};
 	function MyControls() {
 		const distToRotate = (72 * Math.PI) / 180;
@@ -69,21 +70,18 @@ export const ContributorsScreen = () => {
 	}
 
 	return (
-		<div className='h-[calc(100vh_-_4rem_-_5.3mm)] w-full z-50 overflow-hidden'>
-			{/* <h1 id='title' className='text-white'>
-				{team[h1].name}
-			</h1> */}
-			<Typewriter
-				id='typewriter'
-				className='text-white'
-				options={{
-					strings: team[h1].name,
-					pauseFor: 4000,
-					autoStart: true,
-					loop: true,
-					skipAddStyles: true,
-				}}
-			/>
+		<div className='h-[calc(100vh_-_4rem_-_5.3mm)] w-full z-50 overflow-hidden flex flex-col'>
+			<div id='typewriter'>
+				<Typewriter
+					className='text-white'
+					options={{
+						strings: team[h1].name,
+						pauseFor: 4000,
+						autoStart: true,
+						loop: true,
+					}}
+				/>
+			</div>
 			<button
 				onClick={rightClick}
 				className='text-white absolute top-1/2 right-[20%] h-10 aspect-square text-6xl z-50'
