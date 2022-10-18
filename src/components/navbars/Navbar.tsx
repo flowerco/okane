@@ -4,11 +4,14 @@ import { Divide as Hamburger } from "hamburger-react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { toggleSidebar } from "../../redux/screenSlice";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export const Navbar = () => {
   const authState = useAppSelector((state) => state.authentication);
   const screenState = useAppSelector((state) => state.screen);
   const dispatch = useAppDispatch();
+
+  const [searchForm, setSearchForm] = useState({ text: '' })
 
   // Return a column so that we can have an empty area above the nav for the notch.
   return (
@@ -27,6 +30,7 @@ export const Navbar = () => {
         </div>
         {authState.isAuthenticated && (
           <>
+
             <form className="flex items-center justify-center w-4/5 -ml-3">
               <input
                 type="text"
@@ -39,6 +43,7 @@ export const Navbar = () => {
                 <img src={magnifier} className="w-5 h-5 object-cover" />
               </button>
             </form>
+            
             <div className="flex h-14 aspect-square items-center justify-center">
               <Hamburger
                 distance="md"

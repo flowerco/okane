@@ -1,20 +1,13 @@
-import { PieChartColorList1 } from "../../values/customColors";
-import { MinPieChart } from "../widgets/MinPieChart";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { selectSubs } from "../../redux/subsSlice";
-import { SetStateAction, useEffect, useState } from "react";
-import { fetchSubs } from "../../redux/subsSlice";
+
+import { useEffect, useState } from "react";
 import { Loading } from "../widgets/Loading";
 import { Error } from "../widgets/Error";
-import { ItemList } from "../widgets/ItemList";
-import { useNavigate } from "react-router-dom";
 import {
   SubscriptionType,
   YoutubeItem,
   YoutubeRequest,
 } from "../../values/customTypes";
 import { YoutubeEmbed } from "../widgets/YoutubeEmbed";
-import { stringify } from "querystring";
 
 export const YoutubeScreen = () => {
   const [status, setStatus] = useState("idle");
@@ -85,7 +78,7 @@ export const YoutubeScreen = () => {
                 onClick={() => handleClick(videoId)}
                 className="flex justify-between items-center px-6 py-6 mb-6 rounded-xl border-2 border-white cursor-pointer hover:border-yellow-600 sm:flex-col"
               >
-                <p className="text-xl font-semibold sm:text-lg">{title}</p>
+                <p className="text-xl font-semibold sm:text-lg sm:mb-4">{title}</p>
                 <p>
                   <img
                     className="rounded-lg"
