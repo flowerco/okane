@@ -1,9 +1,9 @@
-import { createSlice } from  '@reduxjs/toolkit'
-import { SidebarMenu } from '../components/widgets/SidebarMenu'
+import { createSlice, PayloadAction } from  '@reduxjs/toolkit'
 import {RootState} from './store'
 
 const initialState =  {
-  sidebarOpen: false
+  sidebarOpen: false,
+  searchString: ''
 }
 
 const screenSlice = createSlice({
@@ -13,11 +13,14 @@ const screenSlice = createSlice({
     toggleSidebar:  (state) => {
       state.sidebarOpen = !state.sidebarOpen;
     },
+    setSearch: (state, action: PayloadAction<string>) => {
+      state.searchString = action.payload;
+    }
   }
 })
 
 export const selectScreen = (state: RootState) => state.screen;
 
-export const { toggleSidebar } = screenSlice.actions;
+export const { toggleSidebar, setSearch } = screenSlice.actions;
 
 export default screenSlice.reducer

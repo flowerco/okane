@@ -23,8 +23,8 @@ function App() {
     // On first booting up the app, check if we are already logged in.
     validateJwtCookie().then((res) => {
       setAppLoading(false);
-      console.log("Validating cookie... result: ", res);
-      if (res && res !== "LOGOUT") {
+      // console.log('Validating cookie... result: ', res);
+      if (res && res !== 'LOGOUT') {
         dispatch(login(res as string));
       }
     });
