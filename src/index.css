@@ -3,58 +3,58 @@
 @tailwind utilities;
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
 
 .radial-gradient {
-  background: radial-gradient(circle 800px at 0% -20%, #50c7d8, #1f2028 50%),
-    radial-gradient(circle 700px at 100% 120%, #8080d7, #1f2028 60%) bottom
-      right;
-  background-size: 100% 50%;
-  background-repeat: no-repeat;
+	background: radial-gradient(circle 800px at 0% -20%, #50c7d8, #1f2028 50%),
+		radial-gradient(circle 700px at 100% 120%, #8080d7, #1f2028 60%) bottom
+			right;
+	background-size: 100% 50%;
+	background-repeat: no-repeat;
 }
 
 .radial-gradient2 {
-  background: radial-gradient(circle 800px at 0% -20%, #50c7d8, white 50%),
-    radial-gradient(circle 700px at 100% 120%, #8080d7, white 60%) bottom right;
-  background-size: 100% 50%;
-  background-repeat: no-repeat;
+	background: radial-gradient(circle 800px at 0% -20%, #50c7d8, white 50%),
+		radial-gradient(circle 700px at 100% 120%, #8080d7, white 60%) bottom right;
+	background-size: 100% 50%;
+	background-repeat: no-repeat;
 }
 
 .blurtest {
-  backdrop-filter: blur(10px);
-  clip-path: circle(40%);
+	backdrop-filter: blur(10px);
+	clip-path: circle(40%);
 }
 
 .ellipse1 {
-  box-sizing: border-box;
+	box-sizing: border-box;
 
-  position: absolute;
-  width: 358px;
-  height: 367px;
-  left: 20px;
-  top: -183px;
+	position: absolute;
+	width: 358px;
+	height: 367px;
+	left: 20px;
+	top: -183px;
 
-  background: #50c7d8;
-  border: 1px solid #000000;
-  filter: blur(250px);
+	background: #50c7d8;
+	border: 1px solid #000000;
+	filter: blur(250px);
 }
 
 .menu-transition {
-  transition: transform 0.5s ease;
-  transform: translateX(-100vw);
-  overflow: hidden;
+	transition: transform 0.5s ease;
+	transform: translateX(-100vw);
+	overflow: hidden;
 }
 .menu-transition.open {
-  transform: translateX(0vw);
+	transform: translateX(0vw);
 }
