@@ -85,13 +85,17 @@ function CategoriesScreen() {
       </div>
       {/* TODO put overflow scroll on transactions */}
       <div className="h-[60%] w-11/12 overflow-y-scroll mx-auto">
-        <div className="bg-white rounded-md adjustFont   mt-4">
-          <div className="grid grid-cols-[_40%_40%_20%] border-b-4 ">
-            <div className="justify-self-start px-3 font-extrabold ">
+        <div className=" rounded-md adjustFont  mt-4">
+          <div className="grid grid-cols-[_40%_40%_20%] border-b-4 bg-indigo-200 border-gray-600">
+            <div className="justify-self-start  text-black px-3 font-extrabold ">
               Merchant
             </div>
-            <div className="justify-self-center px-3 font-extrabold">Date</div>
-            <div className="justify-self-end px-1 font-extrabold">Price</div>
+            <div className="justify-self-center  text-black px-3 font-extrabold">
+              Date
+            </div>
+            <div className="justify-self-end px-1 text-black font-extrabold">
+              Price
+            </div>
           </div>
           {categoryTransaction
             .filter((trans) => trans.category_name === clickedCategory)
@@ -109,12 +113,12 @@ function CategoriesScreen() {
                       dragStarted(e, String(filteredTrans.merchant_id))
                     }
                     onDragEnd={() => dragEnd()}
-                    className="grid grid-cols-[_40%_40%_20%] justify-start cursor-grab bg-white text-gray-700 hover:text-teal-400 hover:bg-teal-100 rounded-md px-2 py-1 ">
+                    className="grid grid-cols-[_40%_40%_20%] justify-start cursor-grab bg-indigo-200  text-gray-700 hover:text-teal-400 hover:bg-teal-100 rounded-md px-2 py-1 ">
                     {/* <span className="bg-gray-400 h-2 w-2 m-2 rounded-full"></span>  POTENTIAL IMAGE */}
                     <div className="flex-grow font-medium px-1 text-lg justify-self-start">
                       {filteredTrans.merchant_name}
                     </div>
-                    <div className="flex-grow text-lg font-normal text-black-500 justify-self-center">
+                    <div className="flex-grow text-lg  font-normal text-black-500 justify-self-center">
                       {filterDate(filteredTrans.date)}
                     </div>
                     <div className="text-md font-normal text-gray-500 tracking-wide justify-self-end">
