@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { fetchMerchants, selectMerchants } from "../../redux/merchantsSlice";
-import { PieChartColorList1 } from "../../values/customColors";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { fetchMerchants, selectMerchants } from '../../redux/merchantsSlice';
+import { PieChartColorList1 } from '../../values/customColors';
 import {
   MerchantType,
   StreamingType,
   SubscriptionType,
-} from "../../values/customTypes";
-import { ItemList } from "../widgets/ItemList";
-import { Loading } from "../widgets/Loading";
-import { MonthlyGraph } from "../widgets/MonthlyGraph";
-import { Error } from "../widgets/Error";
-import { getSubName } from "../../api/SubscriptionService";
+} from '../../values/customTypes';
+import { ItemList } from '../widgets/ItemList';
+import { Loading } from '../widgets/Loading';
+import { MonthlyGraph } from '../widgets/MonthlyGraph';
+import { Error } from '../widgets/Error';
+import { getSubName } from '../../api/SubscriptionService';
 
 export const AnalysisScreen = () => {
   const dispatch = useAppDispatch();
@@ -24,10 +24,10 @@ export const AnalysisScreen = () => {
   const { id } = useParams();
   const currentUrl = window.location.pathname;
   const colors = PieChartColorList1;
-  const [subName, setSubName] = useState("ERROR");
+  const [subName, setSubName] = useState('ERROR');
 
   useEffect(() => {
-    if (status === "idle" || status === "succeeded") {
+    if (status === 'idle' || status === 'succeeded') {
       getSubName(id!).then((name) => {
         setSubName(name);
       });
@@ -35,22 +35,22 @@ export const AnalysisScreen = () => {
     }
   }, [currentUrl]);
 
-  if (status === "loading") {
+  if (status === 'loading') {
     return <Loading />;
   }
-  if (status === "failed") {
+  if (status === 'failed') {
     return <Error error={error} />;
   }
 
   function formatName(name: string): string {
-    const result = name.replace(/([A-Z])/g, " $1");
+    const result = name.replace(/([A-Z])/g, ' $1');
     return result.charAt(0).toUpperCase() + result.slice(1);
   }
 
   const latestMonth =
     merchants.length > 0
       ? Object.entries(merchants[merchants.length - 1])
-          .filter((merchant) => merchant[0] !== "monthEndDate")
+          .filter((merchant) => merchant[0] !== 'monthEndDate')
           .map((merchant) => {
             return {
               name: formatName(merchant[0]),
@@ -59,7 +59,6 @@ export const AnalysisScreen = () => {
           })
       : [];
 
-  // TODO: handleClick function. Clicking on the merchant should lead to the payment history calendar.
   const handleClick = () => {};
 
   return (

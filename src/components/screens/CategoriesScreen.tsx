@@ -84,10 +84,10 @@ function CategoriesScreen() {
         </div>
       </div>
       {/* TODO put overflow scroll on transactions */}
-      <div className="h-[60%]">
-        <div className="bg-white rounded-md adjustFont w-11/12 mx-auto mt-4">
+      <div className="h-[60%] w-11/12 overflow-y-scroll mx-auto">
+        <div className="bg-white rounded-md adjustFont   mt-4">
           <div className="grid grid-cols-[_40%_40%_20%] border-b-4 ">
-            <div className="justify-self-start px-3 font-extrabold">
+            <div className="justify-self-start px-3 font-extrabold ">
               Merchant
             </div>
             <div className="justify-self-center px-3 font-extrabold">Date</div>

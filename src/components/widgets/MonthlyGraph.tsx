@@ -6,8 +6,8 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-} from "recharts";
-import { StreamingType } from "../../values/customTypes";
+} from 'recharts';
+import { StreamingType } from '../../values/customTypes';
 
 export const MonthlyGraph = ({
   data,
@@ -20,7 +20,7 @@ export const MonthlyGraph = ({
   let monthArr: string[] = [];
   for (let month of data) {
     for (let sub in month) {
-      if (sub === "monthEndDate") {
+      if (sub === 'monthEndDate') {
         monthArr.push(formatDate(sub));
       } else if (!streamArr.includes(sub)) {
         streamArr.push(sub);
@@ -31,18 +31,18 @@ export const MonthlyGraph = ({
   function formatDate(dateString: string) {
     const date = new Date(dateString);
     return date
-      .toLocaleDateString("en-GB", {
-        month: "short",
-        year: "2-digit",
+      .toLocaleDateString('en-GB', {
+        month: 'short',
+        year: '2-digit',
       })
-      .replace(/ /g, "-");
+      .replace(/ /g, '-');
   }
   // console.log('Formatted date: ', formatDate(data[0].monthEndDate as string));
 
   const testData = [
-    { monthEndDate: "Jan-22", netflix: 7.99, prime: 9.99 },
-    { monthEndDate: "Feb-22", netflix: 2.99, prime: 8.99 },
-    { monthEndDate: "Mar-22", netflix: 6.99, prime: 4.99 },
+    { monthEndDate: 'Jan-22', netflix: 7.99, prime: 9.99 },
+    { monthEndDate: 'Feb-22', netflix: 2.99, prime: 8.99 },
+    { monthEndDate: 'Mar-22', netflix: 6.99, prime: 4.99 },
   ];
 
   return (
@@ -54,8 +54,7 @@ export const MonthlyGraph = ({
           right: 30,
           left: 0,
           bottom: 0,
-        }}
-      >
+        }}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis
           dataKey="monthEndDate"
@@ -64,16 +63,15 @@ export const MonthlyGraph = ({
           angle={-45}
           dy={24}
           height={80}
-          tick={{ fill: "white", fontSize: 16 }}
+          tick={{ fill: 'white', fontSize: 16 }}
           tickFormatter={(tick) => formatDate(tick)}
         />
         <YAxis
-          tick={{ fill: "white", fontSize: 18 }}
+          tick={{ fill: 'white', fontSize: 18 }}
           tickFormatter={(tick) => {
-            return "£" + tick;
+            return '£' + tick;
           }}
         />
-        <Tooltip />
         {streamArr.map((sub, index) => {
           return (
             <Area
@@ -86,20 +84,6 @@ export const MonthlyGraph = ({
             />
           );
         })}
-        {/* <Area
-              type="monotone"
-              dataKey="netflix"
-              stackId="1"
-              stroke="#fff"
-              fill="#fff"
-            />
-            <Area
-              type="monotone"
-              dataKey="prime"
-              stackId="1"
-              stroke="lightBlue"
-              fill="lightgreen"
-            /> */}
       </AreaChart>
     </ResponsiveContainer>
   );

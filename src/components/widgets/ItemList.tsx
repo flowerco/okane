@@ -1,4 +1,4 @@
-import { MerchantType, SubscriptionType } from "../../values/customTypes";
+import { MerchantType, SubscriptionType } from '../../values/customTypes';
 
 export const ItemList = ({
   data,
@@ -16,10 +16,9 @@ export const ItemList = ({
           <div
             key={index}
             onClick={() => callback(item as SubscriptionType)}
-            className="flex justify-between items-center px-6 mb-6 rounded-3xl h-24 border-2 border-white cursor-pointer hover:border-yellow-600"
-            style={{ color: colors[index % colors.length] }}
-          >
-            <p className="text-3xl">{item.name}</p>
+            className="flex justify-between items-center px-6 mb-6 rounded-3xl h-24 border-2 bg-opacity-20 bg-white border-white cursor-pointer hover:border-yellow-600"
+            style={{ color: colors[index % colors.length] }}>
+            <p className="text-3xl text-stroke-white">{item.name}</p>
             <p className="text-2xl">£{Number(item.monthlyPrice).toFixed(2)}</p>
           </div>
         );
