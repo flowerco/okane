@@ -11,7 +11,7 @@ import { GregorModel } from '../threejs/GregorModel';
 import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import Typewriter from 'typewriter-effect';
 import './typewriter.css';
-//import './typerwriter.css';
+
 export const ContributorsScreen = () => {
 	const team = [
 		{ name: 'Ben', text: '' },
@@ -70,27 +70,27 @@ export const ContributorsScreen = () => {
 	}
 
 	return (
-		<div className='h-[calc(100vh_-_4rem_-_5.3mm)] w-full z-50 overflow-hidden flex flex-col'>
-			<div id='typewriter'>
+		<div className='h-[calc(100vh_-_4rem_-_5.3mm)] w-full overflow-hidden flex flex-col'>
+			<div id='typewriter' className=' flex self-center absolute top-12 z-20'>
 				<Typewriter
-					className='text-white'
 					options={{
 						strings: team[h1].name,
 						pauseFor: 4000,
 						autoStart: true,
 						loop: true,
+						delay: 300,
 					}}
 				/>
 			</div>
 			<button
 				onClick={rightClick}
-				className='text-white absolute top-1/2 right-[20%] h-10 aspect-square text-6xl z-50'
+				className='text-white absolute top-[40%] right-[20%] h-10 aspect-square text-6xl z-20'
 			>
 				<BiRightArrow />
 			</button>
 			<button
 				onClick={leftClick}
-				className='text-white absolute top-1/2 left-[20%] h-10 aspect-square text-6xl z-50'
+				className='text-white absolute top-[40%] left-[20%] h-10 aspect-square text-6xl z-20'
 			>
 				<BiLeftArrow />
 			</button>
@@ -100,29 +100,29 @@ export const ContributorsScreen = () => {
 				<pointLight position={[10, 10, 10]} />
 				<Suspense fallback={null}>
 					<BenModel
-						position={[5, -1.2, 0]}
+						position={[5.2, -1.5, -0.2]}
 						scale={2.0}
-						rotation={[0, -1.6, 0]}
+						rotation={[0, -1.5, 0]}
 					/>
 					<SamModel
-						position={[2.4, -1.8, 3.8]}
-						scale={2}
-						rotation={[0, 3.2, 0]}
+						position={[2.3, -2, 5]}
+						scale={2.2}
+						rotation={[0, 3.2, 0.07]}
 					/>
 					<SimonModel
-						position={[-4.3, -1.8, 3]}
+						position={[-4.7, -2, 3.5]}
 						scale={2.2}
 						rotation={[0, 2.3, 0]}
 					/>
 					<AlexModel
-						position={[-4.3, -1.7, -2.5]}
+						position={[-4, -2.1, -2.9]}
 						scale={2.0}
-						rotation={[0, 1, 0]}
+						rotation={[0, 0.9, 0]}
 					/>
 					<GregorModel
-						position={[2.26, -0.9, -7.8]}
-						scale={2.7}
-						rotation={[0.3, 0.1, 0]}
+						position={[1.8, -0.8, -5.8]}
+						scale={2}
+						rotation={[0.25, -0.25, 0.05]}
 					/>
 					{/* <gridHelper /> */}
 				</Suspense>
