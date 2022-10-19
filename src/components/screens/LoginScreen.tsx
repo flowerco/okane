@@ -25,7 +25,6 @@ export const LoginScreen = () => {
       ...formState,
       [name]: value,
     });
-    console.log(formState);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -38,7 +37,6 @@ export const LoginScreen = () => {
         data.get('password'),
         data.get('name')
       ).then((res) => {
-        console.log('Returned data: ', res);   
         dispatch(login(res.id_hash));
       });
     } else {
@@ -48,7 +46,6 @@ export const LoginScreen = () => {
       );
       if (verificationResult instanceof Error)
         return alert('Problem with log in');
-      console.log('ID received after login verification: ', verificationResult);
       dispatch(login(verificationResult));
     }
   };

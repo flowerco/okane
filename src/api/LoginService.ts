@@ -16,7 +16,6 @@ export const verifyUser = async (
     );
     // Return the JWT from the JSON output
     const data = await response.text();
-    console.log('Data received from validation:', data);
     // Decode the JWT to get the user ID
     const decoded: { expiresAt: number; id_hash: string; iat: number } =
       jwt_decode(data);
@@ -36,7 +35,6 @@ export const validateJwtCookie = async () => {
     );
     if (response.status === 200) {
       const data = await response.json();
-      console.log('Data received from jwt validation:', data);
       output = data.userId;
     }
     return output;

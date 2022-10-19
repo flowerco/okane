@@ -1,3 +1,5 @@
+import { MerchantType } from "../values/customTypes";
+
 const rootUrl = 'http://localhost';
 
 export const getSubscriptions = async () => {
@@ -24,8 +26,19 @@ export const getSubName = async (id: string) => {
   }
 }
 
+export const getMerchants = async () => {
+  let output: MerchantType[] = [];
+  return await fetch(`${rootUrl}:${process.env.REACT_APP_PORT}/merchants`, {
+    credentials: 'include',
+  }).then(async (res) => {
+    const data = await res.json();
+    output = data;
+    return data;
+  });
+  // .catch((err) => console.log('error @getSubscriptions', err));
+};
+
 export const getMerchantsForSubscription = async (subscription_id: string) => {
-  console.log('Pulling merchants for subscription no: ', subscription_id);
   try {
     const response = await fetch(
       `${rootUrl}:${process.env.REACT_APP_PORT}/merchants/${subscription_id}`,
@@ -36,3 +49,15 @@ export const getMerchantsForSubscription = async (subscription_id: string) => {
     console.log(e, 'error in getting');
   }
 };
+
+export const getSubNameForMerchant = async (merchantId: number) => {
+  try {
+    const subName = await fetch(`${rootUrl}:${process.env.REACT_APP_PORT}/subscriptionCode/${merchantId}`, {
+      credentials: 'include',
+    });
+    const data = await subName.json();
+    return data.subscription_code;
+  } catch (err) {
+    console.log('Error getting subscription name in front-end: ', err);
+  }
+}

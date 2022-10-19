@@ -56,9 +56,7 @@ function CategoriesScreen() {
           {/* <div className="px-3 grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-1"> */}
           {categoryTotals.map((category: CategoryTotals, index: number) => {
             return (
-              <>
-                <CategoryCard key={index} category={category} clickFunction={handleClick} clicked={clickedCategory} />
-              </>
+              <CategoryCard key={index} category={category} clickFunction={handleClick} clicked={clickedCategory} />
             );
           })}
         </div>
@@ -78,13 +76,12 @@ function CategoriesScreen() {
             .map((filteredTrans, index) => {
               const uniqueId = '' + index + filteredTrans.date + filteredTrans.merchant_id;
               return (
-                <div className=" bg-slate-700  p-2 ">
+                <div key={uniqueId} className=" bg-slate-700  p-2 ">
                   <div
                     draggable
                     ref={ref}
                     onDragStart={(e) => dragStarted(e, String(filteredTrans.merchant_id))}
                     onDragEnd={() => dragEnd()}
-                    key={uniqueId}
                     className="grid grid-cols-[_40%_40%_20%] justify-start cursor-grab bg-white text-gray-700 hover:text-teal-400 hover:bg-teal-100 rounded-md px-2 py-1 ">
                     {/* <span className="bg-gray-400 h-2 w-2 m-2 rounded-full"></span>  POTENTIAL IMAGE */}
                     <div className="flex-grow font-medium px-1 text-lg justify-self-start">{filteredTrans.merchant_name}</div>

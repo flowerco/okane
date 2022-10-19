@@ -14,7 +14,6 @@ export const createUser = async (
       }
     );
     const data = await response.json();
-    console.log('Data returned from register: ', data);
     return data;
   } catch (err) {
     console.log('SignUp CreateUser error:', err);

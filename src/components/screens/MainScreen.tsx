@@ -9,6 +9,10 @@ import CategoriesScreen from "./CategoriesScreen";
 import { ContributorsScreen } from "./ContributorsScreen";
 import { YoutubeScreen } from "./YoutubeScreen";
 import { Loading } from "../widgets/Loading";
+import { SearchList } from "../widgets/SearchList";
+import { MerchantType } from "../../values/customTypes";
+import { useState } from "react";
+import { getMerchants } from "../../api/SubscriptionService";
 
 export const MainScreen = ({
   appLoading,
@@ -17,7 +21,9 @@ export const MainScreen = ({
   appLoading: boolean;
   online: boolean;
 }) => {
+
   const authState = useAppSelector((state) => state.authentication);
+  const { searchString } = useAppSelector(state => state.screen);
 
   if (appLoading) {
     return (
@@ -28,7 +34,15 @@ export const MainScreen = ({
   }
 
   return (
-    <div className="h-[calc(100vh_-_4rem_-_5.3mm)] w-full">
+    <div className={ `relative w-full ${online ? 'h-[calc(100vh_-_4rem_-_5.3mm)]' : 'h-[calc(100vh_-_8rem_-_5.3mm)]'}` }>
+      { searchString && (
+        <SearchList />
+      )}
+      { !online && (
+        <div className="flex items-center text-center h-16 bg-orange-500 py-3 px-6">
+          <p>Device is not online, some functionality may not be available.</p> 
+        </div>
+      ) }
       <div className="h-full relative overflow-auto">
         {authState.isAuthenticated ? (
           <>
