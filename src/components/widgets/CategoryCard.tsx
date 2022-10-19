@@ -1,15 +1,15 @@
-import { CategoryTotals } from "../../values/customTypes";
-import "./categoryScreen.css";
-import { DragEvent, useRef, useState } from "react";
-import { updateCategory } from "../../api/CategoryService";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { CategoryTotals } from '../../values/customTypes';
+import './categoryScreen.css';
+import { DragEvent, useRef, useState } from 'react';
+import { updateCategory } from '../../api/CategoryService';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   changeStatusToIdle,
   leftTarget,
   enterTarget,
   changeClicked,
-} from "../../redux/catSlice";
-import { RootState } from "../../redux/store";
+} from '../../redux/catSlice';
+import { RootState } from '../../redux/store';
 
 function CategoryCard({
   category,
@@ -41,7 +41,7 @@ function CategoryCard({
     }
   };
   const onDragLeave = (e: DragEvent<HTMLDivElement>, cat_name: string) => {
-    console.log("Left:", cat_name);
+    console.log('Left:', cat_name);
     e.stopPropagation();
     e.preventDefault();
 
@@ -53,8 +53,8 @@ function CategoryCard({
     category_id: string,
     cat_name: string
   ) => {
-    console.log("Dropped on:", category_id);
-    let merchant_id_event = e.dataTransfer.getData("merchant_id");
+    console.log('Dropped on:', category_id);
+    let merchant_id_event = e.dataTransfer.getData('merchant_id');
     let newCategory_id = Number(category_id);
     const merchant_id = Number(merchant_id_event);
     // dispatch redux action that changes category of the transaction
@@ -62,6 +62,7 @@ function CategoryCard({
     const result = await updateCategory(data);
     dispatch(changeStatusToIdle());
     dispatch(changeClicked(cat_name));
+    dispatch(leftTarget());
     // if (ref.current !== null) ref.current.style.scale = '1';
   };
 
@@ -75,23 +76,22 @@ function CategoryCard({
         onDrop(e, String(category.category_id), category.category_name)
       }
       className={`flex-1 p-1 mt-5 py-6 mx-2 mb-4  rounded-lg border shadow-md text-center cursor-pointer  sm:max-w-none hover:scale-100 ${
-        category.category_name === clicked && "bg-teal-400"
+        category.category_name === clicked && 'bg-teal-400'
       } ${category.category_name}`}
       style={
         category.category_name === hoverState &&
         category.category_name !== clicked
-          ? { scale: "1.1" }
+          ? { scale: '1.1' }
           : {}
       }
       onClick={() => {
         clickFunction(category.category_name);
-      }}
-    >
+      }}>
       <h5 className="pointer-events-none adjustFont text-xl font-bold tracking-tight ">
         {category.category_name}
       </h5>
       <p className=" pointer-events-none font-normal ">
-        {" "}
+        {' '}
         £{category.category_total}
       </p>
     </div>

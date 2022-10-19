@@ -1,15 +1,17 @@
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   fetchCategories,
   selectCats,
   changeClicked,
-} from "../../redux/catSlice";
-import { useEffect, useRef, useState } from "react";
-import { CategoryTotals } from "../../values/customTypes";
-import CategoryCard from "../widgets/CategoryCard";
-import moment from "moment";
-import { DragEvent } from "react";
-import "../widgets/categoryScreen.css";
+} from '../../redux/catSlice';
+import { Loading } from '../widgets/Loading';
+import { Error } from '../widgets/Error';
+import { useEffect, useRef, useState } from 'react';
+import { CategoryTotals } from '../../values/customTypes';
+import CategoryCard from '../widgets/CategoryCard';
+import moment from 'moment';
+import { DragEvent } from 'react';
+import '../widgets/categoryScreen.css';
 
 function CategoriesScreen() {
   const ref = useRef<HTMLDivElement>(null);
@@ -21,39 +23,43 @@ function CategoriesScreen() {
   const clickedCategory = categoryState.clicked;
   const status = categoryState.status;
   const categoryError = categoryState.error;
-  const month = new Date().toLocaleDateString("en-GB", {
-    month: "long",
-    year: "numeric",
+  const month = new Date().toLocaleDateString('en-GB', {
+    month: 'long',
+    year: 'numeric',
   });
   const filterDate = (date: string) => {
-    return moment(date).format("dddd Do");
+    return moment(date).format('dddd Do');
   };
 
   useEffect(() => {
-    if (status === "idle") {
+    if (status === 'idle') {
       dispatch(fetchCategories());
     }
-    // may need to add to state for this to work
-    // if (status === 'succeeded') setClicked(categoryTotals[0].category_name);
   }, [status, dispatch]);
 
   const handleClick = (cat_name: string) => {
-    // setClicked(cat_name);
     dispatch(changeClicked(cat_name));
   };
 
   const dragStarted = (e: DragEvent<HTMLDivElement>, merchant_id: string) => {
-    console.log("Drag has started:", merchant_id);
-    e.dataTransfer.setData("merchant_id", merchant_id);
+    console.log('Drag has started:', merchant_id);
+    e.dataTransfer.setData('merchant_id', merchant_id);
     if (ref.current !== null) {
-      ref.current.style.cursor = "grabbing";
+      ref.current.style.cursor = 'grabbing';
     }
   };
 
+  if (status === 'loading') {
+    return <Loading />;
+  }
+  if (status === 'failed') {
+    return <Error error={categoryError} />;
+  }
+
   const dragEnd = () => {
     if (ref.current !== null) {
-      ref.current.style.cursor = "grab";
-      ref.current.classList.remove("enablehover:hover");
+      ref.current.style.cursor = 'grab';
+      ref.current.classList.remove('enablehover:hover');
     }
   };
 
@@ -78,10 +84,10 @@ function CategoriesScreen() {
         </div>
       </div>
       {/* TODO put overflow scroll on transactions */}
-      <div className="h-[60%]">
-        <div className=" rounded-md adjustFont w-11/12 mx-auto mt-4">
+      <div className="h-[60%] w-11/12 overflow-y-scroll mx-auto">
+        <div className="bg-white rounded-md adjustFont   mt-4">
           <div className="grid grid-cols-[_40%_40%_20%] border-b-4 ">
-            <div className="justify-self-start px-3 font-extrabold">
+            <div className="justify-self-start px-3 font-extrabold ">
               Merchant
             </div>
             <div className="justify-self-center px-3 font-extrabold">Date</div>
@@ -93,7 +99,7 @@ function CategoriesScreen() {
             .sort((a, b) => a.date.localeCompare(b.date))
             .map((filteredTrans, index) => {
               const uniqueId =
-                "" + index + filteredTrans.date + filteredTrans.merchant_id;
+                '' + index + filteredTrans.date + filteredTrans.merchant_id;
               return (
                 <div key={uniqueId} className="  p-2 ">
                   <div
@@ -103,8 +109,7 @@ function CategoriesScreen() {
                       dragStarted(e, String(filteredTrans.merchant_id))
                     }
                     onDragEnd={() => dragEnd()}
-                    className="grid grid-cols-[_40%_40%_20%] justify-start cursor-grab bg-white text-gray-700 hover:text-teal-400 hover:bg-teal-100 rounded-md px-2 py-1 "
-                  >
+                    className="grid grid-cols-[_40%_40%_20%] justify-start cursor-grab bg-white text-gray-700 hover:text-teal-400 hover:bg-teal-100 rounded-md px-2 py-1 ">
                     {/* <span className="bg-gray-400 h-2 w-2 m-2 rounded-full"></span>  POTENTIAL IMAGE */}
                     <div className="flex-grow font-medium px-1 text-lg justify-self-start">
                       {filteredTrans.merchant_name}

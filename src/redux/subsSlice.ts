@@ -22,8 +22,6 @@ export const fetchSubs = createAsyncThunk(
   }
 );
 
-// never reassign the state (state = state.concat(action.payload)) - can reassign property
-// either directly modify the state or return a new one. NOT BOTH
 const subsSlice = createSlice({
   name: 'subscriptions', // actions will have format 'subscriptions/action'
   initialState,
@@ -53,7 +51,6 @@ const subsSlice = createSlice({
         state.status = 'failed';
         state.error = action.error.message;
       });
-      
   },
 });
 

@@ -50,7 +50,6 @@ export const MainScreen = ({
             <div className="h-full relative">
               <Routes>
                 <Route path="/connect" element={<OpenBankingScreen />}></Route>
-                <Route path="/callback" element={<OpenBankingScreen />}></Route>
                 <Route path="/" element={<SummaryScreen />}></Route>
                 <Route
                   path="/analysis/:id"
