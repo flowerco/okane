@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { fetchCalendar, selectCalendar, } from '../../redux/calendarSlice';
 import { useEffect } from 'react';
 import { SubscriptionTransactions } from '../../values/customTypes';
+import { OkaneSubsColorList } from "../../values/customColors";
 
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
@@ -13,11 +14,7 @@ const localizer = momentLocalizer(moment);
 
 export const CalendarScreen = () =>{
 
-  // Retrieve data from /getTransactionsByMerchant.ß
-  // Default calendar page last completed month 
-  // 12 months data returned, assign to calendar page
-  // Colour each day by type of subscription payment, e.g. streaming = red, gym = blue
-  // Date Hoverover displays merchant and value.
+  const colors = OkaneSubsColorList;
 
   const dispatch = useAppDispatch();
   const calendarState = useAppSelector(selectCalendar);
@@ -49,7 +46,7 @@ export const CalendarScreen = () =>{
     }
   }, [status, dispatch]);
 
-  const dateMon = moment(new Date()).subtract(1, 'month').format('MMM YYYY');
+  const dateLastMonth = moment(new Date()).subtract(1, 'month');
 
   return (
     <div className='w-full h-full flex flex-col justify-center items-center'>
@@ -60,12 +57,11 @@ export const CalendarScreen = () =>{
           views={'month'}
           events={data}
           startAccessor="start"
-          defaultDate={dateMon}
+          defaultDate={dateLastMonth}
           localizer={localizer}
           eventPropGetter={(data) => {
-            const backgroundColor = (data.subscription === 'STR') ? 'blue' : (data.subscription === 'GYM') ? 'green' :
-                                         (data.subscription === 'CCD') ? 'red' : (data.subscription === 'MBP') ? 'orange' : 'purple';
-              return { style: { backgroundColor } }
+            const backgroundColor = colors.get(data.subscription)
+            return { style: { backgroundColor } }
           }}
         />
       </div>
