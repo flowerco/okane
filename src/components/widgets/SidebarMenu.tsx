@@ -5,6 +5,7 @@ import { removeJwtCookie } from "../../api/LoginService";
 import { toggleSidebar } from "../../redux/screenSlice";
 import { Link, useNavigate } from "react-router-dom";
 import DarkModeButton from "../widgets/DarkModeButton";
+import { Container } from "@chakra-ui/react";
 
 export const SidebarMenu = () => {
   const screenState = useAppSelector((state) => state.screen);
@@ -69,19 +70,22 @@ export const SidebarMenu = () => {
         }`}
       >
         <ul className="h-full flex flex-col justify-between items-center text-3xl space-y-6 pt-6 pb-10">
-          <div className="flex flex-col justify-center items-center space-y-6">
-            <BoxButton text={"Calendar"} callback={handleCalendar} />
-            <BoxButton text={"Categories"} callback={handleCategories} />
-            <BoxButton text={"Advice"} callback={handleAdvice} />
-            <BoxButton text={"Contributors"} callback={handleContributors} />
-            <BoxButton text={"Settings"} callback={handleSettings} />
+          <div className="flex flex-col justify-start items-center space-y-6">
+            <DarkModeButton />
+            <div className="container justify-start space-y-3.5 text-center overflow-auto h-3/4">
+              <BoxButton text={"Calendar"} callback={handleCalendar} />
+              <BoxButton text={"Categories"} callback={handleCategories} />
+              <BoxButton text={"Advice"} callback={handleAdvice} />
+              <BoxButton text={"Contributors"} callback={handleContributors} />
+              <BoxButton text={"Settings"} callback={handleSettings} />
+            </div>
+            <li
+              className="border-2 border-black text-black font-semibold bg-[#6161cc] rounded-lg py-3 px-8"
+              onClick={handleLogout}
+            >
+              Log Out
+            </li>
           </div>
-          <li
-            className="border-2 border-black text-black font-semibold bg-[#6161cc] rounded-lg py-3 px-8"
-            onClick={handleLogout}
-          >
-            Log Out
-          </li>
         </ul>
       </div>
     </>

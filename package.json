@@ -11,6 +11,7 @@
     "@emotion/styled": "^11.10.4",
     "@fontsource/amethysta": "^4.5.9",
     "@fontsource/cutive": "^4.5.10",
+    "@fontsource/share-tech-mono": "^4.5.9",
     "@react-three/drei": "^9.34.4",
     "@react-three/fiber": "^8.8.10",
     "@reduxjs/toolkit": "^1.8.5",

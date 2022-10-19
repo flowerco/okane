@@ -4,41 +4,47 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 .radial-gradient2 {
-  background-image: 
-    radial-gradient(
+  background-image: radial-gradient(
     circle 700px at 50% -20%,
-    #50C7D8,
-    #1F2028 60%
-    );
+    #50c7d8,
+    #1f2028 60%
+  );
 }
 
 .radial-gradient {
-  background: 
-    radial-gradient(
-    circle 800px at 0% -20%,
-    #50C7D8,
-    #1F2028 50%
-    ),
-    radial-gradient(
-    circle 700px at 100% 120%,
-    #8080D7,
-    #1F2028 60%
-    ) bottom right;
-    background-size: 100% 50%;
-    background-repeat: no-repeat;
+  background: radial-gradient(circle 800px at 0% -20%, #50c7d8, #1f2028 50%),
+    radial-gradient(circle 700px at 100% 120%, #8080d7, #1f2028 60%) bottom
+      right;
+  background-size: 100% 50%;
+  background-repeat: no-repeat;
+}
+
+.radial-gradient3 {
+  background: radial-gradient(circle 800px at 0% -20%, #50c7d8, white 50%),
+    radial-gradient(circle 700px at 100% 120%, #8080d7, white 60%) bottom right;
+  background-size: 100% 50%;
+  background-repeat: no-repeat;
+}
+
+.radial-gradient4 {
+  background-image: radial-gradient(
+    circle 700px at 50% -20%,
+    #50c7d8,
+    white 60%
+  );
 }
 
 .blurtest {
@@ -47,7 +53,6 @@ code {
 }
 
 .ellipse1 {
-
   box-sizing: border-box;
 
   position: absolute;
@@ -56,16 +61,19 @@ code {
   left: 20px;
   top: -183px;
 
-  background: #50C7D8;
+  background: #50c7d8;
   border: 1px solid #000000;
   filter: blur(250px);
 }
 
 .menu-transition {
-  transition: transform .5s ease;
+  transition: transform 0.5s ease;
   transform: translateX(-100vw);
   overflow: hidden;
 }
 .menu-transition.open {
   transform: translateX(0vw);
+}
+
+#boxOfBoxes {
 }

@@ -4,6 +4,7 @@ import { Divide as Hamburger } from "hamburger-react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { toggleSidebar } from "../../redux/screenSlice";
 import { Link } from "react-router-dom";
+import DarkModeButton from "../widgets/DarkModeButton";
 
 export const Navbar = () => {
   const authState = useAppSelector((state) => state.authentication);
@@ -24,6 +25,7 @@ export const Navbar = () => {
           >
             <img src={icon} className="object-cover"></img>
           </Link>
+          <DarkModeButton />
         </div>
         {authState.isAuthenticated && (
           <>

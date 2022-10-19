@@ -1,8 +1,8 @@
 import { extendTheme, ThemeConfig } from "@chakra-ui/react";
-import "@fontsource/amethysta";
+import "@fontsource/share-tech-mono";
 
 const config: ThemeConfig = {
-  initialColorMode: "light",
+  initialColorMode: "dark",
   useSystemColorMode: false,
 };
 
@@ -15,7 +15,7 @@ const theme = extendTheme({
       body: {
         padding: 0,
         margin: 0,
-        fontFamily: "Amethysta",
+        fontFamily: "Share Tech Mono",
         boxSizing: "border-box",
       },
       h1: {
