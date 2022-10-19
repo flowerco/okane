@@ -93,7 +93,7 @@ type ThumbnailType = {
   url: string;
   width: number;
   height: number;
-}
+};
 
 export type YoutubeItem = {
   kind: string;
@@ -121,10 +121,25 @@ export type YoutubeItem = {
     videoOwnerChannelTitle: string;
     videoOwnerChannelId: string;
   };
-}
+};
 
 export type YoutubeRequest = {
   kind: string;
   etag: string;
   items: YoutubeItem[];
+};
+
+export type SubscriptionTransactions = {
+  month_end_date: string,
+  date: string,
+  subscription_code: string,
+  subscription_name: string,
+  merchant_name: string,
+  price: number
+};
+
+export type CalendarState = {
+  transactions: SubscriptionTransactions[];
+  status: "idle" | "loading" | "succeeded" | "failed";
+  error: string | null | undefined;
 };

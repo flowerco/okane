@@ -20,27 +20,30 @@ export const MonthlyGraph = ({
   let monthArr: string[] = [];
   for (let month of data) {
     for (let sub in month) {
-      if(sub === "monthEndDate"){
+      if (sub === "monthEndDate") {
         monthArr.push(formatDate(sub));
       } else if (!streamArr.includes(sub)) {
         streamArr.push(sub);
       }
     }
   }
-  
-  function formatDate (dateString: string) {
+
+  function formatDate(dateString: string) {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-GB', {
-      month: 'short', year: '2-digit'
-    }).replace(/ /g, '-');
+    return date
+      .toLocaleDateString("en-GB", {
+        month: "short",
+        year: "2-digit",
+      })
+      .replace(/ /g, "-");
   }
   // console.log('Formatted date: ', formatDate(data[0].monthEndDate as string));
 
   const testData = [
-    {monthEndDate:'Jan-22', netflix:7.99, prime:9.99}, 
-    {monthEndDate:'Feb-22', netflix:2.99, prime:8.99}, 
-    {monthEndDate:'Mar-22', netflix:6.99, prime:4.99}, 
-  ]
+    { monthEndDate: "Jan-22", netflix: 7.99, prime: 9.99 },
+    { monthEndDate: "Feb-22", netflix: 2.99, prime: 8.99 },
+    { monthEndDate: "Mar-22", netflix: 6.99, prime: 4.99 },
+  ];
 
   return (
     <ResponsiveContainer height="100%" width="100%">
@@ -54,20 +57,20 @@ export const MonthlyGraph = ({
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis 
+        <XAxis
           dataKey="monthEndDate"
           interval={1}
           alignmentBaseline="after-edge"
           angle={-45}
           dy={24}
           height={80}
-          tick={{fill: "white", fontSize:16}}
-          tickFormatter={tick => formatDate(tick)}
+          tick={{ fill: "white", fontSize: 16 }}
+          tickFormatter={(tick) => formatDate(tick)}
         />
-        <YAxis 
-          tick={{fill:'white', fontSize:18}} 
-          tickFormatter={tick => {
-            return "£"+tick
+        <YAxis
+          tick={{ fill: "white", fontSize: 18 }}
+          tickFormatter={(tick) => {
+            return "£" + tick;
           }}
         />
         <Tooltip />

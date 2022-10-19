@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { verifyUser } from '../../api/LoginService';
 import { createUser } from '../../api/RegisterService';
 import { login } from '../../redux/authSlice';
@@ -8,6 +9,7 @@ export const LoginScreen = () => {
   const initialState = { email: '', password: '', name: '' };
   const [formState, setFormState] = useState(initialState);
   const [registerFlag, setRegisterFlag] = useState(false);
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const toggleRegisterFlag = () => {
@@ -33,12 +35,13 @@ export const LoginScreen = () => {
     const data = new FormData(event.currentTarget);
     // Check for the registerFlag or login process:
     if (registerFlag) {
+      navigate('/connect');
       createUser(
         data.get('email'),
         data.get('password'),
         data.get('name')
       ).then((res) => {
-        console.log('Returned data: ', res);   
+        console.log('Returned data: ', res);
         dispatch(login(res.id_hash));
       });
     } else {

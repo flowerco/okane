@@ -9,6 +9,7 @@ import CategoriesScreen from "./CategoriesScreen";
 import { ContributorsScreen } from "./ContributorsScreen";
 import { YoutubeScreen } from "./YoutubeScreen";
 import { Loading } from "../widgets/Loading";
+import OpenBankingScreen from "./OpenBankingScreen";
 
 export const MainScreen = ({
   appLoading,
@@ -34,6 +35,8 @@ export const MainScreen = ({
           <>
             <div className="h-full relative">
               <Routes>
+                <Route path="/connect" element={<OpenBankingScreen />}></Route>
+                <Route path="/callback" element={<OpenBankingScreen />}></Route>
                 <Route path="/" element={<SummaryScreen />}></Route>
                 <Route
                   path="/analysis/:id"
@@ -56,7 +59,9 @@ export const MainScreen = ({
             </div>
           </>
         ) : (
-          <LoginScreen />
+          <>
+            <LoginScreen />
+          </>
         )}
       </div>
     </div>

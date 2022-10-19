@@ -1,14 +1,14 @@
-import { PieChartColorList1 } from '../../values/customColors';
-import { MinPieChart } from '../widgets/MinPieChart';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { selectSubs } from '../../redux/subsSlice';
-import { useEffect } from 'react';
-import { fetchSubs } from '../../redux/subsSlice';
-import { Loading } from '../widgets/Loading';
-import { Error } from '../widgets/Error';
-import { ItemList } from '../widgets/ItemList';
-import { useNavigate } from 'react-router-dom';
-import { SubscriptionType } from '../../values/customTypes';
+import { PieChartColorList1 } from "../../values/customColors";
+import { MinPieChart } from "../widgets/MinPieChart";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { selectSubs } from "../../redux/subsSlice";
+import { useEffect } from "react";
+import { fetchSubs } from "../../redux/subsSlice";
+import { Loading } from "../widgets/Loading";
+import { Error } from "../widgets/Error";
+import { ItemList } from "../widgets/ItemList";
+import { useNavigate } from "react-router-dom";
+import { SubscriptionType } from "../../values/customTypes";
 
 export const SummaryScreen = () => {
   const dispatch = useAppDispatch();
@@ -21,15 +21,16 @@ export const SummaryScreen = () => {
   const error = subscriptionsState.error;
 
   useEffect(() => {
-    if (status === 'idle') {
+    if (status === "idle") {
       dispatch(fetchSubs());
     }
   }, [dispatch, status]);
 
-  if (status === 'loading') {
+  // TODO: Loading/failed logic to be added to redux.
+  if (status === "loading") {
     return <Loading />;
   }
-  if (status === 'failed') {
+  if (status === "failed") {
     return <Error error={error} />;
   }
 
@@ -38,10 +39,10 @@ export const SummaryScreen = () => {
   };
 
   const formatDate = new Date(subscriptionsState.month).toLocaleDateString(
-    'en-GB',
+    "en-GB",
     {
-      month: 'short',
-      year: '2-digit',
+      month: "short",
+      year: "2-digit",
     }
   );
 
