@@ -8,9 +8,13 @@ import { SidebarMenu } from "./components/widgets/SidebarMenu";
 import "./index.css";
 import { login } from "./redux/authSlice";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
+import { toggleDarkMode } from "./redux/darkModeSlice";
+import { useColorMode } from "@chakra-ui/react";
 
 function App() {
   const authState = useAppSelector((state) => state.authentication);
+  const { colorMode, toggleColorMode } = useColorMode();
+  const isDark = colorMode === "dark";
   const dispatch = useAppDispatch();
 
   // App-level loading indicator to be used before any other states are fetched
@@ -24,12 +28,11 @@ function App() {
     validateJwtCookie().then((res) => {
       setAppLoading(false);
       // console.log('Validating cookie... result: ', res);
-      if (res && res !== 'LOGOUT') {
+      if (res && res !== "LOGOUT") {
         dispatch(login(res as string));
       }
     });
   }, []);
-
 
   // Add listeners for change in online status
   useEffect(() => {
@@ -43,7 +46,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App  h-screen w-screen radial-gradient fixed">
+      <div
+        className={`App  h-screen w-screen ${
+          colorMode === "dark" ? "radial-gradient" : "radial-gradient2"
+        }  fixed`}
+      >
         <Navbar />
         <div>
           <MainScreen appLoading={appLoading} online={online} />

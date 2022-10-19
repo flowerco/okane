@@ -65,7 +65,7 @@ export const SidebarMenu = () => {
   return (
     <>
       <div
-        className={`menu-transition fixed z-20 h-[calc(100vh_-_4rem_-_5.3mm)] w-[100vw] text-white bg-[#428c97] ${
+        className={`menu-transition fixed z-20 h-[calc(100vh_-_4rem_-_5.3mm)] w-[100vw]  bg-[#428c97] ${
           screenState.sidebarOpen ? "open" : "closed"
         }`}
       >
@@ -80,7 +80,7 @@ export const SidebarMenu = () => {
               <BoxButton text={"Settings"} callback={handleSettings} />
             </div>
             <li
-              className="border-2 border-black text-black font-semibold bg-[#6161cc] rounded-lg py-3 px-8"
+              className="border-2 font-semibold bg-[#6161cc] rounded-lg py-3 px-8"
               onClick={handleLogout}
             >
               Log Out

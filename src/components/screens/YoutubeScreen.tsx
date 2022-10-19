@@ -48,7 +48,7 @@ export const YoutubeScreen = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 grid-rows-2 h-full w-full justify-items-center text-white sm:grid-cols-3 sm:grid-rows-1 sm:py-6">
+    <div className="grid grid-cols-1 grid-rows-2 h-full w-full justify-items-center  sm:grid-cols-3 sm:grid-rows-1 sm:py-6">
       <div className="flex flex-col justify-center text-center w-full max-w-3xl px-3 space-y-4 sm:-mt-24 sm:col-span-2">
         <h1 className="mt-3 text-3xl font-semibold">Okané on Youtube</h1>
         <p className="text-md">
@@ -71,7 +71,7 @@ export const YoutubeScreen = () => {
               <li
                 key={id}
                 onClick={() => handleClick(videoId)}
-                className="flex justify-between items-center px-6 py-6 mb-6 rounded-xl border-2 border-white cursor-pointer hover:border-yellow-600 sm:flex-col"
+                className="flex justify-between items-center px-6 py-6 mb-6 rounded-xl border-2  cursor-pointer hover:border-yellow-600 sm:flex-col"
               >
                 <p className="text-xl font-semibold sm:text-lg sm:mb-4">
                   {title}

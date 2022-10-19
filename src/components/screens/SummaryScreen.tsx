@@ -48,7 +48,7 @@ export const SummaryScreen = () => {
 
   return (
     <div className="grid grid-cols-1 h-full w-full justify-items-center">
-      <div className="mt-3 text-white text-3xl font-semibold">{formatDate}</div>
+      <div className="mt-3  text-3xl font-semibold">{formatDate}</div>
       <div className="w-4/5 aspect-square relative">
         <MinPieChart data={subscriptions} colors={colors} />
         <div className="text-green-400 text-5xl z-0 h-full w-full absolute top-0 left-0 align-center flex justify-center items-center">

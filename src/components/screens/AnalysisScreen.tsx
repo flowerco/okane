@@ -65,7 +65,7 @@ export const AnalysisScreen = () => {
   return (
     <div className="h-[calc(100vh_-_4rem_-_5.3mm)] w-full overflow-y-auto">
       <div className="grid grid-cols-1 h-full w-full justify-items-center">
-        <div className="mt-3 text-white text-3xl font-semibold">{subName}</div>
+        <div className="mt-3  text-3xl font-semibold">{subName}</div>
         <div className="w-4/5 aspect-square relative">
           <div className="text-green-400 text-5xl z-0 h-full w-full absolute top-0 left-0 align-center flex justify-center items-center">
             <MonthlyGraph data={merchants as StreamingType[]} colors={colors} />

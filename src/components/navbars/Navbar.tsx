@@ -77,7 +77,6 @@ export const Navbar = () => {
               <div className="flex h-14 aspect-square items-center justify-center">
                 <Hamburger
                   distance="md"
-                  color="white"
                   hideOutline={true}
                   toggled={sidebarOpen}
                   onToggle={() => dispatch(toggleSidebar())}

@@ -16,14 +16,6 @@ code {
     monospace;
 }
 
-.radial-gradient2 {
-  background-image: radial-gradient(
-    circle 700px at 50% -20%,
-    #50c7d8,
-    #1f2028 60%
-  );
-}
-
 .radial-gradient {
   background: radial-gradient(circle 800px at 0% -20%, #50c7d8, #1f2028 50%),
     radial-gradient(circle 700px at 100% 120%, #8080d7, #1f2028 60%) bottom
@@ -32,19 +24,11 @@ code {
   background-repeat: no-repeat;
 }
 
-.radial-gradient3 {
+.radial-gradient2 {
   background: radial-gradient(circle 800px at 0% -20%, #50c7d8, white 50%),
     radial-gradient(circle 700px at 100% 120%, #8080d7, white 60%) bottom right;
   background-size: 100% 50%;
   background-repeat: no-repeat;
-}
-
-.radial-gradient4 {
-  background-image: radial-gradient(
-    circle 700px at 50% -20%,
-    #50c7d8,
-    white 60%
-  );
 }
 
 .blurtest {
