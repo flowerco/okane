@@ -20,3 +20,12 @@ export const PieChartColorList2 = [
   "#7E0021",
   "#7B56C0"
 ]
+
+export const OkaneSubsColorList = new Map ([
+  ['GYM','#83CAFF'],      //  Light Sky Blue / Gym
+  ['CFN','#FF420E'],      //  Orange Red / Car Finance
+  ['MBP','#FFD320'],      //  Turbo Yellow / Mobile Phone
+  ['STR','#579D1C'],      //  Limeade Green / Streaming
+  ['CCD','#7E0021'],      //  Burgundy / Credit Card
+  ['TVL','#004586'],      //  Dark Cerulean Blue / Travel
+])

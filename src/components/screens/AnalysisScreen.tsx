@@ -13,6 +13,7 @@ import { Loading } from "../widgets/Loading";
 import { MonthlyGraph } from "../widgets/MonthlyGraph";
 import { Error } from "../widgets/Error";
 import { getSubName } from "../../api/SubscriptionService";
+import { isConditionalExpression } from "typescript";
 
 export const AnalysisScreen = () => {
   const dispatch = useAppDispatch();
@@ -43,8 +44,7 @@ export const AnalysisScreen = () => {
   }
 
   function formatName(name: string): string {
-    const result = name.replace(/([A-Z])/g, " $1");
-    return result.charAt(0).toUpperCase() + result.slice(1);
+    return name.replace(/_/g, " ");
   }
 
   const latestMonth =

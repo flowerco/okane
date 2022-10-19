@@ -35,7 +35,8 @@ button.rbc-input::-moz-focus-inner {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
-  background-color: pink;
+  background-color: whiite;
+  color: white;
   border-radius: 10px;
 }
 
@@ -67,11 +68,13 @@ button.rbc-input::-moz-focus-inner {
 }
 
 .rbc-off-range {
-  color: #999999;
+  /* color: #999999; */
+  color: black;
 }
 
 .rbc-off-range-bg {
-  background: #e6e6e6;
+  /* background: #e6e6e6; */
+  background: grey;
 }
 
 .rbc-header {
@@ -168,10 +171,11 @@ button.rbc-input::-moz-focus-inner {
       -ms-flex-positive: 1;
           flex-grow: 1;
   padding: 0 10px;
+  font-size: 125%;
   text-align: center;
 }
 .rbc-toolbar button {
-  color: #373a3c;
+  color: white;
   display: inline-block;
   margin: 0;
   text-align: center;
