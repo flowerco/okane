@@ -1,11 +1,11 @@
-import { useAnimations, useGLTF } from '@react-three/drei';
-import { useEffect, useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
+import { useGLTF, useAnimations } from '@react-three/drei';
 import { Mesh } from 'three';
 
-export function SamModel(props: any) {
+export function SimonModel(props: any) {
 	const group = useRef<Mesh>(null!);
 	const { nodes, materials, animations } = useGLTF(
-		'/models/sam_model.glb'
+		'/models/simonmodel.glb'
 	) as any;
 	const { actions } = useAnimations(animations, group);
 
@@ -33,12 +33,6 @@ export function SamModel(props: any) {
 						skeleton={nodes.Wolf3D_Body001.skeleton}
 					/>
 					<skinnedMesh
-						name='Wolf3D_Hair001'
-						geometry={nodes.Wolf3D_Hair001.geometry}
-						material={materials['Wolf3D_Hair.001']}
-						skeleton={nodes.Wolf3D_Hair001.skeleton}
-					/>
-					<skinnedMesh
 						name='EyeLeft001'
 						geometry={nodes.EyeLeft001.geometry}
 						material={materials['Wolf3D_Eye.001']}
@@ -55,14 +49,6 @@ export function SamModel(props: any) {
 						morphTargetInfluences={nodes.EyeRight001.morphTargetInfluences}
 					/>
 					<skinnedMesh
-						name='Wolf3D_Head001'
-						geometry={nodes.Wolf3D_Head001.geometry}
-						material={materials['Wolf3D_Skin.001']}
-						skeleton={nodes.Wolf3D_Head001.skeleton}
-						morphTargetDictionary={nodes.Wolf3D_Head001.morphTargetDictionary}
-						morphTargetInfluences={nodes.Wolf3D_Head001.morphTargetInfluences}
-					/>
-					<skinnedMesh
 						name='Wolf3D_Outfit_Bottom001'
 						geometry={nodes.Wolf3D_Outfit_Bottom001.geometry}
 						material={materials['Wolf3D_Outfit_Bottom.001']}
@@ -75,6 +61,12 @@ export function SamModel(props: any) {
 						skeleton={nodes.Wolf3D_Outfit_Footwear001.skeleton}
 					/>
 					<skinnedMesh
+						name='Wolf3D_Outfit_Top001'
+						geometry={nodes.Wolf3D_Outfit_Top001.geometry}
+						material={materials['Wolf3D_Outfit_Top.001']}
+						skeleton={nodes.Wolf3D_Outfit_Top001.skeleton}
+					/>
+					<skinnedMesh
 						name='Wolf3D_Teeth001'
 						geometry={nodes.Wolf3D_Teeth001.geometry}
 						material={materials['Wolf3D_Teeth.001']}
@@ -83,10 +75,12 @@ export function SamModel(props: any) {
 						morphTargetInfluences={nodes.Wolf3D_Teeth001.morphTargetInfluences}
 					/>
 					<skinnedMesh
-						name='Wolf3D_Outfit_Top001'
-						geometry={nodes.Wolf3D_Outfit_Top001.geometry}
-						material={materials['Wolf3D_Outfit_Top.001']}
-						skeleton={nodes.Wolf3D_Outfit_Top001.skeleton}
+						name='Wolf3D_Head001'
+						geometry={nodes.Wolf3D_Head001.geometry}
+						material={materials['Wolf3D_Skin.001']}
+						skeleton={nodes.Wolf3D_Head001.skeleton}
+						morphTargetDictionary={nodes.Wolf3D_Head001.morphTargetDictionary}
+						morphTargetInfluences={nodes.Wolf3D_Head001.morphTargetInfluences}
 					/>
 				</group>
 			</group>
@@ -94,4 +88,4 @@ export function SamModel(props: any) {
 	);
 }
 
-useGLTF.preload('/models/sam_model.glb');
+useGLTF.preload('/models/simonmodel.glb');

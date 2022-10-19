@@ -2,17 +2,19 @@ import React, { useEffect, useRef } from 'react';
 import { useGLTF, useAnimations } from '@react-three/drei';
 import { Mesh } from 'three';
 
-export function BenModel(props: any) {
+export function AlexModel(props: any) {
 	const group = useRef<Mesh>(null!);
 	const { nodes, materials, animations } = useGLTF(
-		'/models/ben_model.glb'
+		'/models/alex_model.glb'
 	) as any;
 	const { actions } = useAnimations(animations, group);
+
 	useEffect(() => {
 		const animAction = actions['Armature|mixamo.com|Layer0'];
 		console.log(animAction);
 		animAction!.play();
 	});
+
 	return (
 		<group ref={group} {...props} dispose={null}>
 			<group name='Scene'>
@@ -32,6 +34,12 @@ export function BenModel(props: any) {
 						geometry={nodes.Wolf3D_Body002.geometry}
 						material={materials['Wolf3D_Body.001']}
 						skeleton={nodes.Wolf3D_Body002.skeleton}
+					/>
+					<skinnedMesh
+						name='Wolf3D_Hair002'
+						geometry={nodes.Wolf3D_Hair002.geometry}
+						material={materials['Wolf3D_Hair.001']}
+						skeleton={nodes.Wolf3D_Hair002.skeleton}
 					/>
 					<skinnedMesh
 						name='EyeLeft002'
@@ -56,22 +64,16 @@ export function BenModel(props: any) {
 						skeleton={nodes.Wolf3D_Outfit_Bottom002.skeleton}
 					/>
 					<skinnedMesh
-						name='Wolf3D_Outfit_Top002'
-						geometry={nodes.Wolf3D_Outfit_Top002.geometry}
-						material={materials['Wolf3D_Outfit_Top.001']}
-						skeleton={nodes.Wolf3D_Outfit_Top002.skeleton}
-					/>
-					<skinnedMesh
-						name='Wolf3D_Hair002'
-						geometry={nodes.Wolf3D_Hair002.geometry}
-						material={materials['Wolf3D_Hair.001']}
-						skeleton={nodes.Wolf3D_Hair002.skeleton}
-					/>
-					<skinnedMesh
 						name='Wolf3D_Outfit_Footwear002'
 						geometry={nodes.Wolf3D_Outfit_Footwear002.geometry}
 						material={materials['Wolf3D_Outfit_Footwear.001']}
 						skeleton={nodes.Wolf3D_Outfit_Footwear002.skeleton}
+					/>
+					<skinnedMesh
+						name='Wolf3D_Outfit_Top002'
+						geometry={nodes.Wolf3D_Outfit_Top002.geometry}
+						material={materials['Wolf3D_Outfit_Top.001']}
+						skeleton={nodes.Wolf3D_Outfit_Top002.skeleton}
 					/>
 					<skinnedMesh
 						name='Wolf3D_Teeth002'
@@ -95,4 +97,4 @@ export function BenModel(props: any) {
 	);
 }
 
-useGLTF.preload('/models/ben_model.glb');
+useGLTF.preload('/models/alex_model.glb');
