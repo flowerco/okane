@@ -1,19 +1,19 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   MerchantsForSubState,
   MerchantsForSubType,
-} from '../values/customTypes';
-import { RootState } from './store';
-import { getMerchantsForSubscription } from '../api/SubscriptionService';
+} from "../values/customTypes";
+import { RootState } from "./store";
+import { getMerchantsForSubscription } from "../api/SubscriptionService";
 
 const initialState: MerchantsForSubState = {
   data: [],
-  status: 'idle',
+  status: "idle",
   error: null,
 };
 
 export const fetchMerchants = createAsyncThunk(
-  'merchantsForSub/fetchMerchantsForSub',
+  "merchantsForSub/fetchMerchantsForSub",
   async (subscription_id: string) => {
     const response = await getMerchantsForSubscription(subscription_id);
     return response;
@@ -21,23 +21,23 @@ export const fetchMerchants = createAsyncThunk(
 );
 
 const merchantsSlice = createSlice({
-  name: 'merchantsForSub',
+  name: "merchantsForSub",
   initialState,
   reducers: {},
   extraReducers(builder) {
     builder
       .addCase(fetchMerchants.pending, (state) => {
-        state.status = 'loading';
+        state.status = "loading";
       })
       .addCase(
         fetchMerchants.fulfilled,
         (state, action: PayloadAction<MerchantsForSubType[]>) => {
-          state.status = 'succeeded';
+          state.status = "succeeded";
           state.data = action.payload;
         }
       )
       .addCase(fetchMerchants.rejected, (state, action) => {
-        state.status = 'failed';
+        state.status = "failed";
         state.error = action.error.message;
       });
   },
