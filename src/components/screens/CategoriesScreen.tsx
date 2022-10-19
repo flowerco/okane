@@ -103,7 +103,7 @@ function CategoriesScreen() {
               const uniqueId =
                 '' + index + filteredTrans.date + filteredTrans.merchant_id;
               return (
-                <div className=" bg-slate-700  p-2 ">
+                <div className=" bg-slate-700  p-2">
                   <div
                     draggable
                     ref={ref}
