@@ -44,7 +44,6 @@ export const Navbar = () => {
             >
               <img src={icon} className="object-cover"></img>
             </Link>
-            <DarkModeButton />
           </div>
         )}
 

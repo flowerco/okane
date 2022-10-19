@@ -12,7 +12,6 @@ import { Loading } from "../widgets/Loading";
 import OpenBankingScreen from "./OpenBankingScreen";
 import { SearchList } from "../widgets/SearchList";
 
-
 export const MainScreen = ({
   appLoading,
   online,
@@ -20,9 +19,8 @@ export const MainScreen = ({
   appLoading: boolean;
   online: boolean;
 }) => {
-
   const authState = useAppSelector((state) => state.authentication);
-  const { searchString } = useAppSelector(state => state.screen);
+  const { searchString } = useAppSelector((state) => state.screen);
 
   if (appLoading) {
     return (
@@ -33,15 +31,19 @@ export const MainScreen = ({
   }
 
   return (
-    <div className={ `relative w-full ${online ? 'h-[calc(100vh_-_4rem_-_5.3mm)]' : 'h-[calc(100vh_-_8rem_-_5.3mm)]'}` }>
-      { searchString && (
-        <SearchList />
-      )}
-      { !online && (
+    <div
+      className={`relative w-full ${
+        online
+          ? "h-[calc(100vh_-_4rem_-_5.3mm)]"
+          : "h-[calc(100vh_-_8rem_-_5.3mm)]"
+      }`}
+    >
+      {searchString && <SearchList />}
+      {!online && (
         <div className="flex items-center text-center h-16 bg-orange-500 py-3 px-6">
-          <p>Device is not online, some functionality may not be available.</p> 
+          <p>Device is not online, some functionality may not be available.</p>
         </div>
-      ) }
+      )}
       <div className="h-full relative overflow-auto">
         {authState.isAuthenticated ? (
           <>
