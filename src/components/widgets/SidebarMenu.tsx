@@ -53,7 +53,8 @@ export const SidebarMenu = () => {
 	}) => {
 		return (
 			<li
-				className='border-2 border-white rounded-lg py-3 px-8 cursor-pointer'
+				id='btn-rainbow'
+				className='border-2 border-white rounded-lg w-full py-3 px-8 cursor-pointer text-center'
 				onClick={callback}
 			>
 				{text}
@@ -77,6 +78,7 @@ export const SidebarMenu = () => {
 						<BoxButton text={'Settings'} callback={handleSettings} />
 					</div>
 					<li
+						id='btn-rainbow'
 						className='border-2 border-black text-black font-semibold bg-[#6161cc] rounded-lg py-3 px-8'
 						onClick={handleLogout}
 					>
