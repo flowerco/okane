@@ -24,6 +24,7 @@
     "@types/react-dom": "^18.0.6",
     "@types/react-icons": "^3.0.0",
     "@types/react-router-dom": "^5.3.3",
+    "@types/recharts": "^1.8.23",
     "framer-motion": "^6.5.1",
     "hamburger-react": "^2.5.0",
     "jwt-decode": "^3.1.2",

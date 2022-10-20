@@ -9,6 +9,7 @@ import { Error } from '../widgets/Error';
 import { ItemList } from '../widgets/ItemList';
 import { useNavigate } from 'react-router-dom';
 import { SubscriptionType } from '../../values/customTypes';
+import { RechartsPieChart } from '../widgets/RechartsPieChart';
 
 export const SummaryScreen = () => {
 	const dispatch = useAppDispatch();
@@ -46,21 +47,32 @@ export const SummaryScreen = () => {
 		}
 	);
 
+	const total = () => {
+		return subscriptions
+			.reduce((accumulator, sub) => {
+				return accumulator + sub.monthlyPrice;
+			}, 0)
+			.toFixed(0);
+	};
+
 	return (
-		<div className='lg:flex lg:flex-row-reverse sm:grid sm:grid-cols-1 h-full w-full justify-center items-center sm:justify-items-center'>
-			<div className='flex w-4/5 h-full aspect-square relative mx-auto'>
-				<MinPieChart data={subscriptions} colors={colors} />
+		<div className='lg:flex lg:flex-row-reverse sm:grid sm:grid-cols-1 h-full w-full justify-center items-center sm:justify-items-center lg:overflow-hidden sm:overflow-auto'>
+			<div className='flex w-full h-full aspect-square relative mx-auto '>
+				<RechartsPieChart
+					data={subscriptions}
+					colors={colors}
+					total={total()}
+				/>
 				<div className='text-green-400 text-5xl z-0 h-full w-full absolute top-0 left-0 align-center flex justify-center items-center'>
-					{`£${subscriptions
-						.reduce((accumulator, sub) => {
-							return accumulator + sub.monthlyPrice;
-						}, 0)
-						.toFixed(0)}`}
+					{`£${total()}`}
 				</div>
 			</div>
-			<div className='lg:flex-col  lg:w-3/5 lg:h-4/5 lg:m-28 text-center'>
+			<div className='lg:flex-col  lg:w-full lg:h-[80%]  lg:m-28 sm:w-full text-center content-center'>
+				<h1 className='text-white text-3xl font-semibold hidden lg:block '>
+					お金へようこそ。
+				</h1>
 				<div className=' text-white text-3xl font-semibold'>{formatDate}</div>
-				<div className='lg:h-full lg:mt-20 flex flex-col w-full px-12 mt-4 pb-6 overflow-hidden'>
+				<div className='lg:h-full flex flex-col w-full px-12 mt-4 pb-6 overflow-hidden'>
 					<ItemList
 						data={subscriptions}
 						colors={colors}

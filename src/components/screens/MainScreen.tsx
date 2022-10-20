@@ -31,52 +31,59 @@ export const MainScreen = ({
 	}
 
 	return (
-		<div
-			className={`relative w-full ${
-				online
-					? 'h-[calc(100vh_-_4rem_-_5.3mm)]'
-					: 'h-[calc(100vh_-_8rem_-_5.3mm)]'
-			}`}
-		>
-			{searchString && <SearchList />}
-			{!online && (
-				<div className='flex items-center text-center h-16 bg-orange-500 py-3 px-6'>
-					<p>Device is not online, some functionality may not be available.</p>
-				</div>
-			)}
-			<div className='h-full relative'>
-				{authState.isAuthenticated ? (
-					<>
-						<div className='h-full relative'>
-							<Routes>
-								<Route path='/connect' element={<OpenBankingScreen />}></Route>
-								<Route path='/' element={<SummaryScreen />}></Route>
-								<Route
-									path='/analysis/:id'
-									element={<AnalysisScreen />}
-								></Route>
-								<Route path='/calendar' element={<CalendarScreen />}></Route>
-								<Route
-									path='/categories'
-									element={<CategoriesScreen />}
-								></Route>
-								<Route path='/advice' element={<YoutubeScreen />}></Route>
-								<Route
-									path='/contributors'
-									element={<ContributorsScreen />}
-								></Route>
-							</Routes>
-						</div>
-						<div className='absolute z-20 h-full top-0 left-0'>
-							<SidebarMenu />
-						</div>
-					</>
-				) : (
-					<>
-						<LoginScreen />
-					</>
+		<>
+			<div
+				className={`relative w-full ${
+					online
+						? 'h-[calc(100vh_-_4rem_-_5.3mm)]'
+						: 'h-[calc(100vh_-_8rem_-_5.3mm)]'
+				}`}
+			>
+				{searchString && <SearchList />}
+				{!online && (
+					<div className='flex items-center text-center h-16 bg-orange-500 py-3 px-6'>
+						<p>
+							Device is not online, some functionality may not be available.
+						</p>
+					</div>
 				)}
+				<div className='h-full relative'>
+					{authState.isAuthenticated ? (
+						<>
+							<div className='h-full relative'>
+								<Routes>
+									<Route
+										path='/connect'
+										element={<OpenBankingScreen />}
+									></Route>
+									<Route path='/' element={<SummaryScreen />}></Route>
+									<Route
+										path='/analysis/:id'
+										element={<AnalysisScreen />}
+									></Route>
+									<Route path='/calendar' element={<CalendarScreen />}></Route>
+									<Route
+										path='/categories'
+										element={<CategoriesScreen />}
+									></Route>
+									<Route path='/advice' element={<YoutubeScreen />}></Route>
+									<Route
+										path='/contributors'
+										element={<ContributorsScreen />}
+									></Route>
+								</Routes>
+							</div>
+						</>
+					) : (
+						<>
+							<LoginScreen />
+						</>
+					)}
+				</div>
 			</div>
-		</div>
+			<div className='absolute z-40 h-full top-0 left-0'>
+				<SidebarMenu />
+			</div>
+		</>
 	);
 };
