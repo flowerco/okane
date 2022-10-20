@@ -63,6 +63,15 @@ function CategoriesScreen() {
     }
   };
 
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    const touchLocation = e.targetTouches;
+    console.log('TOUCH LOCATION', touchLocation);
+    if (ref.current !== null) {
+      ref.current.style.left = 'grab';
+      ref.current.classList.remove('enablehover:hover');
+    }
+  };
+
   return (
     <div className="h-[100%]">
       <div className="">
@@ -83,7 +92,6 @@ function CategoriesScreen() {
           })}
         </div>
       </div>
-      {/* TODO put overflow scroll on transactions */}
       <div className="h-[60%] w-11/12 overflow-y-scroll mx-auto">
         <div className=" rounded-md adjustFont  mt-4">
           <div className="grid grid-cols-[_40%_40%_20%] border-b-4 bg-indigo-200 border-gray-600">
@@ -112,6 +120,7 @@ function CategoriesScreen() {
                     onDragStart={(e) =>
                       dragStarted(e, String(filteredTrans.merchant_id))
                     }
+                    onTouchMove={(e) => handleTouchMove(e)}
                     onDragEnd={() => dragEnd()}
                     className="grid grid-cols-[_40%_40%_20%] justify-start cursor-grab bg-indigo-200  text-gray-700 hover:text-teal-400 hover:bg-teal-100 rounded-md px-2 py-1 ">
                     {/* <span className="bg-gray-400 h-2 w-2 m-2 rounded-full"></span>  POTENTIAL IMAGE */}
