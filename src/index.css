@@ -59,8 +59,15 @@ code {
 	transform: translateX(0vw);
 } */
 
+.menu-transition {
+	transition: transform 0.5s ease;
+	display: none;
+	overflow: hidden;
+}
+
 .menu-transition.open {
-	animation: fadeOut 2s ease;
+	display: block;
+	animation: fadeIn 0.5s ease;
 }
 
 @keyframes fadeIn {
@@ -71,13 +78,3 @@ code {
 		opacity: 1;
 	}
 }
-
-/* 
-@keyframes fadeOut {
-	0% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-	}
-} */
