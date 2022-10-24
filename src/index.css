@@ -50,11 +50,31 @@ code {
 	filter: blur(250px);
 }
 
-.menu-transition {
+/* .menu-transition {
 	transition: transform 0.5s ease;
 	transform: translateX(-100vw);
 	overflow: hidden;
 }
 .menu-transition.open {
 	transform: translateX(0vw);
+} */
+
+.menu-transition {
+	transition: transform 0.5s ease;
+	display: none;
+	overflow: hidden;
+}
+
+.menu-transition.open {
+	display: block;
+	animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }

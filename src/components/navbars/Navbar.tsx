@@ -26,7 +26,7 @@ export const Navbar = () => {
 
 	// Return a column so that we can have an empty area above the nav for the notch.
 	return (
-		<nav className='flex flex-col items-center justify-center px-6 sticky top-0 left-0'>
+		<nav className='flex flex-col items-center justify-center px-6 sticky top-0 left-0 z-30'>
 			<div id='notch' className='h-[5.3mm] w-full'></div>
 			<div
 				ref={flexContent}
@@ -73,7 +73,7 @@ export const Navbar = () => {
 						</form>
 
 						{!expandSearch && (
-							<div className='flex h-14 aspect-square items-center justify-center'>
+							<div className='flex h-14 aspect-square items-center justify-center z-50'>
 								<Hamburger
 									distance='md'
 									hideOutline={true}
