@@ -71,13 +71,15 @@ export const SidebarMenu = () => {
 					screenState.sidebarOpen ? 'open' : 'closed'
 				}`}
 			>
-				<Hamburger
-					distance='md'
-					hideOutline={true}
-					toggled={screenState.sidebarOpen}
-					onToggle={() => dispatch(toggleSidebar())}
-				/>
-				<ul className='h-full flex flex-col justify-between items-center text-3xl space-y-6 pt-6 pb-10'>
+				<div className='flex justify-end self-end'>
+					<Hamburger
+						distance='md'
+						hideOutline={true}
+						toggled={screenState.sidebarOpen}
+						onToggle={() => dispatch(toggleSidebar())}
+					/>
+				</div>
+				<ul className='h-full  flex flex-col justify-center items-center text-3xl space-y-6 pt-6 pb-36'>
 					<div className='flex flex-col justify-center items-center space-y-6'>
 						<DarkModeButton></DarkModeButton>
 						<BoxButton text={'Calendar'} callback={handleCalendar} />
@@ -85,14 +87,14 @@ export const SidebarMenu = () => {
 						<BoxButton text={'Advice'} callback={handleAdvice} />
 						<BoxButton text={'Contributors'} callback={handleContributors} />
 						<BoxButton text={'Settings'} callback={handleSettings} />
+						<li
+							id='btn-rainbow'
+							className='border-2 border-black text-black font-semibold bg-[#6161cc] rounded-lg'
+							onClick={handleLogout}
+						>
+							Log Out
+						</li>
 					</div>
-					<li
-						id='btn-rainbow'
-						className='border-2 border-black text-black font-semibold bg-[#6161cc] rounded-lg py-3 px-8'
-						onClick={handleLogout}
-					>
-						Log Out
-					</li>
 				</ul>
 			</div>
 		</>
