@@ -11,18 +11,15 @@ Okané is a spending tracker that leverages Open Banking to allow individuals to
 - The Spending Breakdown page will allow the user to drag and drop expenses into chosen categories. 
 
 ## Tech Stack
-React
-Typescript
-Tailwind
-PostGresQL
-Sequelize
-Koa
-Node.JS
-Tink
-Chakra
-Three.JS
-Blender
-Jest
+
+| Front End     | Back End      | Misc.         |
+| ------------- | ------------- | ------------- |
+| React         | PostGresQL    |     Blender   |
+| TypeScript    | TypeScript    |  Jest         |
+| Redux         | Sequelize     |       Tink    |
+| TailwindCSS   | Node.JS       |               |
+| Chakra        | Koa           |               |
+| Three.JS      |               |               |
 
 ### Contributors  
 - Sam Flower
