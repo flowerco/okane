@@ -68,7 +68,7 @@ export const SummaryScreen = () => {
 				</div>
 			</div>
 			<div className='lg:flex-col  lg:w-full lg:h-[80%]  lg:m-28 sm:w-full text-center content-center'>
-				<h1 className='text-white text-3xl font-semibold hidden lg:block '>
+				<h1 className='text-white text-3xl font-semibold hidden lg:block  '>
 					お金へようこそ。
 				</h1>
 				<div className=' text-white text-3xl font-semibold'>{formatDate}</div>
