@@ -40,6 +40,7 @@ export const SearchList = () => {
   useEffect(() => {
     setLoading(true);
     merchantSearch(searchString).then((res) => {
+      console.log('searched for ', searchString);
       setMerchants(res);
     });
   }, [searchString]);
@@ -58,26 +59,27 @@ export const SearchList = () => {
   return (
     <div className="flex justify-center items-center w-full absolute top-0 left-0 z-30">
       {searchString && (
-        <ul className="flex flex-col justify-center items-center text-2xl space-y-4 w-4/5 bg-customGreen py-6 rounded-b-md">
-          {loading ? (
-            <Loading />
-          ) : merchants.length > 0 ? (
-            merchants.map((merchant) => {
-              // TODO: Would be nice to have a small logo for each of the merchants when searching...
-              return (
-                <li
-                  key={merchant.id}
-                  className="border border-black py-4 px-10 rounded-md"
-                  onClick={() => clickHandler(merchant.id)}
-                >
-                  {merchant.name}
-                </li>
-              );
-            })
-          ) : (
-            <li>No Results Found</li>
-          )}
-        </ul>
+          <ul className="backdrop-blur-3xl flex flex-col justify-center items-center text-2xl w-full max-w-md py-2 rounded-b-md">
+            {loading ? (
+              <Loading />
+            ) : merchants.length > 0 ? (
+              merchants.map((merchant) => {
+                // TODO: Would be nice to have a small logo for each of the merchants when searching...
+                return (
+                  <li
+                    id="btn-rainbow"
+                    key={merchant.id}
+                    className='border-2 w-52 text-center border-black text-black font-semibold bg-[#6161cc] rounded-lg'
+                    onClick={() => clickHandler(merchant.id)}
+                  >
+                    {merchant.name}
+                  </li>
+                );
+              })
+            ) : (
+              <li className="text-black">No Results Found</li>
+            )}
+          </ul>
       )}
     </div>
   );

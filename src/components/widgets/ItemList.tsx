@@ -11,7 +11,7 @@ export const ItemList = ({
   callback: ((item: SubscriptionType) => void) | ((item: MerchantType) => void);
 }) => {
   return (
-    <>
+    <div className=''>
       {data.map((item, index) => {
         return (
           <div
@@ -25,6 +25,6 @@ export const ItemList = ({
           </div>
         );
       })}
-    </>
+    </div>
   );
 };

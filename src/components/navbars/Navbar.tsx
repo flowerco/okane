@@ -15,11 +15,9 @@ export const Navbar = () => {
 	const [expandSearch, setExpandSearch] = useState(false);
 
 	const searchChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+		// Get the new search string and dispatch so that the searchList is updated.
 		const newVal = event.target.value;
 		dispatch(setSearch(newVal));
-	};
-	const searchFocusHandler = () => {
-		setExpandSearch(true);
 	};
 
 	const flexContent = useRef(null!);
@@ -60,7 +58,7 @@ export const Navbar = () => {
 								onChange={searchChangeHandler}
 								onFocus={() => setExpandSearch(true)}
 								onBlur={() => setExpandSearch(false)}
-								className={`py-2 pl-6 pr-9 rounded-full bg-[#D9D9D9] text-2xl max-w-md ${
+								className={`py-2 pl-6 pr-9 rounded-full text-black bg-[#D9D9D9] text-2xl max-w-md ${
 									expandSearch ? 'w-full' : 'w-4/5'
 								}`}
 							></input>

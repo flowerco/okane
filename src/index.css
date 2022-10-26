@@ -78,3 +78,17 @@ code {
 		opacity: 1;
 	}
 }
+
+.change-text span#show-on-hover {
+	display: none;
+}
+.change-text:hover span#show-on-hover {
+	display: inline;
+}
+
+.change-text span#hide-on-hover {
+	display: inline;
+}
+.change-text:hover span#hide-on-hover {
+	display: none;
+}

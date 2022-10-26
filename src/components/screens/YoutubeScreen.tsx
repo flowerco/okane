@@ -61,7 +61,7 @@ export const YoutubeScreen = () => {
         <p className="text-2xl font-bold py-3 px-3 sm:px-0 sm:text-xl">
           The Official Okané Playlist:
         </p>
-        <div className="flex flex-col w-full overflow-auto pl-12 sm:pl-0 sm:max-h-[70vh]">
+        <div className="flex flex-col w-full overflow-auto pl-12 sm:pr-12 sm:pl-0 sm:max-h-[70vh]">
           {playlist.map((item) => {
             const { id, snippet } = item;
             const { title, thumbnails, resourceId } = snippet;

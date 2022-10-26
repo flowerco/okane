@@ -31,7 +31,7 @@ export const getSubName = async (id: string) => {
 
 export const getMerchants = async () => {
   let output: MerchantType[] = [];
-  return await fetch(`${rootUrl}:${process.env.REACT_APP_PORT}/merchants`, {
+  return await fetch(`${rootUrl}:${process.env.REACT_APP_PORT}/merchantsList`, {
     credentials: 'include',
   }).then(async (res) => {
     const data = await res.json();

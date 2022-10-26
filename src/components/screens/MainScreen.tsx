@@ -32,6 +32,13 @@ export const MainScreen = ({
 
 	return (
 		<>
+			{!online && (
+				<div className='flex items-center text-center h-16 bg-orange-500 py-3 px-6'>
+					<p>
+						Device is not online, some functionality may not be available.
+					</p>
+				</div>
+			)}
 			<div
 				className={`relative w-full ${
 					online
@@ -40,17 +47,8 @@ export const MainScreen = ({
 				}`}
 			>
 				{searchString && <SearchList />}
-				{!online && (
-					<div className='flex items-center text-center h-16 bg-orange-500 py-3 px-6'>
-						<p>
-							Device is not online, some functionality may not be available.
-						</p>
-					</div>
-				)}
-				<div className='h-full relative'>
 					{authState.isAuthenticated ? (
 						<>
-							<div className='h-full relative'>
 								<Routes>
 									<Route
 										path='/connect'
@@ -72,7 +70,6 @@ export const MainScreen = ({
 										element={<ContributorsScreen />}
 									></Route>
 								</Routes>
-							</div>
 						</>
 					) : (
 						<>
@@ -80,8 +77,7 @@ export const MainScreen = ({
 						</>
 					)}
 				</div>
-			</div>
-			<div className='absolute z-40 h-full top-0 left-0'>
+			<div className='absolute z-40 h-[calc(100vh_-_4rem_-_5.3mm)] top-0 left-0'>
 				<SidebarMenu />
 			</div>
 		</>

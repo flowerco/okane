@@ -47,32 +47,34 @@ export const SummaryScreen = () => {
 		}
 	);
 
-	const total = () => {
-		return subscriptions
+	const total = subscriptions
 			.reduce((accumulator, sub) => {
 				return accumulator + sub.monthlyPrice;
-			}, 0)
-			.toFixed(0);
-	};
+			}, 0);
 
 	return (
-		<div className='lg:flex lg:flex-row-reverse sm:grid sm:grid-cols-1 h-full w-full justify-center items-center sm:justify-items-center lg:overflow-hidden sm:overflow-auto'>
-			<div className='flex w-full h-full aspect-square relative mx-auto '>
+		<div className='lg:flex lg:flex-row-reverse lg:overflow-hidden sm:grid sm:grid-cols-1 sm:justify-items-center sm:overflow-auto h-full w-full px-10 justify-center items-center'>
+			
+			{/* Pie Chart */}
+			<div className='flex w-full lg:h-full h-[50%] aspect-square relative mx-auto justify-center items-center'>
 				<RechartsPieChart
 					data={subscriptions}
 					colors={colors}
-					total={total()}
+					total={total}
 				/>
 				<div className='text-green-400 text-5xl z-0 h-full w-full absolute top-0 left-0 align-center flex justify-center items-center'>
-					{`£${total()}`}
+					{`£${total.toFixed(0)}`}
 				</div>
 			</div>
-			<div className='lg:flex-col  lg:w-full lg:h-[80%]  lg:m-28 sm:w-full text-center content-center'>
-				<h1 className='text-white text-3xl font-semibold hidden lg:block  '>
-					お金へようこそ。
+
+			{/* List of subscriptions */}
+			<div className='lg:flex-col lg:space-y-3 sm:w-full h-full text-center content-center p-24'>
+				<h1 className='change-text text-white text-3xl font-semibold hidden lg:block'>
+					<span id="show-on-hover">お金へようこそ</span>
+					<span id="hide-on-hover">Welcome to Okané</span>
 				</h1>
 				<div className=' text-white text-3xl font-semibold'>{formatDate}</div>
-				<div className='lg:h-full flex flex-col w-full px-12 mt-4 pb-6 overflow-hidden'>
+				<div className='flex flex-col w-full px-12 mt-4 h-[80%] overflow-y-auto'>
 					<ItemList
 						data={subscriptions}
 						colors={colors}

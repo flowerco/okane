@@ -43,7 +43,8 @@ export const AnalysisScreen = () => {
 	}
 
 	function formatName(name: string): string {
-		const result = name.replace(/([A-Z])/g, ' $1');
+		let result = name.replace(/([A-Z])/g, ' $1');
+		result = result.replace('_','');
 		return result.charAt(0).toUpperCase() + result.slice(1);
 	}
 
