@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5eeef7cd.css",
+    "main.js": "/static/js/main.8091c573.js",
+    "static/js/27.a683917a.chunk.js": "/static/js/27.a683917a.chunk.js",
+    "static/media/scrooge.png": "/static/media/scrooge.0b1abd15355fb01189bb.png",
+    "service-worker.js": "/service-worker.js",
+    "static/media/Revolut.png": "/static/media/Revolut.0ae215330fc5145301e4.png",
+    "static/media/barclays.jpeg": "/static/media/barclays.285c4a9f7234870e11a6.jpeg",
+    "static/media/share-tech-mono-all-400-normal.woff": "/static/media/share-tech-mono-all-400-normal.f318bf48f0b489761d75.woff",
+    "static/media/share-tech-mono-latin-400-normal.woff2": "/static/media/share-tech-mono-latin-400-normal.9dedd274c9f5d028700c.woff2",
+    "static/media/HSBC.png": "/static/media/HSBC.26a4e296a5c5168526c2.png",
+    "index.html": "/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.5eeef7cd.css",
+    "static/js/main.8091c573.js"
+  ]
+}

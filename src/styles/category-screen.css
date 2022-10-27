@@ -1,0 +1,12 @@
+.adjustFont {
+  font-size: min(max(16px, 2vw), 18px);
+}
+
+.adjustFontTitle {
+  font-size: min(max(24px, 2vw), 4vw);
+}
+
+.enablehover:hover {
+  background-color:rgb(204 251 241);
+  color: rgb(45 212 191);;
+}

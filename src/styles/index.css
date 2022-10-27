@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
+}
+
+.radial-gradient {
+	background: radial-gradient(circle 800px at 0% -20%, #50c7d8, #1f2028 50%),
+		radial-gradient(circle 700px at 100% 120%, #8080d7, #1f2028 60%) bottom
+			right;
+	background-size: 100% 50%;
+	background-repeat: no-repeat;
+}
+
+.radial-gradient2 {
+	background: radial-gradient(circle 800px at 0% -20%, #50c7d8, white 50%),
+		radial-gradient(circle 700px at 100% 120%, #8080d7, white 60%) bottom right;
+	background-size: 100% 50%;
+	background-repeat: no-repeat;
+}
+
+.blurtest {
+	backdrop-filter: blur(10px);
+	clip-path: circle(40%);
+}
+
+.ellipse1 {
+	box-sizing: border-box;
+
+	position: absolute;
+	width: 358px;
+	height: 367px;
+	left: 20px;
+	top: -183px;
+
+	background: #50c7d8;
+	border: 1px solid #000000;
+	filter: blur(250px);
+}
+
+
+.menu-transition {
+	transition: transform 0.5s ease;
+	display: none;
+	overflow: hidden;
+}
+
+.menu-transition.open {
+	display: block;
+	animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.change-text span#show-on-hover {
+	display: none;
+}
+.change-text:hover span#show-on-hover {
+	display: inline;
+}
+
+.change-text span#hide-on-hover {
+	display: inline;
+}
+.change-text:hover span#hide-on-hover {
+	display: none;
+}
