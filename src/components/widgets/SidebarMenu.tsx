@@ -1,15 +1,16 @@
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import '../../index.css';
 import { logout } from '../../redux/authSlice';
 import { removeJwtCookie } from '../../api/LoginService';
 import { toggleSidebar } from '../../redux/screenSlice';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import DarkModeButton from '../widgets/DarkModeButton';
-import { Container } from '@chakra-ui/react';
 import { Divide as Hamburger } from 'hamburger-react';
+import { useColorMode } from '@chakra-ui/react';
+import '../../styles/index.css';
 
 export const SidebarMenu = () => {
 	const screenState = useAppSelector((state) => state.screen);
+  const { colorMode } = useColorMode();
 	const dispatch = useAppDispatch();
 
 	const navigate = useNavigate();
@@ -71,7 +72,7 @@ export const SidebarMenu = () => {
 					screenState.sidebarOpen ? 'open' : 'closed'
 				}`}
 			>
-				<div className='flex justify-end self-end pt-9 pr-7'>
+				<div className={`flex justify-end self-end pt-9 pr-7 ${colorMode === 'light' ? 'text-black' : 'text-white'}`}>
 					<Hamburger
 						distance='md'
 						hideOutline={true}
@@ -80,14 +81,14 @@ export const SidebarMenu = () => {
 					/>
 				</div>
 				<ul className='h-full  flex flex-col justify-between items-center text-3xl space-y-6 pt-6 pb-36'>
-					<li className='flex flex-col justify-center items-center space-y-6'>
+					<div className='flex flex-col justify-center items-center space-y-6'>
 						<DarkModeButton></DarkModeButton>
 						<BoxButton text={'Calendar'} callback={handleCalendar} />
 						<BoxButton text={'Categories'} callback={handleCategories} />
 						<BoxButton text={'Advice'} callback={handleAdvice} />
 						<BoxButton text={'Contributors'} callback={handleContributors} />
 						<BoxButton text={'Settings'} callback={handleSettings} />
-					</li>
+					</div>
 					<li
 						id='btn-rainbow'
 						className='border-2 border-black text-black font-semibold bg-[#6161cc] rounded-lg'

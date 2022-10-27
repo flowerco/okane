@@ -10,7 +10,6 @@ export function BenModel(props: any) {
 	const { actions } = useAnimations(animations, group);
 	useEffect(() => {
 		const animAction = actions['Armature|mixamo.com|Layer0'];
-		console.log(animAction);
 		animAction!.play();
 	});
 	return (

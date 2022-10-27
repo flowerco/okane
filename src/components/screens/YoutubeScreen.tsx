@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Loading } from "../widgets/Loading";
 import { Error } from "../widgets/Error";
 import {
-  SubscriptionType,
   YoutubeItem,
   YoutubeRequest,
 } from "../../values/customTypes";

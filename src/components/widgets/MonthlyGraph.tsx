@@ -1,10 +1,10 @@
+import { useColorMode } from '@chakra-ui/react';
 import {
   AreaChart,
   Area,
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
   ResponsiveContainer,
 } from 'recharts';
 import { StreamingType } from '../../values/customTypes';
@@ -16,8 +16,13 @@ export const MonthlyGraph = ({
   data: StreamingType[];
   colors: string[];
 }) => {
+
+  const { colorMode } = useColorMode();
+
+  // Convert the chart data to the correct format for display.
   let streamArr: string[] = [];
   let monthArr: string[] = [];
+
   for (let month of data) {
     for (let sub in month) {
       if (sub === 'monthEndDate') {
@@ -37,16 +42,9 @@ export const MonthlyGraph = ({
       })
       .replace(/ /g, '-');
   }
-  // console.log('Formatted date: ', formatDate(data[0].monthEndDate as string));
-
-  const testData = [
-    { monthEndDate: 'Jan-22', netflix: 7.99, prime: 9.99 },
-    { monthEndDate: 'Feb-22', netflix: 2.99, prime: 8.99 },
-    { monthEndDate: 'Mar-22', netflix: 6.99, prime: 4.99 },
-  ];
 
   return (
-    <ResponsiveContainer height="100%" width="100%">
+    <ResponsiveContainer height="90%" width="90%">
       <AreaChart
         data={data}
         margin={{
@@ -63,11 +61,11 @@ export const MonthlyGraph = ({
           angle={-45}
           dy={24}
           height={80}
-          tick={{ fill: 'white', fontSize: 16 }}
+          tick={{ fill: colorMode === 'light' ? "black" : "white" , fontSize: 16 }}
           tickFormatter={(tick) => formatDate(tick)}
         />
         <YAxis
-          tick={{ fill: 'white', fontSize: 18 }}
+          tick={{ fill: colorMode === 'light' ? "black" : "white", fontSize: 18 }}
           tickFormatter={(tick) => {
             return '£' + tick;
           }}

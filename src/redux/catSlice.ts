@@ -49,10 +49,8 @@ const catsSlice = createSlice({
           state.status = "succeeded";
           state.totals = action.payload.category_totals;
           state.transactions = action.payload.transactions;
-          // console.log('undefined check', state.clicked === '');
           if (state.clicked === "")
             state.clicked = action.payload.category_totals[0].category_name;
-          // console.log('new (after reload) stateClicked', state.clicked);
         }
       )
       .addCase(fetchCategories.rejected, (state, action) => {

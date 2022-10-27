@@ -3,7 +3,16 @@
 
 // TODO: Do we want the graphs to appear with colors aligned with each subscription?
 // Could cause problems if we subscribe to lots of things with green theme colors...
-export const PieChartColorList1 = [
+export const okaneColorTheme = [
+  "#F24236",
+  "#0AB6FF",
+  "#D4D709",
+  "#4DC149",
+  "#F49E4C",
+
+]
+
+export const okaneColorTheme2 = [
   "#83CAFF",
   "#FF420E",
   "#FFD320",
@@ -12,20 +21,11 @@ export const PieChartColorList1 = [
   "#004586",
 ]
 
-export const PieChartColorList2 = [
-  "#AA3551",
-  "#D79E58",
-  "#82AE99",
-  "#7AA9C9",
-  "#7E0021",
-  "#7B56C0"
-]
-
 export const OkaneSubsColorList = new Map ([
-  ['GYM','#83CAFF'],      //  Light Sky Blue / Gym
-  ['CFN','#FF420E'],      //  Orange Red / Car Finance
-  ['MBP','#FFD320'],      //  Turbo Yellow / Mobile Phone
-  ['STR','#579D1C'],      //  Limeade Green / Streaming
-  ['CCD','#7E0021'],      //  Burgundy / Credit Card
+  ['GYM','#F24236'],      //  Light Sky Blue / Gym
+  ['CFN','#0AB6FF'],      //  Orange Red / Car Finance
+  ['MBP','#D4D709'],      //  Turbo Yellow / Mobile Phone
+  ['STR','#4DC149'],      //  Limeade Green / Streaming
+  ['CCD','#F49E4C'],      //  Burgundy / Credit Card
   ['TVL','#004586'],      //  Dark Cerulean Blue / Travel
 ])

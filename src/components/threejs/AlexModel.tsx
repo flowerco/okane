@@ -11,7 +11,6 @@ export function AlexModel(props: any) {
 
 	useEffect(() => {
 		const animAction = actions['Armature|mixamo.com|Layer0'];
-		console.log(animAction);
 		animAction!.play();
 	});
 

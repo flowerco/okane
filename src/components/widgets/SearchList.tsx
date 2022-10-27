@@ -6,7 +6,6 @@ import {
 } from "../../api/SubscriptionService";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setSearch } from "../../redux/screenSlice";
-import { MerchantType } from "../../values/customTypes";
 import { Loading } from "./Loading";
 
 export const SearchList = () => {
@@ -30,7 +29,7 @@ export const SearchList = () => {
     let results = [];
     for (let i = 0; i < response.length; i++) {
       const res = response[i];
-      if (res["name"].toLowerCase().indexOf(lower) != -1) {
+      if (res["name"].toLowerCase().indexOf(lower) !== -1) {
         results.push({ id: res["id"], name: res["name"] });
       }
     }
@@ -40,7 +39,6 @@ export const SearchList = () => {
   useEffect(() => {
     setLoading(true);
     merchantSearch(searchString).then((res) => {
-      console.log('searched for ', searchString);
       setMerchants(res);
     });
   }, [searchString]);

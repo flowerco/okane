@@ -1,7 +1,7 @@
 import barclays from '../../assets/barclays.jpeg';
 import revolut from '../../assets/Revolut.png';
 import hsbc from '../../assets/HSBC.png';
-import './OpenBankingScreen.css';
+import '../../styles/open-banking-screen.css';
 
 function OpenBankingScreen() {
   const tinkLink =

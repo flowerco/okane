@@ -6,7 +6,6 @@ import { toggleDarkMode } from "../../redux/darkModeSlice";
 
 export default function DarkModeButton() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const isDark = colorMode === "dark";
   const dispatch = useAppDispatch();
 
   return (
@@ -14,7 +13,7 @@ export default function DarkModeButton() {
       _hover={{ bg: "transparent" }}
       icon={
         colorMode === "light" ? (
-          <MoonIcon width="1.5rem" height="1.5rem" />
+          <MoonIcon width="1.5rem" height="1.5rem" color={"black"}/>
         ) : (
           <SunIcon width="1.5rem" height="1.5rem" />
         )

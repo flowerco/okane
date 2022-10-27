@@ -6,12 +6,12 @@ import {
 } from '../../redux/catSlice';
 import { Loading } from '../widgets/Loading';
 import { Error } from '../widgets/Error';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { CategoryTotals } from '../../values/customTypes';
 import CategoryCard from '../widgets/CategoryCard';
 import moment from 'moment';
 import { DragEvent } from 'react';
-import '../widgets/categoryScreen.css';
+import '../../styles/category-screen.css';
 
 function CategoriesScreen() {
   const ref = useRef<HTMLDivElement>(null);
@@ -42,7 +42,6 @@ function CategoriesScreen() {
   };
 
   const dragStarted = (e: DragEvent<HTMLDivElement>, merchant_id: string) => {
-    console.log('Drag has started:', merchant_id);
     e.dataTransfer.setData('merchant_id', merchant_id);
     if (ref.current !== null) {
       ref.current.style.cursor = 'grabbing';

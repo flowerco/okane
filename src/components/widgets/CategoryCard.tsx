@@ -1,6 +1,5 @@
 import { CategoryTotals } from '../../values/customTypes';
-import './categoryScreen.css';
-import { DragEvent, useRef, useState } from 'react';
+import { DragEvent, useState } from 'react';
 import { updateCategory } from '../../api/CategoryService';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
@@ -10,6 +9,7 @@ import {
   changeClicked,
 } from '../../redux/catSlice';
 import { RootState } from '../../redux/store';
+import '../../styles/category-screen.css';
 
 function CategoryCard({
   category,
@@ -22,9 +22,7 @@ function CategoryCard({
 }) {
   const [dragOver, setDragOver] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  const categoryStatus = useAppSelector(
-    (state: RootState) => state.categories.status
-  );
+
   const hoverState = useAppSelector(
     (state: RootState) => state.categories.hovered
   );
@@ -34,14 +32,12 @@ function CategoryCard({
   };
 
   const onDragEnter = (e: DragEvent<HTMLDivElement>, cat_name: string) => {
-    console.log(cat_name);
     if (hoverState !== cat_name) {
       setDragOver(true);
       dispatch(enterTarget(cat_name));
     }
   };
   const onDragLeave = (e: DragEvent<HTMLDivElement>, cat_name: string) => {
-    console.log('Left:', cat_name);
     e.stopPropagation();
     e.preventDefault();
 
@@ -53,17 +49,16 @@ function CategoryCard({
     category_id: string,
     cat_name: string
   ) => {
-    console.log('Dropped on:', category_id);
     let merchant_id_event = e.dataTransfer.getData('merchant_id');
     let newCategory_id = Number(category_id);
     const merchant_id = Number(merchant_id_event);
     // dispatch redux action that changes category of the transaction
     const data = { merchant_id, newCategory_id };
-    const result = await updateCategory(data);
+    await updateCategory(data);
+    
     dispatch(changeStatusToIdle());
     dispatch(changeClicked(cat_name));
     dispatch(leftTarget());
-    // if (ref.current !== null) ref.current.style.scale = '1';
   };
 
   return (

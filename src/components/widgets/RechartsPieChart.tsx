@@ -1,38 +1,32 @@
 // @ts-nocheck
-import { useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { SubscriptionType } from '../../values/customTypes';
+import { useColorMode } from '@chakra-ui/react';
 
 export const RechartsPieChart = ({
 	data,
 	colors,
 	total,
+	outerPcnt,
+	innerPcnt
 }: {
 	data: SubscriptionType[];
 	colors: string[];
 	total: number;
+	outerPcnt: string;
+	innerPcnt: string;
 }) => {
-	// const [labelState, setLabelState] = useState({
-	// 	fill: '#FFFFFF',
-	// 	fontSize: '30px',
-	// });
 
-	const [labelState, setLabelState] = useState('Hello');
-
-	let renderLabel = function(entry) {
-		return (
-			<text >Hello</text>
-		)
-	}
+	const { colorMode } = useColorMode();
 
 	const RADIAN = Math.PI / 180;
 	const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
 		const radius = outerRadius + (outerRadius - innerRadius) * 0.5;
 		const x = cx + radius * Math.cos(-midAngle * RADIAN);
 		const y = cy + radius * Math.sin(-midAngle * RADIAN);
-	
+		
 		return (
-			<text x={x} y={y} fontSize="30px" fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+			<text x={x} y={y} fontSize="26px" fill={colorMode === 'light' ? "black" : "white" } textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
 				{`${(percent * 100).toFixed(0)}%`}
 			</text>
 		);
@@ -44,8 +38,8 @@ export const RechartsPieChart = ({
 				<Pie
 					dataKey='value'
 					data={data}
-					outerRadius="80%"
-					innerRadius="60%"
+					outerRadius={outerPcnt}
+					innerRadius={innerPcnt}
 					paddingAngle={10}
 					cornerRadius={5}
 					label={renderCustomizedLabel}

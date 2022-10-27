@@ -5,7 +5,6 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setSearch, toggleSidebar } from '../../redux/screenSlice';
 import { Link } from 'react-router-dom';
 import { useRef, useState } from 'react';
-import DarkModeButton from '../widgets/DarkModeButton';
 
 export const Navbar = () => {
 	const { isAuthenticated } = useAppSelector((state) => state.authentication);

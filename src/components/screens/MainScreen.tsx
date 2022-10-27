@@ -4,7 +4,7 @@ import { AnalysisScreen } from './AnalysisScreen';
 import { LoginScreen } from './LoginScreen';
 import { SummaryScreen } from './SummaryScreen';
 import { CalendarScreen } from './CalendarScreen';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import CategoriesScreen from './CategoriesScreen';
 import { ContributorsScreen } from './ContributorsScreen';
 import { YoutubeScreen } from './YoutubeScreen';

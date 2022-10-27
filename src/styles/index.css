@@ -50,14 +50,6 @@ code {
 	filter: blur(250px);
 }
 
-/* .menu-transition {
-	transition: transform 0.5s ease;
-	transform: translateX(-100vw);
-	overflow: hidden;
-}
-.menu-transition.open {
-	transform: translateX(0vw);
-} */
 
 .menu-transition {
 	transition: transform 0.5s ease;

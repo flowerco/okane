@@ -1,5 +1,4 @@
-import { PieChartColorList1 } from '../../values/customColors';
-import { MinPieChart } from '../widgets/MinPieChart';
+import { okaneColorTheme } from '../../values/customColors';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { selectSubs } from '../../redux/subsSlice';
 import { useEffect } from 'react';
@@ -10,12 +9,14 @@ import { ItemList } from '../widgets/ItemList';
 import { useNavigate } from 'react-router-dom';
 import { SubscriptionType } from '../../values/customTypes';
 import { RechartsPieChart } from '../widgets/RechartsPieChart';
+import { useColorMode } from '@chakra-ui/react';
 
 export const SummaryScreen = () => {
 	const dispatch = useAppDispatch();
+	const { colorMode } = useColorMode();
 	const navigate = useNavigate();
 
-	const colors = PieChartColorList1;
+	const colors = okaneColorTheme;
 	const subscriptionsState = useAppSelector(selectSubs);
 	const subscriptions = subscriptionsState.data;
 	const status = subscriptionsState.status;
@@ -27,7 +28,7 @@ export const SummaryScreen = () => {
 		}
 	}, [dispatch, status]);
 
-	// TODO: Loading/failed logic to be added to redux.
+
 	if (status === 'loading') {
 		return <Loading />;
 	}
@@ -43,7 +44,7 @@ export const SummaryScreen = () => {
 		'en-GB',
 		{
 			month: 'long',
-			year: '2-digit',
+			year: 'numeric',
 		}
 	);
 
@@ -53,14 +54,16 @@ export const SummaryScreen = () => {
 			}, 0);
 
 	return (
-		<div className='lg:flex lg:flex-row-reverse lg:overflow-hidden sm:grid sm:grid-cols-1 sm:justify-items-center sm:overflow-auto h-full w-full px-10 justify-center items-center'>
+		<div className='lg:flex lg:flex-row-reverse lg:overflow-hidden lg:px-10 h-full w-full justify-center items-center'>
 			
 			{/* Pie Chart */}
-			<div className='flex w-full lg:h-full h-[50%] aspect-square relative mx-auto justify-center items-center'>
+			<div className='flex w-full lg:h-full h-[50%] relative mx-auto justify-center items-center'>
 				<RechartsPieChart
 					data={subscriptions}
 					colors={colors}
 					total={total}
+					outerPcnt={"80%"}
+					innerPcnt={"60%"}
 				/>
 				<div className='text-green-400 text-5xl z-0 h-full w-full absolute top-0 left-0 align-center flex justify-center items-center'>
 					{`£${total.toFixed(0)}`}
@@ -68,18 +71,20 @@ export const SummaryScreen = () => {
 			</div>
 
 			{/* List of subscriptions */}
-			<div className='lg:flex-col lg:space-y-3 sm:w-full h-full text-center content-center p-24'>
-				<h1 className='change-text text-white text-3xl font-semibold hidden lg:block'>
+			<div className='lg:flex-col lg:space-y-3 sm:w-full lg:h-full h-[50%] text-center content-center lg:px-24 lg:py-16'>
+				<h1 className={`change-text text-3xl font-semibold hidden lg:block ${colorMode === 'light' ? 'text-black' : 'text-white' }`}>
 					<span id="show-on-hover">お金へようこそ</span>
 					<span id="hide-on-hover">Welcome to Okané</span>
 				</h1>
-				<div className=' text-white text-3xl font-semibold'>{formatDate}</div>
-				<div className='flex flex-col w-full px-12 mt-4 h-[80%] overflow-y-auto'>
+				<div className={`text-3xl font-semibold ${colorMode === 'light' ? 'text-black' : 'text-white' }`}>{formatDate}</div>
+				<div className='pt-8 w-full h-full'>
+				<div className='flex flex-col justify-center items-center w-full px-12 lg:h-[80%] h-[70%] overflow-y-auto'>
 					<ItemList
 						data={subscriptions}
 						colors={colors}
 						callback={handleClick}
 					/>
+				</div>
 				</div>
 			</div>
 		</div>

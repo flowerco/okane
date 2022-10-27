@@ -46,7 +46,6 @@ export const validateJwtCookie = async () => {
 };
 
 export const removeJwtCookie = async () => {
-  console.log('Port: ', process.env.REACT_APP_PORT);
   try {
     await fetch(`${rootUrl}:${rootPort}/api/remove`, {
       credentials: 'include',

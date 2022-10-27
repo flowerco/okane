@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { Suspense, useState, useEffect } from 'react';
+import { Suspense, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Stars } from '@react-three/drei';
 import { SamModel } from '../threejs/SamModel';
@@ -10,7 +10,7 @@ import { AlexModel } from '../threejs/AlexModel';
 import { GregorModel } from '../threejs/GregorModel';
 import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import Typewriter from 'typewriter-effect';
-import './typewriter.css';
+import '../../styles/typewriter.css';
 
 export const ContributorsScreen = () => {
 	const team = [
@@ -50,7 +50,6 @@ export const ContributorsScreen = () => {
 				state.camera.rotation.y = -1.55;
 			}
 			if (status === 'RUNNINGRIGHT') {
-				console.log('Trying to turn right');
 				state.camera.rotation.y -= 0.01;
 				counter++;
 				if (counter > targetIterations) {

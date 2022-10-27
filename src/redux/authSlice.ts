@@ -1,7 +1,6 @@
 import {
   createAsyncThunk,
   createSlice,
-  nanoid,
   PayloadAction,
 } from '@reduxjs/toolkit';
 import { RootState } from './store';
@@ -46,8 +45,6 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.status = 'failed';
-        console.log(action.error);
-        // state.error = action.error.message || undefined;
       });
   },
 });

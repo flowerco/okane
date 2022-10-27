@@ -1,17 +1,13 @@
-import { MerchantType } from "../values/customTypes";
-
 const rootUrl = process.env.REACT_APP_HOST;
 const rootPort = process.env.REACT_APP_PORT;
 
 export const getSubscriptions = async () => {
-  let output: any = "";
   return await fetch(`${rootUrl}:${rootPort}/api/subscriptions`, {
     credentials: "include",
-  }).then((res) => {
-    const data = res.json();
-    output = data;
-    return data;
+  }).then(async (res) => {
+    return await res.json();
   });
+  // Error page now implemented - catch not currently required
   // .catch((err) => console.log('error @getSubscriptions', err));
 };
 
@@ -31,13 +27,10 @@ export const getSubName = async (id: string) => {
 };
 
 export const getMerchants = async () => {
-  let output: MerchantType[] = [];
   return await fetch(`${rootUrl}:${rootPort}/api/merchantsList`, {
     credentials: 'include',
   }).then(async (res) => {
-    const data = await res.json();
-    output = data;
-    return data;
+    return await res.json();
   });
   // .catch((err) => console.log('error @getSubscriptions', err));
 };

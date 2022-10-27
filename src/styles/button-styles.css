@@ -7,7 +7,7 @@
 	font-family: 'DM Sans', sans-serif;
 	font-size: 18px;
 	padding: 12px 32px;
-	margin: 1rem;
+	/* margin: 1rem; */
 	cursor: pointer;
 	border-radius: 4px;
 	transition: all 0.3s ease;

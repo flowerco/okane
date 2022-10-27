@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { fetchMerchants, selectMerchants } from '../../redux/merchantsSlice';
-import { PieChartColorList1 } from '../../values/customColors';
+import { okaneColorTheme } from '../../values/customColors';
 import {
 	MerchantType,
 	StreamingType,
-	SubscriptionType,
 } from '../../values/customTypes';
 import { ItemList } from '../widgets/ItemList';
 import { Loading } from '../widgets/Loading';
@@ -23,7 +22,7 @@ export const AnalysisScreen = () => {
 
 	const { id } = useParams();
 	const currentUrl = window.location.pathname;
-	const colors = PieChartColorList1;
+	const colors = okaneColorTheme;
 	const [subName, setSubName] = useState('ERROR');
 
 	useEffect(() => {
@@ -63,16 +62,18 @@ export const AnalysisScreen = () => {
 	const handleClick = () => {};
 
 	return (
-		<div className='h-[calc(100vh_-_4rem_-_5.3mm)] w-full overflow-y-auto'>
-			<div className='lg:flex lg:flex-row-reverse sm:grid sm:grid-cols-1 h-full w-full justify-items-center'>
-				<div className='mt-3  text-3xl font-semibold'>{subName}</div>
-				<div className='w-4/5 aspect-square relative'>
-					<div className='text-green-400 text-5xl z-0 lg:h-5/6 lg:w-5/6 lg:m-20 sm:w-full sm:h-full absolute top-0 left-0 align-center flex justify-center items-center'>
-						<MonthlyGraph data={merchants as StreamingType[]} colors={colors} />
-					</div>
-				</div>
-				<div className='flex flex-col w-full px-12 sm:mt-4 pb-6 lg:overflow-y-hidden lg:mt-20'>
-					<ItemList
+		<div className='flex flex-col lg:flex-row-reverse lg:overflow-hidden lg:px-10 h-full w-full justify-center items-center'>
+			
+			{/* Line Chart */}
+			<div className='flex flex-col w-full lg:h-full h-[50%] relative mx-auto mt-4 justify-center items-center'>
+				<h1 className='text-3xl'>{subName}</h1>
+				<MonthlyGraph data={merchants as StreamingType[]} colors={colors} />
+			</div>
+
+			{/* List of subscriptions */}
+			<div className='flex lg:space-y-3 lg:h-full h-[50%] w-4/5 justify-center items-center lg:p-24'>
+				<div className='flex flex-col justify-center items-center w-full px-4 lg:h-[80%] h-[70%] overflow-y-auto'>
+				<ItemList
 						data={latestMonth as MerchantType[]}
 						colors={colors}
 						callback={handleClick}
