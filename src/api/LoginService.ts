@@ -1,4 +1,6 @@
 import jwt_decode from 'jwt-decode';
+const rootUrl = process.env.REACT_APP_HOST;
+const rootPort = process.env.REACT_APP_PORT;
 
 export const verifyUser = async (
   email: FormDataEntryValue | null,
@@ -6,7 +8,7 @@ export const verifyUser = async (
 ) => {
   try {
     const response = await fetch(
-      `http://localhost:${process.env.REACT_APP_PORT}/login`,
+      `${rootUrl}:${rootPort}/api/login`,
       {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
@@ -30,7 +32,7 @@ export const validateJwtCookie = async () => {
   let output = 'LOGOUT';
   try {
     const response = await fetch(
-      `http://localhost:${process.env.REACT_APP_PORT}/validate`,
+      `${rootUrl}:${rootPort}/api/validate`,
       { credentials: 'include' }
     );
     if (response.status === 200) {
@@ -46,7 +48,7 @@ export const validateJwtCookie = async () => {
 export const removeJwtCookie = async () => {
   console.log('Port: ', process.env.REACT_APP_PORT);
   try {
-    await fetch(`http://localhost:${process.env.REACT_APP_PORT}/remove`, {
+    await fetch(`${rootUrl}:${rootPort}/api/remove`, {
       credentials: 'include',
     });
   } catch (err) {

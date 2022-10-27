@@ -1,3 +1,6 @@
+const rootUrl = process.env.REACT_APP_HOST;
+const rootPort = process.env.REACT_APP_PORT;
+
 export const createUser = async (
   email: FormDataEntryValue | null,
   password: FormDataEntryValue | null,
@@ -5,7 +8,7 @@ export const createUser = async (
 ) => {
   try {
     const response = await fetch(
-      `http://localhost:${process.env.REACT_APP_PORT}/register`,
+      `${rootUrl}:${rootPort}/api/register`,
       {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },

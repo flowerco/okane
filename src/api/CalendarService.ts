@@ -1,10 +1,9 @@
-import { SubscriptionTransactions } from '../values/customTypes';
-
-const rootUrl = 'http://localhost';
+const rootUrl = process.env.REACT_APP_HOST;
+const rootPort = process.env.REACT_APP_PORT;
 
 export const getSubscriptionTransactions = async () => {
   const transactionResponse = await fetch(
-    `${rootUrl}:${process.env.REACT_APP_PORT}/calendar`,
+    `${rootUrl}:${rootPort}/api/calendar`,
     { credentials: 'include' }
   );
   return await transactionResponse.json();
