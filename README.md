@@ -26,3 +26,4 @@ Okané is a spending tracker that leverages Open Banking to allow individuals to
 - Ben Stimpson
 - Simon Roope
 - Alex Kubbinga
+- Gregor Pearce
