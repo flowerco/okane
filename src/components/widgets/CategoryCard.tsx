@@ -20,7 +20,7 @@ function CategoryCard({
   clickFunction: (cat_name: string) => void;
   clicked: string;
 }) {
-  const [dragOver, setDragOver] = useState<boolean>(false);
+  
   const dispatch = useAppDispatch();
 
   const hoverState = useAppSelector(
@@ -33,7 +33,6 @@ function CategoryCard({
 
   const onDragEnter = (e: DragEvent<HTMLDivElement>, cat_name: string) => {
     if (hoverState !== cat_name) {
-      setDragOver(true);
       dispatch(enterTarget(cat_name));
     }
   };
