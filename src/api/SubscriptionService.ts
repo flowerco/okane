@@ -1,8 +1,8 @@
 const rootUrl = process.env.REACT_APP_HOST;
-const rootPort = process.env.REACT_APP_PORT;
+
 
 export const getSubscriptions = async () => {
-  return await fetch(`${rootUrl}:${rootPort}/api/subscriptions`, {
+  return await fetch(`${rootUrl}/api/subscriptions`, {
     credentials: "include",
   }).then(async (res) => {
     return await res.json();
@@ -14,7 +14,7 @@ export const getSubscriptions = async () => {
 export const getSubName = async (id: string) => {
   try {
     const sub = await fetch(
-      `${rootUrl}:${rootPort}/api/subscriptions/${id}`,
+      `${rootUrl}/api/subscriptions/${id}`,
       {
         credentials: "include",
       }
@@ -27,7 +27,7 @@ export const getSubName = async (id: string) => {
 };
 
 export const getMerchants = async () => {
-  return await fetch(`${rootUrl}:${rootPort}/api/merchantsList`, {
+  return await fetch(`${rootUrl}/api/merchantsList`, {
     credentials: 'include',
   }).then(async (res) => {
     return await res.json();
@@ -38,7 +38,7 @@ export const getMerchants = async () => {
 export const getMerchantsForSubscription = async (subscription_id: string) => {
   try {
     const response = await fetch(
-      `${rootUrl}:${rootPort}/api/merchants/${subscription_id}`,
+      `${rootUrl}/api/merchants/${subscription_id}`,
       { credentials: "include" }
     );
     return await response.json();
@@ -49,7 +49,7 @@ export const getMerchantsForSubscription = async (subscription_id: string) => {
 
 export const getSubNameForMerchant = async (merchantId: number) => {
   try {
-    const subName = await fetch(`${rootUrl}:${rootPort}/api/subscriptionCode/${merchantId}`, {
+    const subName = await fetch(`${rootUrl}/api/subscriptionCode/${merchantId}`, {
       credentials: 'include',
     });
     const data = await subName.json();
