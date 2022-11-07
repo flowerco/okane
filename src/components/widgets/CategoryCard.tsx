@@ -1,5 +1,5 @@
 import { CategoryTotals } from '../../values/customTypes';
-import { DragEvent, useState } from 'react';
+import { DragEvent } from 'react';
 import { updateCategory } from '../../api/CategoryService';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
@@ -20,7 +20,7 @@ function CategoryCard({
   clickFunction: (cat_name: string) => void;
   clicked: string;
 }) {
-  
+
   const dispatch = useAppDispatch();
 
   const hoverState = useAppSelector(
