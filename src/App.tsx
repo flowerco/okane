@@ -3,10 +3,10 @@ import { BrowserRouter } from 'react-router-dom';
 import { validateJwtCookie } from './api/LoginService';
 import { Navbar } from './components/navbars/Navbar';
 import { MainScreen } from './components/screens/MainScreen';
+import './styles/index.css';
 import { login } from './redux/authSlice';
 import { useAppDispatch } from './redux/hooks';
 import { useColorMode } from '@chakra-ui/react';
-import './styles/index.css';
 
 function App() {
 	const { colorMode } = useColorMode();
@@ -22,11 +22,12 @@ function App() {
 		// On first booting up the app, check if we are already logged in.
 		validateJwtCookie().then((res) => {
 			setAppLoading(false);
+			// console.log('Validating cookie... result: ', res);
 			if (res && res !== 'LOGOUT') {
 				dispatch(login(res as string));
 			}
 		});
-	}, []);
+	}, [dispatch]);
 
 	// Add listeners for change in online status
 	useEffect(() => {

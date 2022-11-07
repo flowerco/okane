@@ -32,6 +32,7 @@ export const AnalysisScreen = () => {
 			});
 			dispatch(fetchMerchants(id!));
 		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentUrl]);
 
 	if (status === 'loading') {

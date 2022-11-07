@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.5eeef7cd.css",
-    "main.js": "/static/js/main.8091c573.js",
+    "main.css": "/static/css/main.d0feb629.css",
+    "main.js": "/static/js/main.e0faf555.js",
     "static/js/27.a683917a.chunk.js": "/static/js/27.a683917a.chunk.js",
     "static/media/scrooge.png": "/static/media/scrooge.0b1abd15355fb01189bb.png",
     "service-worker.js": "/service-worker.js",
@@ -13,7 +13,7 @@
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.5eeef7cd.css",
-    "static/js/main.8091c573.js"
+    "static/css/main.d0feb629.css",
+    "static/js/main.e0faf555.js"
   ]
 }

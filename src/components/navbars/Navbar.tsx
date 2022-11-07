@@ -39,7 +39,7 @@ export const Navbar = () => {
 								if (sidebarOpen) dispatch(toggleSidebar());
 							}}
 						>
-							<img src={icon} className='object-cover'></img>
+ 							<img src={icon} className='object-cover' alt=''></img>
 						</Link>
 					</div>
 				)}
@@ -65,7 +65,7 @@ export const Navbar = () => {
 								type='submit'
 								className='border-none bg-transparent outline-none -ml-8'
 							>
-								<img src={magnifier} className='w-5 h-5 object-cover' />
+								<img src={magnifier} className='w-5 h-5 object-cover' alt=''/>
 							</button>
 						</form>
 
