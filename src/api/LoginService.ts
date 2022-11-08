@@ -30,6 +30,7 @@ export const verifyUser = async (
 
 export const validateJwtCookie = async () => {
   let output = 'LOGOUT';
+  console.log('Sending cookie for validation: ',document.cookie);
   try {
     const response = await fetch(
       `${rootUrl}/api/validate`,
