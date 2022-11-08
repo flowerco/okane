@@ -55,7 +55,7 @@ export const LoginScreen = () => {
 
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
-      <div className="flex flex-col justify-center items-center border-2 rounded-lg w-4/5 max-w-xl  h-2/5  space-y-8 py-10 -mt-16">
+      <div className={`flex flex-col justify-center items-center border-2 rounded-lg w-4/5 max-w-xl ${registerFlag ? 'h-3/5' : 'h-2/5'} space-y-8 py-10 -mt-16`}>
         <h1 className="text-3xl  font-bold text-center">
           {registerFlag ? 'Register New Account' : 'Log In'}
         </h1>

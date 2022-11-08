@@ -23,7 +23,7 @@ function CategoriesScreen() {
   const clickedCategory = categoryState.clicked;
   const status = categoryState.status;
   const categoryError = categoryState.error;
-  const month = new Date().toLocaleDateString('en-GB', {
+  const month = new Date(2022, 9, 1).toLocaleDateString('en-GB', {
     month: 'long',
     year: 'numeric',
   });

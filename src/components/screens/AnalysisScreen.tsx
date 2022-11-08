@@ -26,6 +26,7 @@ export const AnalysisScreen = () => {
 	const [subName, setSubName] = useState('ERROR');
 
 	useEffect(() => {
+		console.log('Calling useEffect for analysis screen');
 		if (status === 'idle' || status === 'succeeded') {
 			getSubName(id!).then((name) => {
 				setSubName(name);

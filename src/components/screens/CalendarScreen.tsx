@@ -39,7 +39,7 @@ export const CalendarScreen = () => {
     }
   }, [status, dispatch]);
 
-  const dateLastMonth = moment(new Date()).subtract(1, "month");
+  const dateLastMonth = moment(new Date(2022, 9, 1)).subtract(1, "month");
 
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
